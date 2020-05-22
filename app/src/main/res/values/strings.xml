@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Bap</string>
+
+    <string name="hello_user_category">hey User, \n wat wil je zoeken?</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

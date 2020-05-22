@@ -1,0 +1,2 @@
+rootProject.name='Sociale Voeding'
+include ':app'

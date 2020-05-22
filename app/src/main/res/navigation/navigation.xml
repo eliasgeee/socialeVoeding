@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/homeScreenFragment">
+
+    <fragment
+        android:id="@+id/homeScreenFragment"
+        android:name="com.socialevoeding.bap.ui.categories.CategoryScreenFragment"
+        android:label="fragment_home_screen"
+        tools:layout="@layout/fragment_home_screen" >
+        <action
+            android:id="@+id/actionHomeScreenFragmentToCategoryScreenFragmen"
+            app:destination="@id/categoryScreenFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/categoryScreenFragment"
+        android:name="com.socialevoeding.bap.ui.places.PlacesScreenFragment"
+        android:label="CategoryScreenFragment">
+        <action
+            android:id="@+id/actionCategoryScreenFragmentToHomeScreenFragment"
+            app:destination="@id/homeScreenFragment"
+            app:popUpTo="@id/homeScreenFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/actionCategoryScreenFragmentToLocationFragment"
+            app:destination="@id/locationFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/locationFragment"
+        android:name="com.socialevoeding.bap.ui.placedetails.PlaceDetailsFragment"
+        android:label="fragment_location"
+        tools:layout="@layout/fragment_location">
+        <argument
+            android:name="selectedPlace"
+            app:argType="com.socialevoeding.bap.domain.model.Place" />
+        <action
+            android:id="@+id/actionLocationFragmentToCategoryScreenFragment"
+            app:destination="@id/categoryScreenFragment"
+            app:popUpTo="@id/categoryScreenFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/actionLocationFragmentToHomeScreenFragment"
+            app:destination="@id/homeScreenFragment"
+            app:popUpTo="@id/homeScreenFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+</navigation>

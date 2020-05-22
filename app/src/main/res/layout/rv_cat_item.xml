@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <data>
+        <variable
+            name="clicklistener"
+            type="com.socialevoeding.bap.ui.categories.CategoryClickListener" />
+        <variable
+            name="category"
+            type="com.socialevoeding.bap.domain.model.Category" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/cat_item"
+        bg_cat="@{category}"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/img_category"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_category_food"
+            android:tint="@android:color/black" />
+
+        <TextView
+            android:id="@+id/txt_category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_weight="0.2"
+            android:gravity="center_horizontal"
+            android:textColor="@color/colorText"
+            app:fontFamily="@font/noto_sans_bold" />
+    </LinearLayout>
+</layout>

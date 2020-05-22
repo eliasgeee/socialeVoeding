@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--<color name="primaryColor">#FEC554</color>
+    <color name="primaryLightColor">#fff885</color>
+    <color name="primaryDarkColor">#c79521</color>-->
+    <color name="primaryColor">#38BFF0</color>
+    <color name="secondaryColor">#FA6F1E</color>
+    <color name="secondaryTextColor">#FFFFFF</color>
+    <color name="colorText">#292929</color>
+
+    <color name="pastel_yellow">#FFD76E</color>
+    <color name="pastel_red">#FF898D</color>
+    <color name="pastel_blue">#5FC8FF</color>
+    <color name="pastel_green">#9CE269</color>
+    <color name="pastel_purple">#AFA5FF</color>
+    <color name="pastel_darkblue">#F1A9A0</color>
+</resources>
