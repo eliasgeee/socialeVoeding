@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.socialevoeding.bap.R
 import com.socialevoeding.bap.databinding.FragmentCategoryScreenBinding
+import com.socialevoeding.bap.domain.model.Category
 import com.socialevoeding.bap.domain.model.Place
 import kotlinx.android.synthetic.main.toolbar.view.*
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -20,12 +21,17 @@ class PlacesScreenFragment : Fragment() {
     private lateinit var binding: FragmentCategoryScreenBinding
     private var placesAdapter: PlacesAdapter? = null
     private val placesViewModel: PlacesViewModel by viewModel()
+    private var category: Category? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        category = PlacesScreenFragmentArgs.fromBundle(
+            requireArguments()
+        ).selectedCategory
 
         binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_category_screen, container, false)
@@ -59,7 +65,7 @@ class PlacesScreenFragment : Fragment() {
         placesViewModel.goToPlace.observe(this, Observer {
             if (it != null) {
                 this.findNavController().navigate(
-                    PlacesScreenFragmentDirections.actionCategoryScreenFragmentToLocationFragment(it)
+                    PlacesScreenFragmentDirections.actionCategoryScreenFragmentToLocationFragment(it, category!!)
                 )
 
                 placesViewModel.placeNavigated()

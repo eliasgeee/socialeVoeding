@@ -3,6 +3,7 @@ package com.socialevoeding.bap.ui.places
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.socialevoeding.bap.domain.model.Category
 import com.socialevoeding.bap.domain.model.LocationModel
 import com.socialevoeding.bap.domain.model.Place
 import com.socialevoeding.bap.usecases.GetCurrentLocationFromGPSTrackerUseCase

@@ -3,6 +3,9 @@ package com.socialevoeding.bap.data.entities
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.socialevoeding.bap.domain.model.Category
+import com.socialevoeding.bap.domain.model.Place
+import com.squareup.moshi.Json
+import com.squareup.moshi.Moshi
 
 @Entity
 class CategoryEntity(

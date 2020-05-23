@@ -68,7 +68,7 @@ class CategoryScreenFragment : Fragment() {
         categoryViewModel.goToCategory.observe(this, Observer {
             if (it != null) {
                 this.findNavController().navigate(
-                    CategoryScreenFragmentDirections.actionHomeScreenFragmentToCategoryScreenFragmen()
+                    CategoryScreenFragmentDirections.actionHomeScreenFragmentToCategoryScreenFragmen(it)
                 )
 
                 categoryViewModel.onCategoryNavigated()

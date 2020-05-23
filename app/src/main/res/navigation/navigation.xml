@@ -17,6 +17,9 @@
         android:id="@+id/categoryScreenFragment"
         android:name="com.socialevoeding.bap.ui.places.PlacesScreenFragment"
         android:label="CategoryScreenFragment">
+        <argument
+            android:name="selectedCategory"
+            app:argType="com.socialevoeding.bap.domain.model.Category" />
         <action
             android:id="@+id/actionCategoryScreenFragmentToHomeScreenFragment"
             app:destination="@id/homeScreenFragment"
@@ -35,6 +38,9 @@
         <argument
             android:name="selectedPlace"
             app:argType="com.socialevoeding.bap.domain.model.Place" />
+        <argument
+            android:name="selectedCategory"
+            app:argType="com.socialevoeding.bap.domain.model.Category" />
         <action
             android:id="@+id/actionLocationFragmentToCategoryScreenFragment"
             app:destination="@id/categoryScreenFragment"

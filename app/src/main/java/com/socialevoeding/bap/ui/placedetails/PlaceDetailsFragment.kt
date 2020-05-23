@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.socialevoeding.bap.R
 import com.socialevoeding.bap.databinding.FragmentLocationBinding
+import com.socialevoeding.bap.domain.model.Category
 import com.socialevoeding.bap.domain.model.Place
 import kotlinx.android.synthetic.main.toolbar.view.*
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -16,6 +17,7 @@ import org.koin.android.viewmodel.ext.android.viewModel
 class PlaceDetailsFragment : Fragment() {
 
     private var place: Place? = null
+    private var category: Category? = null
     private lateinit var binding: FragmentLocationBinding
     private val locationViewModel: PlaceDetailsViewModel by viewModel()
 
@@ -27,6 +29,10 @@ class PlaceDetailsFragment : Fragment() {
       place = PlaceDetailsFragmentArgs.fromBundle(
             requireArguments()
         ).selectedPlace
+
+        category = PlaceDetailsFragmentArgs.fromBundle(
+            requireArguments()
+        ).selectedCategory
 
         binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_location, container, false)
@@ -49,7 +55,7 @@ class PlaceDetailsFragment : Fragment() {
     private fun setListeners() {
         binding.toolbarLocation.btn_toolbar_back.setOnClickListener {
             this.findNavController().navigate(
-                PlaceDetailsFragmentDirections.actionLocationFragmentToCategoryScreenFragment()
+                PlaceDetailsFragmentDirections.actionLocationFragmentToCategoryScreenFragment(category!!)
             )
         }
 
