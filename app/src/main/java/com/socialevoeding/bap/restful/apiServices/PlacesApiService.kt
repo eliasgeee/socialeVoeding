@@ -9,7 +9,7 @@ import retrofit2.http.Query
 interface PlacesApiService {
 
     @GET("v2/venues/search?")
-    fun getFoursquarePlacesAsync(
+    fun getFourscarePlacesAsync(
         @Query("client_id") clientId: String? = SecretsManager.getClientId(),
         @Query("client_secret") clientSecret: String? = SecretsManager.getClientSecret(),
         @Query("v") version: String?,
@@ -17,5 +17,11 @@ interface PlacesApiService {
         @Query("limit") limit: Int?,
         @Query("ll") latitudeLongitude: String?,
         @Query("query") query: String?
+    ): Deferred<PlaceDTO>
+
+    @GET("search?")
+    fun getPlacesAsync(
+        @Query("access_key") apiKey: String? = SecretsManager.getAPIKey(),
+        @Query("query") queryString: String?
     ): Deferred<PlaceDTO>
 }

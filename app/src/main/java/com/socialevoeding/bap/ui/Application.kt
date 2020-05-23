@@ -1,10 +1,8 @@
 package com.socialevoeding.bap.ui
 
 import android.app.Application
-import android.content.Context
-import android.location.LocationManager
 import com.socialevoeding.bap.data.di.dataModule
-import com.socialevoeding.bap.location.di.locationModule
+import com.socialevoeding.bap.gps.di.gpsModule
 import com.socialevoeding.bap.ui.di.appModule
 import com.socialevoeding.bap.restful.di.networkModule
 import com.socialevoeding.bap.usecases.di.useCaseModule
@@ -21,7 +19,7 @@ class Application : Application() {
 
         startKoin {
             androidContext(this@Application)
-            modules(dataModule, appModule, useCaseModule, networkModule, locationModule)
+            modules(dataModule, appModule, useCaseModule, networkModule, gpsModule)
         }
     }
 }

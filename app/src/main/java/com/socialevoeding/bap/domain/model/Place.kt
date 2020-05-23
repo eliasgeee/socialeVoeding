@@ -10,5 +10,9 @@ class Place(
     val address: String,
     val webUrl: String,
     val isOpen: Boolean,
-    val categoryId: Int
+    val categoryId: Int,
+    val img : String,
+    val latitude : Double,
+    val longitude : Double,
+    val city : String
 ) : Serializable

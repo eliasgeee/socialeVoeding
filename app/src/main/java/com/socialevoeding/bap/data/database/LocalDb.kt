@@ -9,7 +9,7 @@ import com.socialevoeding.bap.data.dao.PlaceDao
 import com.socialevoeding.bap.data.entities.CategoryEntity
 import com.socialevoeding.bap.data.entities.PlaceEntity
 
-@Database(entities = [CategoryEntity::class, PlaceEntity::class], version = 4, exportSchema = false)
+@Database(entities = [CategoryEntity::class, PlaceEntity::class], version = 5, exportSchema = false)
 abstract class LocalDb : RoomDatabase() {
     abstract val categoryDao: CategoryDao
     abstract val placeDao: PlaceDao

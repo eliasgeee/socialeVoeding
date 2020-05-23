@@ -3,11 +3,16 @@ package com.socialevoeding.bap.ui.places
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.socialevoeding.bap.domain.model.LocationModel
 import com.socialevoeding.bap.domain.model.Place
+import com.socialevoeding.bap.usecases.GetCurrentLocationFromGPSTrackerUseCase
 import com.socialevoeding.bap.usecases.GetPlacesFromLocalDatabaseUseCase
+import com.socialevoeding.bap.usecases.RefreshPlacesUseCase
 
 class PlacesViewModel(
-    private val getPlacesFromLocalDatabaseUseCase: GetPlacesFromLocalDatabaseUseCase
+    private val getPlacesFromLocalDatabaseUseCase: GetPlacesFromLocalDatabaseUseCase,
+    private val refreshPlacesUseCase: RefreshPlacesUseCase,
+    private val getCurrentLocationFromGPSTrackerUseCase: GetCurrentLocationFromGPSTrackerUseCase
 ) : ViewModel() {
 
     private var _places = MutableLiveData<List<Place>>()
@@ -19,11 +24,34 @@ class PlacesViewModel(
         get() = _goToPlace
 
     init {
-                getPlacesFromLocalDatabaseUseCase.execute {
+        getCurrentLocationFromGPSTrackerUseCase.execute {
+            onComplete {
+                refreshPlacesUseCase.currentLocationModel = LocationModel(
+                    "Ghent",
+                    it.latitude,
+                    it.longitude)
+                refreshPlacesUseCase.currentCategorieName = "Food"
+                refreshPlacesUseCase.currentQueryNames = listOf("Foodbank", "Sociaalrestaurant", "Socialekruidenier")
+                refreshPlacesUseCase.execute {
                     onComplete {
-                        _places.postValue(it)
+                        getPlacesFromLocalDatabaseUseCase.execute {
+                            onComplete {
+                                _places.postValue(it)
+                            }
+                        }
                     }
                 }
+            }
+        }
+        //TODO hardcoded
+    }
+
+    fun loadPlaces(){
+        getPlacesFromLocalDatabaseUseCase.execute {
+            onComplete {
+                _places.postValue(it)
+            }
+        }
     }
 
     fun goToPlace(place: Place) {

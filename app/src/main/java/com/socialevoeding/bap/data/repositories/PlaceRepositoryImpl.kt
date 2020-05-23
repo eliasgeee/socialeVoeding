@@ -4,6 +4,7 @@ import com.socialevoeding.bap.data.dao.PlaceDao
 import com.socialevoeding.bap.data.entities.PlaceEntity
 import com.socialevoeding.bap.data.entities.asDomainModel
 import com.socialevoeding.bap.data.entities.toEntity
+import com.socialevoeding.bap.domain.model.LocationModel
 import com.socialevoeding.bap.domain.model.Place
 import com.socialevoeding.bap.domain.repositories.PlaceRepository
 import com.socialevoeding.bap.restful.apiServices.PlacesApiService
@@ -13,26 +14,24 @@ import java.lang.Exception
 
 class PlaceRepositoryImpl(private val placeDao: PlaceDao, private val placesApiService: PlacesApiService) : PlaceRepository {
 
-   override suspend fun refreshPlaces(currentLocationName : String, currentCategoryName : String, currentQueryNames : List<String>) : Boolean{
+   override suspend fun refreshPlaces(currentLocationModel : LocationModel, currentCategoryName : String, currentQueryNames : List<String>) : Boolean{
+       val categoryID = 1
        var places : PlaceDTO? = null
        var placeEntities = ArrayList<PlaceEntity>()
 
        try {
            for (query in currentQueryNames){
-
+               places = placesApiService.getPlacesAsync(
+                   queryString = "$query${currentLocationModel.cityName}"
+               ).await()
+               if(places.local_results != null)
+               placeEntities.addAll(places.asDatabaseModel(places.local_results!!, categoryID, currentLocationModel))
            }
-              places = placesApiService.getPlacesAsync(
-                  intent = "checkin",
-                  version = "20200520",
-                  limit = 5,
-                  latitudeLongitude = "51.106897,3.779542",
-                  query = "voedselbank"
-           ).await()
        }
        catch (e : Exception){
            e.message
        }
-           placeDao.insertAll(*places!!.asDatabaseModel(places.response!!.venues!!))
+           placeDao.insertAll(*placeEntities.toTypedArray())
        return true
    }
 

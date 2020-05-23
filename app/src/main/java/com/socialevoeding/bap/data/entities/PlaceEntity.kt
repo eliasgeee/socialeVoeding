@@ -14,8 +14,11 @@ class PlaceEntity(
     val address: String = "",
     val webUrl: String = "",
     val isOpen: Boolean = false,
-    val categoryId: Int = 0,
-    val venueId : String = ""
+    val img : String,
+    val latitude : Double,
+    val longitude : Double,
+    val city : String,
+    val categoryId: Int = 0
 )
 
 fun asDomainModel(placeEntity: PlaceEntity): Place {
@@ -27,7 +30,11 @@ fun asDomainModel(placeEntity: PlaceEntity): Place {
         address = placeEntity.address,
         webUrl = placeEntity.webUrl,
         isOpen = placeEntity.isOpen,
-        categoryId = placeEntity.categoryId
+        categoryId = placeEntity.categoryId,
+        img = placeEntity.img,
+        latitude = placeEntity.latitude,
+        longitude = placeEntity.longitude,
+        city = placeEntity.city
     )
 }
 
@@ -47,7 +54,11 @@ fun List<Place>.toEntity() : Array<PlaceEntity>{
             address = it.address,
             webUrl = it.webUrl,
             isOpen = it.isOpen,
-            categoryId = it.categoryId
+            categoryId = it.categoryId,
+            img = it.img,
+            latitude =  it.latitude,
+            longitude = it.longitude,
+            city = it.city
         )
     }.toTypedArray()
 }

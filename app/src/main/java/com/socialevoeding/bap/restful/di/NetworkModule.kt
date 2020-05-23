@@ -2,6 +2,7 @@ package com.socialevoeding.bap.restful.di
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.socialevoeding.bap.restful.NetworkConfig
+import com.socialevoeding.bap.restful.apiServices.GeoLocationApiService
 import com.socialevoeding.bap.restful.apiServices.PlacesApiService
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -17,6 +18,14 @@ val networkModule = module {
 fun provideRetrofit(): Retrofit {
     return Retrofit.Builder()
         .baseUrl(NetworkConfig.getFoursquareBaseUrl())
+        .addConverterFactory(MoshiConverterFactory.create(provideMoshi()))
+        .addCallAdapterFactory(CoroutineCallAdapterFactory())
+        .build()
+}
+
+fun provideRetrofitGeoLocation(): Retrofit {
+    return Retrofit.Builder()
+        .baseUrl(NetworkConfig.getGeolocationBaseUrl())
         .addConverterFactory(MoshiConverterFactory.create(provideMoshi()))
         .addCallAdapterFactory(CoroutineCallAdapterFactory())
         .build()

@@ -1,4 +1,4 @@
-package com.socialevoeding.bap.location
+package com.socialevoeding.bap.gps
 
 import android.annotation.SuppressLint
 import android.app.Service
@@ -9,6 +9,7 @@ import android.location.LocationListener
 import android.location.LocationManager
 import android.os.Bundle
 import android.os.IBinder
+import com.socialevoeding.bap.domain.model.LocationModel
 
 
 //Based on https://stackoverflow.com/questions/21085497/how-to-use-android-locationmanager-and-listener/50621540
@@ -32,7 +33,7 @@ class GPSTracker (private val context: Context) : Service(), LocationListener {
     protected var locationManager: LocationManager? = null
 
     @SuppressLint("MissingPermission") //permission check in MainActivity
-    fun startGPSTracker() : String {
+    fun startGPSTracker() : LocationModel {
         try {
             locationManager = context.getSystemService(Context.LOCATION_SERVICE) as LocationManager
 
@@ -80,13 +81,10 @@ class GPSTracker (private val context: Context) : Service(), LocationListener {
             }
         }
         catch (e : Exception){
-            e.message
-            return ""
+
         }
-        if(location != null)
-        return "$latitude/$longitude"
-        else
-            return ""
+        val model =  LocationModel("", latitude = latitude, longitude = longitude)
+        return model
     }
 
     fun stopUsingGPS() : Boolean {
@@ -94,8 +92,8 @@ class GPSTracker (private val context: Context) : Service(), LocationListener {
         return true
     }
 
-    fun getCurrentLocation() : String {
-        return "$latitude,$longitude"
+    fun getCurrentLocation() : LocationModel {
+        return LocationModel("", latitude = latitude, longitude = longitude)
     }
 
     fun getCurrentLatitude() : Double{

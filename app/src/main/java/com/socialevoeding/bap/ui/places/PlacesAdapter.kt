@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.socialevoeding.bap.databinding.RvPlaceItemBinding
 import com.socialevoeding.bap.domain.model.Place
+import com.socialevoeding.bap.ui.util.createKilometerLabelFromDistanceInMeters
 
 class PlacesAdapter(private val clickListener: PlacesClickListener) :
     ListAdapter<Place, PlacesAdapter.PlacesViewHolder>(
@@ -38,7 +39,7 @@ class PlacesAdapter(private val clickListener: PlacesClickListener) :
             }
 
             binding.txtAdres.text = location.address
-            binding.txtDistance.text = location.distance.toString() + "km"
+            binding.txtDistance.text = createKilometerLabelFromDistanceInMeters(location.distance) + "km"
 
 //            binding.imgPlacesFoodtype.background = null
 
