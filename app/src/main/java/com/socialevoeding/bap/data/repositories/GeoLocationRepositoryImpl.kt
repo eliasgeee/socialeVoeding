@@ -6,17 +6,17 @@ import com.socialevoeding.bap.restful.apiServices.GeoLocationApiService
 import java.lang.Exception
 
 class GeoLocationRepositoryImpl(private val geoLocationApiService: GeoLocationApiService) : GeoLocationRepository{
-    override suspend fun getCurrentGeoLocation(locationModel: LocationModel) : String {
-        var address : String = ""
+    override suspend fun getCurrentGeoLocation(locationModel: LocationModel) : LocationModel {
         try {
-            address = geoLocationApiService.getCurrentGeoLocation(
+            val address = geoLocationApiService.getCurrentGeoLocationAsync(
                 latidude = locationModel.latitude,
                 longitude =  locationModel.longitude
             ).await().address.city
+            locationModel.cityName = address
         }
         catch (e : Exception){
             e.message
         }
-        return address
+        return locationModel
     }
 }

@@ -10,7 +10,7 @@ import org.koin.dsl.module
 
 val appModule = module {
     viewModel { CategoryViewModel(get(), get()) }
-    viewModel { PlacesViewModel(get(), get(), get()) }
+    viewModel { PlacesViewModel(get(), get(), get(), get()) }
     viewModel { PlaceDetailsViewModel() }
     viewModel { GPSTrackerViewModel(get(), get()) }
 }

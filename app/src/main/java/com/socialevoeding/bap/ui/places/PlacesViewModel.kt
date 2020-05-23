@@ -6,13 +6,15 @@ import androidx.lifecycle.ViewModel
 import com.socialevoeding.bap.domain.model.LocationModel
 import com.socialevoeding.bap.domain.model.Place
 import com.socialevoeding.bap.usecases.GetCurrentLocationFromGPSTrackerUseCase
+import com.socialevoeding.bap.usecases.GetCurrentPlaceNameUseCase
 import com.socialevoeding.bap.usecases.GetPlacesFromLocalDatabaseUseCase
 import com.socialevoeding.bap.usecases.RefreshPlacesUseCase
 
 class PlacesViewModel(
     private val getPlacesFromLocalDatabaseUseCase: GetPlacesFromLocalDatabaseUseCase,
     private val refreshPlacesUseCase: RefreshPlacesUseCase,
-    private val getCurrentLocationFromGPSTrackerUseCase: GetCurrentLocationFromGPSTrackerUseCase
+    private val getCurrentLocationFromGPSTrackerUseCase: GetCurrentLocationFromGPSTrackerUseCase,
+    private val getCurrentPlaceNameUseCase: GetCurrentPlaceNameUseCase
 ) : ViewModel() {
 
     private var _places = MutableLiveData<List<Place>>()
@@ -25,18 +27,23 @@ class PlacesViewModel(
 
     init {
         getCurrentLocationFromGPSTrackerUseCase.execute {
-            onComplete {
-                refreshPlacesUseCase.currentLocationModel = LocationModel(
-                    "Ghent",
-                    it.latitude,
-                    it.longitude)
-                refreshPlacesUseCase.currentCategorieName = "Food"
-                refreshPlacesUseCase.currentQueryNames = listOf("Foodbank", "Sociaalrestaurant", "Socialekruidenier")
-                refreshPlacesUseCase.execute {
-                    onComplete {
-                        getPlacesFromLocalDatabaseUseCase.execute {
+            onComplete { locationmodel ->
+                getCurrentPlaceNameUseCase.currentLocationModel = locationmodel
+                getCurrentPlaceNameUseCase.execute {
+                    onComplete { locationWithCityName ->
+                        refreshPlacesUseCase.currentLocationModel = LocationModel(
+                            locationWithCityName.cityName,
+                            locationWithCityName.latitude,
+                            locationWithCityName.longitude)
+                        refreshPlacesUseCase.currentCategorieName = "Food"
+                        refreshPlacesUseCase.currentQueryNames = listOf("Foodbank", "Sociaalrestaurant", "Socialekruidenier")
+                        refreshPlacesUseCase.execute {
                             onComplete {
-                                _places.postValue(it)
+                                getPlacesFromLocalDatabaseUseCase.execute {
+                                    onComplete {
+                                        _places.postValue(it)
+                                    }
+                                }
                             }
                         }
                     }
@@ -65,5 +72,8 @@ class PlacesViewModel(
     override fun onCleared() {
         super.onCleared()
         getPlacesFromLocalDatabaseUseCase.unsubscribe()
+        refreshPlacesUseCase.unsubscribe()
+        getCurrentPlaceNameUseCase.unsubscribe()
+        getCurrentLocationFromGPSTrackerUseCase.unsubscribe()
     }
 }

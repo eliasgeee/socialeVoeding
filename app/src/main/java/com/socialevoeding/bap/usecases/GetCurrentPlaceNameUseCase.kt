@@ -9,9 +9,9 @@ import com.socialevoeding.bap.usecases.base.UseCase
 class GetCurrentPlaceNameUseCase(
     errorMapper: ErrorMapper,
     private val geoLocationRepository: GeoLocationRepository
-) : UseCase<String>(errorMapper){
+) : UseCase<LocationModel>(errorMapper){
     var currentLocationModel : LocationModel? = null
-    override suspend fun executeOnBackground(): String {
+    override suspend fun executeOnBackground(): LocationModel {
         return geoLocationRepository.getCurrentGeoLocation(currentLocationModel!!)
     }
 }

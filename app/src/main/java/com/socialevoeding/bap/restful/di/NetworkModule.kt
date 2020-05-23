@@ -11,13 +11,14 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
 val networkModule = module {
-    single { provideRetrofit() }
+    single { provideRetrofit(NetworkConfig.getFoursquareBaseUrl()) }
     single { providePlacesApi() }
+    single { provideGeolocationApi() }
 }
 
-fun provideRetrofit(): Retrofit {
+fun provideRetrofit(baseUrl : String): Retrofit {
     return Retrofit.Builder()
-        .baseUrl(NetworkConfig.getFoursquareBaseUrl())
+        .baseUrl(baseUrl)
         .addConverterFactory(MoshiConverterFactory.create(provideMoshi()))
         .addCallAdapterFactory(CoroutineCallAdapterFactory())
         .build()
@@ -38,6 +39,11 @@ fun provideMoshi() : Moshi{
 }
 
 fun providePlacesApi() : PlacesApiService {
-    return provideRetrofit()
+    return provideRetrofit(NetworkConfig.getFoursquareBaseUrl())
         .create(PlacesApiService::class.java)
+}
+
+fun provideGeolocationApi() : GeoLocationApiService{
+    return provideRetrofit(NetworkConfig.getGeolocationBaseUrl())
+        .create(GeoLocationApiService::class.java)
 }

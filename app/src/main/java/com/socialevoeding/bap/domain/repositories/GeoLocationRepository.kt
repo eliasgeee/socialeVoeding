@@ -4,5 +4,5 @@ import com.socialevoeding.bap.domain.model.LocationModel
 
 interface GeoLocationRepository {
 
-    suspend fun getCurrentGeoLocation(locationModel: LocationModel) : String
+    suspend fun getCurrentGeoLocation(locationModel: LocationModel) : LocationModel
 }
