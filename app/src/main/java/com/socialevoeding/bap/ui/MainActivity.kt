@@ -83,8 +83,18 @@ class MainActivity() : AppCompatActivity() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        gpsTrackerViewModel.startGpsTracker()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        gpsTrackerViewModel.stopGpsTracker()
+    }
+
     override fun onDestroy() {
         super.onDestroy()
-        //TODO stop GPS
+        gpsTrackerViewModel.stopGpsTracker()
     }
 }

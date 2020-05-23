@@ -5,11 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.socialevoeding.bap.domain.model.Place
 import com.socialevoeding.bap.usecases.GetPlacesFromLocalDatabaseUseCase
-import com.socialevoeding.bap.usecases.RefreshPlacesUseCase
 
 class PlacesViewModel(
-    private val getPlacesFromLocalDatabaseUseCase: GetPlacesFromLocalDatabaseUseCase,
-    private val refreshPlacesUseCase: RefreshPlacesUseCase
+    private val getPlacesFromLocalDatabaseUseCase: GetPlacesFromLocalDatabaseUseCase
 ) : ViewModel() {
 
     private var _places = MutableLiveData<List<Place>>()
@@ -21,15 +19,11 @@ class PlacesViewModel(
         get() = _goToPlace
 
     init {
-        refreshPlacesUseCase.execute {
-            onComplete {
                 getPlacesFromLocalDatabaseUseCase.execute {
                     onComplete {
                         _places.postValue(it)
                     }
                 }
-            }
-        }
     }
 
     fun goToPlace(place: Place) {
@@ -43,6 +37,5 @@ class PlacesViewModel(
     override fun onCleared() {
         super.onCleared()
         getPlacesFromLocalDatabaseUseCase.unsubscribe()
-        refreshPlacesUseCase.unsubscribe()
     }
 }

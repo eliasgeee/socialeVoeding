@@ -9,7 +9,7 @@ import retrofit2.http.Query
 interface PlacesApiService {
 
     @GET("v2/venues/search?")
-    fun getPlacesAsync(
+    fun getFoursquarePlacesAsync(
         @Query("client_id") clientId: String? = SecretsManager.getClientId(),
         @Query("client_secret") clientSecret: String? = SecretsManager.getClientSecret(),
         @Query("v") version: String?,

@@ -8,7 +8,11 @@ class RefreshPlacesUseCase(
     errorMapper: ErrorMapper,
     private val placeRepository: PlaceRepository
 ) : UseCase<Boolean>(errorMapper){
+    var currentLocationName : String = ""
+    var currentCategorieName : String = ""
+    var currentQueryNames : List<String> = emptyList()
+
     override suspend fun executeOnBackground(): Boolean {
-        return placeRepository.refreshPlaces()
+        return placeRepository.refreshPlaces(currentLocationName, currentCategorieName, currentQueryNames)
     }
 }

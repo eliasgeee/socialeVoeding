@@ -89,8 +89,9 @@ class GPSTracker (private val context: Context) : Service(), LocationListener {
             return ""
     }
 
-    fun stopUsingGPS(){
-        locationManager?.removeUpdates(this);
+    fun stopUsingGPS() : Boolean {
+        locationManager?.removeUpdates(this)
+        return true
     }
 
     fun getCurrentLocation() : String {

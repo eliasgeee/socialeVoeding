@@ -12,4 +12,8 @@ class LocationRepositoryImpl(private val gpsTracker: GPSTracker) : LocationRepos
     override suspend fun initializeGPSTracker(): String{
         return gpsTracker.startGPSTracker()
     }
+
+    override suspend fun stopGPSTracker(): Boolean {
+        return gpsTracker.stopUsingGPS()
+    }
 }
