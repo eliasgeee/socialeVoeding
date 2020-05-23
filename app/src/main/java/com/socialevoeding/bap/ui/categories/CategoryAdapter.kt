@@ -1,17 +1,19 @@
 package com.socialevoeding.bap.ui.categories
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.socialevoeding.bap.R
 import com.socialevoeding.bap.databinding.RvCatItemBinding
 import com.socialevoeding.bap.domain.model.Category
+import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.rv_cat_item.view.*
 import java.util.*
 
-class CategoryAdapter(private val clickListener: CategoryClickListener) :
+class CategoryAdapter(private val context : Context, private val clickListener: CategoryClickListener) :
     ListAdapter<Category, CategoryAdapter.CategoryViewHolder>(
         CategoryDiffCallback()
     ) {
@@ -22,7 +24,7 @@ class CategoryAdapter(private val clickListener: CategoryClickListener) :
             clickListener.onCategoryClick(getItem(position)!!)
         }
 
-        holder.fillViewItems(getItem(position)!!, clickListener)
+        holder.fillViewItems(getItem(position)!!, clickListener, context)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
@@ -36,16 +38,17 @@ class CategoryAdapter(private val clickListener: CategoryClickListener) :
 
         fun fillViewItems(
             category: Category,
-            clickListener: CategoryClickListener
+            clickListener: CategoryClickListener,
+            context: Context
         ) {
             binding.clicklistener = clickListener
             binding.category = category
             binding.imgCategory.background = null
 
             if (category.name.toUpperCase(Locale.getDefault()) == "FOOD")
-                Glide.with(binding.imgCategory).load(R.drawable.ic_category_food).into(binding.imgCategory)
+                Picasso.with(context).load(R.drawable.ic_category_food).into(binding.imgCategory)
             else
-                Glide.with(binding.imgCategory).load(R.drawable.ic_category_food).into(binding.imgCategory)
+                Picasso.with(context).load(R.drawable.ic_category_food).into(binding.imgCategory)
 
             binding.txtCategory.text = category.name.toUpperCase(Locale.getDefault())
 

@@ -41,7 +41,7 @@ class PlacesScreenFragment : Fragment() {
 
     private fun updateUi() {
 
-        placesAdapter = PlacesAdapter(object : PlacesClickListener {
+        placesAdapter = PlacesAdapter(requireContext(), object : PlacesClickListener {
             override fun onPlaceClick(place: Place) {
                 placesViewModel.goToPlace(place)
             }

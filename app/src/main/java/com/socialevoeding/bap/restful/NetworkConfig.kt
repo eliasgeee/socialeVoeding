@@ -10,7 +10,7 @@ object NetworkConfig {
 
   //  private const val BASE_URL = "https://api.foursquare.com/"
     private const val BASE_URL = "http://api.serpstack.com/"
-    private const val BASE_URL_GEOLOCATION = ""
+    private const val BASE_URL_GEOLOCATION = "https://nominatim.openstreetmap.org/"
 
     fun getFoursquareBaseUrl() : String {
         return BASE_URL

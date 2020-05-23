@@ -49,7 +49,7 @@ class CategoryScreenFragment : Fragment() {
 
     private fun updateUi() {
 
-        categoryAdapter = CategoryAdapter(object : CategoryClickListener {
+        categoryAdapter = CategoryAdapter(requireContext(), object : CategoryClickListener {
             override fun onCategoryClick(category: Category) {
                 categoryViewModel.goToCategory(category)
             }

@@ -21,11 +21,11 @@ class PlaceRepositoryImpl(private val placeDao: PlaceDao, private val placesApiS
 
        try {
            for (query in currentQueryNames){
-               places = placesApiService.getPlacesAsync(
+            /*   places = placesApiService.getPlacesAsync(
                    queryString = "$query${currentLocationModel.cityName}"
                ).await()
                if(places.local_results != null)
-               placeEntities.addAll(places.asDatabaseModel(places.local_results!!, categoryID, currentLocationModel))
+               placeEntities.addAll(places.asDatabaseModel(places.local_results!!, categoryID, currentLocationModel))*/
            }
        }
        catch (e : Exception){

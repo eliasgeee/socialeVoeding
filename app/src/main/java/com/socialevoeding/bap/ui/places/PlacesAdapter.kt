@@ -1,5 +1,6 @@
 package com.socialevoeding.bap.ui.places
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -8,14 +9,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.socialevoeding.bap.databinding.RvPlaceItemBinding
 import com.socialevoeding.bap.domain.model.Place
 import com.socialevoeding.bap.ui.util.createKilometerLabelFromDistanceInMeters
+import com.squareup.picasso.Picasso
 
-class PlacesAdapter(private val clickListener: PlacesClickListener) :
+class PlacesAdapter(private val context: Context, private val clickListener: PlacesClickListener) :
     ListAdapter<Place, PlacesAdapter.PlacesViewHolder>(
         PlacesDiffCallback()
     ) {
 
     override fun onBindViewHolder(holder: PlacesViewHolder, position: Int) {
-        holder.fillViewItems(getItem(position)!!, clickListener)
+        holder.fillViewItems(getItem(position)!!, clickListener, context)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlacesViewHolder {
@@ -29,7 +31,8 @@ class PlacesAdapter(private val clickListener: PlacesClickListener) :
 
         fun fillViewItems(
             location: Place,
-            clickListener: PlacesClickListener
+            clickListener: PlacesClickListener,
+            context: Context
         ) {
             binding.clicklistener = clickListener
             binding.place = location
@@ -39,15 +42,11 @@ class PlacesAdapter(private val clickListener: PlacesClickListener) :
             }
 
             binding.txtAdres.text = location.address
-            binding.txtDistance.text = createKilometerLabelFromDistanceInMeters(location.distance) + "km"
+            val distance = createKilometerLabelFromDistanceInMeters(location.distance)
+            binding.txtDistance.text = "$distance km"
 
-//            binding.imgPlacesFoodtype.background = null
-
-            when (location) {
-                //    is FoodLocation -> {
-                //            Glide.with(binding.imgPlacesFoodtype).load(location.filterCat.thumb).into(binding.imgPlacesFoodtype)
-                //     }
-            }
+            if(location.img.isNotEmpty())
+            Picasso.with(context).load(location.img).into(binding.imgPlace)
 
             binding.txtPlacesName.text = location.name
 

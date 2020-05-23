@@ -44,7 +44,7 @@
                 app:fontFamily="@font/noto_sans_bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+                app:layout_constraintTop_toBottomOf="@+id/img_place" />
 
             <ImageView
                 android:id="@+id/img_places_distance"
@@ -72,7 +72,7 @@
                 app:layout_constraintStart_toEndOf="@+id/img_places_distance" />
 
             <ImageView
-                android:id="@+id/imageView2"
+                android:id="@+id/img_place"
                 android:layout_width="wrap_content"
                 android:layout_height="150dp"
                 android:scaleType="centerCrop"
