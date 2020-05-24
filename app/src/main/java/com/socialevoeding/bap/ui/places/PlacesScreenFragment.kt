@@ -49,6 +49,8 @@ class PlacesScreenFragment : BaseFragment() {
     }
 
     private fun updateUi() {
+        initTextToSpeech()
+
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP){
             binding.tts.btn_tts_female.visibility = View.GONE
             binding.tts.btn_tts_male.visibility = View.GONE
@@ -62,6 +64,25 @@ class PlacesScreenFragment : BaseFragment() {
 
         binding.rvPlaces.layoutManager = LinearLayoutManager(requireContext())
         binding.rvPlaces.adapter = placesAdapter
+    }
+
+    private fun getTextToRead(): String {
+        binding.tts.tts_btn_play.text = resources.getString(R.string.stop)
+        val sb = StringBuilder()
+        sb.append(binding.txtPlaces.text).append(" ")
+        if(placesViewModel.places.value != null)
+        for(place in placesViewModel.places.value!!){
+            sb.append(place.name).append(" ")
+            if(place.isOpen)
+                sb.append(resources.getString(R.string.isOpen)).append(" ")
+            else
+                sb.append(resources.getString(R.string.isGesloten)).append(" ")
+            sb.append(resources.getString(R.string.distance)).append(" ")
+            sb.append(place.distance / 1000).append(" kilometres ")
+            sb.append(resources.getString(R.string.address)).append(" ")
+            sb.append(place.address)
+        }
+        return sb.toString()
     }
 
     private fun startListeners() {
@@ -91,8 +112,15 @@ class PlacesScreenFragment : BaseFragment() {
             goToStart()
         }
 
-        binding.tts.btn_tts_male.setOnClickListener {
-            initTextToSpeech(binding.tts.btn_tts_female, true)
+        binding.tts.tts_btn_play.setOnClickListener {
+            if(binding.tts.tts_btn_play.text == resources.getString(R.string.read)){
+                speak(getTextToRead())
+                binding.tts.tts_btn_play.text = resources.getString(R.string.stop)
+            }
+            else{
+                stopSpeech()
+                binding.tts.tts_btn_play.text = resources.getString(R.string.read)
+            }
         }
     }
 

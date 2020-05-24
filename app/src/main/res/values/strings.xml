@@ -11,4 +11,8 @@
     <string name="start">Go to start</string>
     <string name="explanation">Help me</string>
     <string name="read">Read aloud</string>
+    <string name="isOpen">Is open</string>
+    <string name="isGesloten">Is closed</string>
+    <string name="address">Address</string>
+    <string name="stop">Stop</string>
 </resources>

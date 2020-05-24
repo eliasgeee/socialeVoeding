@@ -3,7 +3,7 @@
     <string name="eat_in_city">Eten in %s</string>
     <string name="food">Voedsel</string>
     <string name="more_info">Meer info</string>
-    <string name="open_until_hour">Ouvert jusqu\'à</string>
+    <string name="open_until_hour">Open to %s</string>
     <string name="distance">Afstand tot plaats</string>
     <string name="opening_hours_today">Openingsuren vandaag</string>
     <string name="back">Ga terug</string>

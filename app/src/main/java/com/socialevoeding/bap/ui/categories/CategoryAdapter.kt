@@ -6,10 +6,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import coil.api.load
 import com.socialevoeding.bap.R
 import com.socialevoeding.bap.databinding.RvCatItemBinding
 import com.socialevoeding.bap.domain.model.Category
-import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.rv_cat_item.view.*
 import java.util.*
 
@@ -46,10 +46,10 @@ class CategoryAdapter(private val context : Context, private val clickListener: 
             binding.imgCategory.background = null
 
             if (category.name.toUpperCase(Locale.getDefault()) == "FOOD"){
-                Picasso.with(context).load(R.drawable.ic_category_food).into(binding.imgCategory)
+                binding.imgCategory.load(R.drawable.ic_category_food)
             }
             else
-                Picasso.with(context).load(R.drawable.ic_category_food).into(binding.imgCategory)
+                binding.imgCategory.load(R.drawable.ic_category_food)
 
             binding.txtCategory.text = category.name.toUpperCase(Locale.getDefault())
 

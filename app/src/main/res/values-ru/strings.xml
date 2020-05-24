@@ -3,7 +3,7 @@
     <string name="eat_in_city">эт в %s</string>
     <string name="food">питание</string>
     <string name="more_info">больше информации</string>
-    <string name="open_until_hour">открыт до</string>
+    <string name="open_until_hour">открыт до %s</string>
     <string name="distance">расстояние до места</string>
     <string name="opening_hours_today">часы работы сегодня</string>
     <string name="back">возвращаться</string>

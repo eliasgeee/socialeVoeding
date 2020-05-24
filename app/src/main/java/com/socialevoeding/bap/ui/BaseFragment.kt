@@ -14,11 +14,7 @@ abstract class BaseFragment() : Fragment(), TextToSpeech.OnInitListener {
     private var result: Int? = null
     private var playButton : View? = null
 
-    fun initTextToSpeech(playButton: View, isMale : Boolean) {
-
-        playButton.setOnClickListener {
-            speak()
-        }
+    fun initTextToSpeech() {
 
         this.playButton = playButton
 
@@ -57,8 +53,8 @@ abstract class BaseFragment() : Fragment(), TextToSpeech.OnInitListener {
         Toast.makeText(context, errorString, Toast.LENGTH_SHORT).show()
     }
 
-    private fun speak() {
-        val speechStatus = textToSpeech?.speak("Dit is een test", TextToSpeech.QUEUE_FLUSH, null)
+   fun speak(text : String) {
+        val speechStatus = textToSpeech?.speak(text, TextToSpeech.QUEUE_FLUSH, null)
 
         if(speechStatus == TextToSpeech.ERROR)
             showError("Uitspreken tekst gaat niet")
@@ -70,6 +66,10 @@ abstract class BaseFragment() : Fragment(), TextToSpeech.OnInitListener {
 
     override fun onPause() {
         super.onPause()
+        textToSpeech?.stop()
+    }
+
+    fun stopSpeech(){
         textToSpeech?.stop()
     }
 
