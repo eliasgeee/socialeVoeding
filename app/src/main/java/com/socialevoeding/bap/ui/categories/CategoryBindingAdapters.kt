@@ -1,6 +1,7 @@
 package com.socialevoeding.bap.ui.categories
 
 import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.socialevoeding.bap.R
 import com.socialevoeding.bap.domain.model.Category
@@ -26,5 +27,13 @@ fun LinearLayout.setBackground(category: Category?) {
         if(category?.id == 6){
             setBackgroundColor(resources.getColor(R.color.pastel_darkblue))
         }
+    }
+}
+
+@BindingAdapter("cat_name")
+fun TextView.setCategoryName(category: Category?){
+    category.let {
+        if(it!!.name == "FOOD")
+            text = resources.getString(R.string.food)
     }
 }

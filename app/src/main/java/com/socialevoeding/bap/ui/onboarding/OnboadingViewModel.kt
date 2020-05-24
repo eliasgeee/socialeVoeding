@@ -1,4 +1,4 @@
-package com.socialevoeding.bap.ui
+package com.socialevoeding.bap.ui.onboarding
 
 import androidx.lifecycle.ViewModel
 import com.socialevoeding.bap.usecases.RefreshPlacesUseCase

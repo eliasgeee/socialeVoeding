@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.socialevoeding.bap.R
-import com.socialevoeding.bap.ui.OnboadingViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 
 /**

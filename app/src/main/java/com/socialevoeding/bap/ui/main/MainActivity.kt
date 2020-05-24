@@ -1,4 +1,4 @@
-package com.socialevoeding.bap.ui
+package com.socialevoeding.bap.ui.main
 
 import android.Manifest
 import android.content.pm.PackageManager

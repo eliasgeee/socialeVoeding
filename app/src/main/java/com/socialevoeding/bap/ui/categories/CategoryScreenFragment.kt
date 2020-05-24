@@ -1,14 +1,9 @@
 package com.socialevoeding.bap.ui.categories
 
-import android.Manifest
-import android.content.pm.PackageManager
-import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -17,8 +12,6 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.socialevoeding.bap.R
 import com.socialevoeding.bap.databinding.FragmentHomeScreenBinding
 import com.socialevoeding.bap.domain.model.Category
-import com.socialevoeding.bap.ui.GPSTrackerViewModel
-import com.socialevoeding.bap.ui.MainActivity
 import org.koin.android.viewmodel.ext.android.viewModel
 
 const val REQUESTCODE_LOCATION = 1

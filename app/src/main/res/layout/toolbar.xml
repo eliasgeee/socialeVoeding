@@ -7,28 +7,31 @@
     android:orientation="horizontal">
 
     <Button
+        style="@style/Widget.AppCompat.ButtonBar"
         android:id="@+id/btn_toolbar_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Terug"
+        android:text="@string/back"
         app:backgroundTint="@android:color/black"
         app:icon="@drawable/ic_arrow_back_black_24dp" />
 
     <Button
+        style="@style/Widget.AppCompat.ButtonBar"
         android:id="@+id/btn_toolbar_home"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="START"
+        android:text="@string/start"
         app:backgroundTint="@android:color/black"
         app:icon="@drawable/ic_home_black_24dp" />
 
     <Button
+        style="@style/Widget.AppCompat.ButtonBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Uitleg"
+        android:text="@string/explanation"
         app:backgroundTint="@android:color/black"
         app:icon="@drawable/ic_help_black_24dp" />
 </LinearLayout>

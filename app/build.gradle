@@ -72,6 +72,9 @@ dependencies {
     implementation "androidx.room:room-runtime:2.2.5"
     kapt "androidx.room:room-compiler:2.2.5"
 
+    //Workmanager
+    implementation "android.arch.work:work-runtime-ktx:1.1.0"
+
     //objectbox
     //     implementation "io.objectbox:objectbox-kotlin:2.6.0-RC"
 }

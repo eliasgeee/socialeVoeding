@@ -39,6 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_weight="0.2"
+            cat_name="@{category}"
             android:gravity="center_horizontal"
             android:textColor="@color/colorText"
             app:fontFamily="@font/noto_sans_bold" />

@@ -45,8 +45,9 @@ class CategoryAdapter(private val context : Context, private val clickListener: 
             binding.category = category
             binding.imgCategory.background = null
 
-            if (category.name.toUpperCase(Locale.getDefault()) == "FOOD")
+            if (category.name.toUpperCase(Locale.getDefault()) == "FOOD"){
                 Picasso.with(context).load(R.drawable.ic_category_food).into(binding.imgCategory)
+            }
             else
                 Picasso.with(context).load(R.drawable.ic_category_food).into(binding.imgCategory)
 

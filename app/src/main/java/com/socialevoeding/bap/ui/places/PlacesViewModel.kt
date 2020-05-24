@@ -26,6 +26,10 @@ class PlacesViewModel(
     val goToPlace: LiveData<Place>
         get() = _goToPlace
 
+    private var _currentLocation = MutableLiveData<LocationModel>()
+    val currentLocation : LiveData<LocationModel>
+    get() = _currentLocation
+
     init {
         getCurrentLocationFromGPSTrackerUseCase.execute {
             onComplete { locationmodel ->
@@ -36,6 +40,7 @@ class PlacesViewModel(
                             locationWithCityName.cityName,
                             locationWithCityName.latitude,
                             locationWithCityName.longitude)
+                        _currentLocation.value = locationWithCityName
                         refreshPlacesUseCase.currentCategorieName = "Food"
                         refreshPlacesUseCase.currentQueryNames = listOf("Foodbank", "Sociaalrestaurant", "Socialekruidenier")
                         refreshPlacesUseCase.execute {
@@ -51,7 +56,6 @@ class PlacesViewModel(
                 }
             }
         }
-        //TODO hardcoded
     }
 
     fun loadPlaces(){

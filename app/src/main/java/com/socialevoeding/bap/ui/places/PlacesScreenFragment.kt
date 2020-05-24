@@ -46,7 +46,6 @@ class PlacesScreenFragment : Fragment() {
     }
 
     private fun updateUi() {
-
         placesAdapter = PlacesAdapter(requireContext(), object : PlacesClickListener {
             override fun onPlaceClick(place: Place) {
                 placesViewModel.goToPlace(place)
@@ -70,6 +69,10 @@ class PlacesScreenFragment : Fragment() {
 
                 placesViewModel.placeNavigated()
             }
+        })
+
+        placesViewModel.currentLocation.observe(this, Observer {
+            binding.txtPlaces.text = resources.getString(R.string.eat_in_city, it.cityName)
         })
 
         binding.toolbar.btn_toolbar_back.setOnClickListener {

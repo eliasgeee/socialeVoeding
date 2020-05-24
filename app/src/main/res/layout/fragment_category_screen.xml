@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.socialevoeding.bap.ui.places.PlacesViewModel" />
+    </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
@@ -30,10 +35,9 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="32dp"
                     android:clickable="false"
-                    android:inputType="textMultiLine"
-                    android:text="Eten in Gent"
                     android:textColor="@color/colorText"
                     android:textSize="24sp"
+                    android:text="@string/eat_in_city"
                     app:fontFamily="@font/noto_sans_bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -63,7 +67,8 @@
                     app:layout_constraintBottom_toBottomOf="@+id/txt_places"
                     app:layout_constraintEnd_toStartOf="@+id/txt_places"
                     app:layout_constraintTop_toTopOf="@+id/txt_places"
-                    app:srcCompat="@drawable/ic_local_dining_black_24dp" />
+                    android:contentDescription="@null"
+                    android:src="@drawable/ic_local_dining_black_24dp" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
