@@ -12,11 +12,12 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.socialevoeding.bap.R
 import com.socialevoeding.bap.databinding.FragmentHomeScreenBinding
 import com.socialevoeding.bap.domain.model.Category
+import com.socialevoeding.bap.ui.BaseFragment
 import org.koin.android.viewmodel.ext.android.viewModel
 
 const val REQUESTCODE_LOCATION = 1
 
-class CategoryScreenFragment : Fragment() {
+class CategoryScreenFragment : BaseFragment() {
 
     private var categoryAdapter: CategoryAdapter? = null
     private lateinit var binding: FragmentHomeScreenBinding

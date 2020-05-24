@@ -1,5 +1,6 @@
 package com.socialevoeding.bap.ui.places
 
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,10 +14,12 @@ import com.socialevoeding.bap.R
 import com.socialevoeding.bap.databinding.FragmentCategoryScreenBinding
 import com.socialevoeding.bap.domain.model.Category
 import com.socialevoeding.bap.domain.model.Place
+import com.socialevoeding.bap.ui.BaseFragment
 import kotlinx.android.synthetic.main.toolbar.view.*
+import kotlinx.android.synthetic.main.ttsbar.view.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class PlacesScreenFragment : Fragment() {
+class PlacesScreenFragment : BaseFragment() {
 
     private lateinit var binding: FragmentCategoryScreenBinding
     private var placesAdapter: PlacesAdapter? = null
@@ -46,6 +49,11 @@ class PlacesScreenFragment : Fragment() {
     }
 
     private fun updateUi() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP){
+            binding.tts.btn_tts_female.visibility = View.GONE
+            binding.tts.btn_tts_male.visibility = View.GONE
+        }
+
         placesAdapter = PlacesAdapter(requireContext(), object : PlacesClickListener {
             override fun onPlaceClick(place: Place) {
                 placesViewModel.goToPlace(place)
@@ -81,6 +89,10 @@ class PlacesScreenFragment : Fragment() {
 
         binding.toolbar.btn_toolbar_home.setOnClickListener {
             goToStart()
+        }
+
+        binding.tts.btn_tts_male.setOnClickListener {
+            initTextToSpeech(binding.tts.btn_tts_female, true)
         }
     }
 
