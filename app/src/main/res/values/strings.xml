@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name" translatable="false">Sociale voeding</string>
-    <string name="hello_user_category">hey User, \n what are you looking for?</string>
+    <string name="hello_user_category">hey, \n what are you looking for?</string>
     <string name="eat_in_city">Eat in %s</string>
     <string name="food">Food</string>
     <string name="more_info">More info</string>

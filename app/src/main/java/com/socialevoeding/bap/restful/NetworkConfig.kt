@@ -8,12 +8,11 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 
 object NetworkConfig {
 
-  //  private const val BASE_URL = "https://api.foursquare.com/"
-    private const val BASE_URL = "http://api.serpstack.com/"
+    private const val BASE_URL_PLACES = "https://www.google.com/maps/"
     private const val BASE_URL_GEOLOCATION = "https://nominatim.openstreetmap.org/"
 
-    fun getFoursquareBaseUrl() : String {
-        return BASE_URL
+    fun getGoogleBaseUrl() : String {
+        return BASE_URL_PLACES
     }
 
     fun getGeolocationBaseUrl() : String {

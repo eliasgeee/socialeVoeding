@@ -1,2 +1,7 @@
+include ':scraping'
 rootProject.name='Sociale Voeding'
 include ':app'
+include ':presentation'
+include ':data'
+include ':usecases'
+include ':domain'

@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/secondaryColor"
     android:orientation="horizontal">
 
     <Button
@@ -24,12 +25,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        style="@style/Widget.AppCompat.Button.Borderless"
         android:id="@+id/tts_btn_play"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/read"
+        android:textColor="@color/colorText"
         app:icon="@drawable/ic_volume_up_black_24dp"
+        app:iconTint="@color/colorText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 </LinearLayout>

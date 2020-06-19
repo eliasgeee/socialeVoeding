@@ -4,7 +4,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.socialevoeding.bap.R
-import com.socialevoeding.bap.domain.model.Category
+import com.socialevoeding.domain.model.Category
 
 @BindingAdapter("bg_cat")
 fun LinearLayout.setBackground(category: Category?) {

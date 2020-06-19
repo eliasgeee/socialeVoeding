@@ -1,5 +1,5 @@
 <resources>
-    <string name="hello_user_category">Привет, \n Что Вы ищете?</string>
+    <string name="hello_user_category">При, \n Что Вы ищете?</string>
     <string name="eat_in_city">эт в %s</string>
     <string name="food">питание</string>
     <string name="more_info">больше информации</string>

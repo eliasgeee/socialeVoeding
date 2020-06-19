@@ -10,7 +10,7 @@
             type="com.socialevoeding.bap.ui.categories.CategoryClickListener" />
         <variable
             name="category"
-            type="com.socialevoeding.bap.domain.model.Category" />
+            type="com.socialevoeding.domain.model.Category" />
     </data>
 
     <LinearLayout

@@ -8,7 +8,7 @@
             type="com.socialevoeding.bap.ui.places.PlacesClickListener" />
         <variable
             name="place"
-            type="com.socialevoeding.bap.domain.model.Place" />
+            type="com.socialevoeding.domain.model.Place" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
@@ -128,11 +128,12 @@
                 android:id="@+id/chip2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:contentDescription="@string/opening_hours_today"
                 android:text="@string/open_until_hour"
                 android:textSize="18sp"
+                android:visibility="gone"
                 app:chipBackgroundColor="#00FF00"
                 app:chipCornerRadius="10dp"
-                android:contentDescription="@string/opening_hours_today"
                 app:chipIcon="@drawable/ic_clock_black_24dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

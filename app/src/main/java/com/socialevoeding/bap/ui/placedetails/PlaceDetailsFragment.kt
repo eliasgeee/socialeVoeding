@@ -7,10 +7,11 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import coil.api.load
 import com.socialevoeding.bap.R
 import com.socialevoeding.bap.databinding.FragmentLocationBinding
-import com.socialevoeding.bap.domain.model.Category
-import com.socialevoeding.bap.domain.model.Place
+import com.socialevoeding.domain.model.Category
+import com.socialevoeding.domain.model.Place
 import com.socialevoeding.bap.ui.BaseFragment
 import kotlinx.android.synthetic.main.toolbar.view.*
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -37,6 +38,8 @@ class PlaceDetailsFragment : BaseFragment() {
 
         binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_location, container, false)
+
+        binding.imageView.load(place!!.img)
 
         binding.viewModel = locationViewModel
         binding.lifecycleOwner = this

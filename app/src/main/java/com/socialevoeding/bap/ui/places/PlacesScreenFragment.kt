@@ -12,25 +12,30 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.socialevoeding.bap.R
 import com.socialevoeding.bap.databinding.FragmentCategoryScreenBinding
-import com.socialevoeding.bap.domain.model.Category
-import com.socialevoeding.bap.domain.model.Place
+import com.socialevoeding.domain.model.Category
+import com.socialevoeding.domain.model.Place
+import com.socialevoeding.bap.gps.GPSTracker
 import com.socialevoeding.bap.ui.BaseFragment
 import kotlinx.android.synthetic.main.toolbar.view.*
 import kotlinx.android.synthetic.main.ttsbar.view.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class PlacesScreenFragment : BaseFragment() {
+class PlacesScreenFragment() : BaseFragment() {
 
     private lateinit var binding: FragmentCategoryScreenBinding
     private var placesAdapter: PlacesAdapter? = null
     private val placesViewModel: PlacesViewModel by viewModel()
     private var category: Category? = null
+    private var gpsTracker = GPSTracker()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        gpsTracker.context = context
+        gpsTracker.startGPSTracker()
 
         category = PlacesScreenFragmentArgs.fromBundle(
             requireArguments()
@@ -60,6 +65,14 @@ class PlacesScreenFragment : BaseFragment() {
             override fun onPlaceClick(place: Place) {
                 placesViewModel.goToPlace(place)
             }
+        })
+
+        placesViewModel.setCurrentLocation(gpsTracker.getCurrentLocation())
+
+        placesViewModel.currentLocation.observe(this, Observer {
+            if(it != null)
+                if(placesViewModel.places.value!!.isEmpty())
+                placesViewModel.refreshPlaces()
         })
 
         binding.rvPlaces.layoutManager = LinearLayoutManager(requireContext())
@@ -128,5 +141,10 @@ class PlacesScreenFragment : BaseFragment() {
         this.findNavController().navigate(
             PlacesScreenFragmentDirections.actionCategoryScreenFragmentToHomeScreenFragment()
         )
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        gpsTracker.stopUsingGPS()
     }
 }

@@ -20,6 +20,7 @@
             android:layout_height="match_parent"
             android:layout_marginTop="48dp"
             android:layout_marginBottom="48dp"
+            android:background="#8FE2E8"
             android:fillViewport="true"
             android:scrollbarAlwaysDrawVerticalTrack="true"
             android:scrollbarSize="5dp"

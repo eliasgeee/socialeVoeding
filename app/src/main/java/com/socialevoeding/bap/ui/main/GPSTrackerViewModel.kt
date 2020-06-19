@@ -3,39 +3,21 @@ package com.socialevoeding.bap.ui.main
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.socialevoeding.bap.domain.model.LocationModel
-import com.socialevoeding.bap.domain.model.Place
-import com.socialevoeding.bap.usecases.GetCurrentLocationFromGPSTrackerUseCase
-import com.socialevoeding.bap.usecases.RefreshPlacesUseCase
-import com.socialevoeding.bap.usecases.StartGPSTrackerUseCase
-import com.socialevoeding.bap.usecases.StopGPSTrackerUseCase
+import com.socialevoeding.domain.model.LocationModel
+import com.socialevoeding.bap.gps.GPSTracker
 
 class GPSTrackerViewModel(
-    private val startGPSTrackerUseCase: StartGPSTrackerUseCase,
-    private val stopGPSTrackerUseCase: StopGPSTrackerUseCase
 ) : ViewModel(){
 
     private var _currentLocation = MutableLiveData<LocationModel>()
     val currentLocation: LiveData<LocationModel>
         get() = _currentLocation
 
-    fun startGpsTrackerAndLoadPlaces(){
-        startGPSTrackerUseCase.execute {
-            onComplete {}
-        }
-    }
+    private var _gpsTracker = MutableLiveData<GPSTracker>()
+    val gpsTracker: LiveData<GPSTracker>
+        get() = _gpsTracker
 
-    fun startGpsTracker(){
-        startGPSTrackerUseCase.execute {  }
-    }
-
-    fun stopGpsTracker(){
-        stopGPSTrackerUseCase.execute {  }
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        startGPSTrackerUseCase.unsubscribe()
-        stopGPSTrackerUseCase.unsubscribe()
+    fun startGpsTrackerAndLoadPlaces(gpsTracker : GPSTracker){
+        _gpsTracker.value = gpsTracker
     }
 }

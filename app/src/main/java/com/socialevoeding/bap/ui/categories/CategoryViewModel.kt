@@ -3,12 +3,13 @@ package com.socialevoeding.bap.ui.categories
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.socialevoeding.bap.domain.model.Category
-import com.socialevoeding.bap.usecases.GetCategoriesFromLocalDatabaseUseCase
-import com.socialevoeding.bap.usecases.InsertCategoriesIntoLocalDatabaseUseCase
+import com.socialevoeding.domain.model.Category
+import com.socialevoeding.usecases.GetCategoriesFromLocalDatabaseUseCase
+import com.socialevoeding.usecases.InsertCategoriesIntoLocalDatabaseUseCase
 
 class CategoryViewModel(private val insertCategoriesIntoLocalDatabaseUseCase: InsertCategoriesIntoLocalDatabaseUseCase,
-                        private val getCategoriesFromLocalDatabaseUseCase: GetCategoriesFromLocalDatabaseUseCase) : ViewModel() {
+                        private val getCategoriesFromLocalDatabaseUseCase: GetCategoriesFromLocalDatabaseUseCase
+) : ViewModel() {
 
     private var _categories = MutableLiveData<List<Category>>()
     val categories: LiveData<List<Category>>
@@ -23,7 +24,7 @@ class CategoryViewModel(private val insertCategoriesIntoLocalDatabaseUseCase: In
             onComplete {
                 getCategoriesFromLocalDatabaseUseCase.execute {
                     onComplete {
-                        _categories.postValue(it)
+                        _categories.postValue(it.data)
                     }
                 }
             }

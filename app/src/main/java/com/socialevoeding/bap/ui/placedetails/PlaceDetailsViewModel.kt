@@ -3,7 +3,7 @@ package com.socialevoeding.bap.ui.placedetails
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.socialevoeding.bap.domain.model.Place
+import com.socialevoeding.domain.model.Place
 
 class PlaceDetailsViewModel : ViewModel() {
 

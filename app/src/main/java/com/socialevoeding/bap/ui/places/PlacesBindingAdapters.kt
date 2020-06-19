@@ -4,8 +4,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.socialevoeding.bap.R
-import com.socialevoeding.bap.domain.model.LocationModel
-import com.socialevoeding.bap.domain.model.Place
+import com.socialevoeding.domain.model.LocationModel
+import com.socialevoeding.domain.model.Place
 
 @BindingAdapter("clock_color")
 fun ImageView.setClock(place: Place) {

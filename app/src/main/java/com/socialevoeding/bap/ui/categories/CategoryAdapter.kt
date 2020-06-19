@@ -9,8 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
 import com.socialevoeding.bap.R
 import com.socialevoeding.bap.databinding.RvCatItemBinding
-import com.socialevoeding.bap.domain.model.Category
-import kotlinx.android.synthetic.main.rv_cat_item.view.*
+import com.socialevoeding.domain.model.Category
 import java.util.*
 
 class CategoryAdapter(private val context : Context, private val clickListener: CategoryClickListener) :
@@ -41,17 +40,21 @@ class CategoryAdapter(private val context : Context, private val clickListener: 
             clickListener: CategoryClickListener,
             context: Context
         ) {
-            binding.clicklistener = clickListener
-            binding.category = category
-            binding.imgCategory.background = null
+            binding.apply {
+                binding.clicklistener = clickListener
+                binding.category = category
+                binding.imgCategory.background = null
 
-            if (category.name.toUpperCase(Locale.getDefault()) == "FOOD"){
-                binding.imgCategory.load(R.drawable.ic_category_food)
+                if (category.name.toUpperCase(Locale.getDefault()) == "FOOD"){
+                    binding.imgCategory.load(R.drawable.ic_category_food)
+                    binding.txtCategory.text = context.resources.getString(R.string.food).toUpperCase(
+                        Locale.getDefault())
+                }
+                else {
+                    binding.imgCategory.load(R.drawable.ic_category_food)
+                    binding.txtCategory.text = "lorem ipsum".toUpperCase(Locale.getDefault())
+                }
             }
-            else
-                binding.imgCategory.load(R.drawable.ic_category_food)
-
-            binding.txtCategory.text = category.name.toUpperCase(Locale.getDefault())
 
             binding.executePendingBindings()
         }

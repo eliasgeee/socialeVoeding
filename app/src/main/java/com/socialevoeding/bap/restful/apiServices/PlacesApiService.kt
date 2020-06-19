@@ -8,20 +8,8 @@ import retrofit2.http.Query
 
 interface PlacesApiService {
 
-    @GET("v2/venues/search?")
-    fun getFourscarePlacesAsync(
-        @Query("client_id") clientId: String? = SecretsManager.getClientId(),
-        @Query("client_secret") clientSecret: String? = SecretsManager.getClientSecret(),
-        @Query("v") version: String?,
-        @Query("intent") intent: String?,
-        @Query("limit") limit: Int?,
-        @Query("ll") latitudeLongitude: String?,
-        @Query("query") query: String?
-    ): Deferred<PlaceDTO>
-
-    @GET("search?")
+    @GET("search/")
     fun getPlacesAsync(
-        @Query("access_key") apiKey: String? = SecretsManager.getAPIKey(),
-        @Query("query") queryString: String?
+        @Query("") queryString: String?
     ): Deferred<PlaceDTO>
 }

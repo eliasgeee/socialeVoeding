@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
 import com.socialevoeding.bap.databinding.RvPlaceItemBinding
-import com.socialevoeding.bap.domain.model.Place
+import com.socialevoeding.domain.model.Place
 import com.socialevoeding.bap.ui.util.createKilometerLabelFromDistanceInMeters
 
 class PlacesAdapter(private val context: Context, private val clickListener: PlacesClickListener) :

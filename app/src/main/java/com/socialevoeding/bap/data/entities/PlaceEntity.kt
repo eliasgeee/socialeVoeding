@@ -2,7 +2,7 @@ package com.socialevoeding.bap.data.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.socialevoeding.bap.domain.model.Place
+import com.socialevoeding.domain.model.Place
 
 @Entity
 class PlaceEntity(

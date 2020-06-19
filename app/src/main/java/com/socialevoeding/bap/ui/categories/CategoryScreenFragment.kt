@@ -11,7 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.socialevoeding.bap.R
 import com.socialevoeding.bap.databinding.FragmentHomeScreenBinding
-import com.socialevoeding.bap.domain.model.Category
+import com.socialevoeding.domain.model.Category
 import com.socialevoeding.bap.ui.BaseFragment
 import org.koin.android.viewmodel.ext.android.viewModel
 

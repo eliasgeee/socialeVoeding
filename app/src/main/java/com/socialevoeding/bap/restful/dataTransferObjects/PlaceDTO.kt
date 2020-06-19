@@ -2,16 +2,12 @@ package com.socialevoeding.bap.restful.dataTransferObjects
 
 import com.socialevoeding.bap.data.entities.PlaceEntity
 import com.socialevoeding.bap.data.mappers.DistanceMapper
-import com.socialevoeding.bap.domain.model.LocationModel
+import com.socialevoeding.domain.model.LocationModel
+import pl.droidsonroids.jspoon.annotation.Selector
 
-data class PlaceDTO(
-    val local_map: LocalMap? = null,
-    val local_results: List<LocalResult>? = null,
-    val organic_results: List<OrganicResult>? = null,
-    val pagination: Pagination? = null,
-    val request: Request? = null,
-    val search_information: SearchInformation? = null,
-    val search_parameters: SearchParameters? = null
+class PlaceDTO(
+    @Selector("section-layout section-scrollbox scrollable-y scrollable-show section-layout-flex-vertical")
+    val places : List<LocalResult>
 )
 
 fun PlaceDTO.asDatabaseModel(results : List<LocalResult>, categoryId : Int, currentLocation : LocationModel) : List<PlaceEntity> {
@@ -21,38 +17,34 @@ fun PlaceDTO.asDatabaseModel(results : List<LocalResult>, categoryId : Int, curr
             img = it.image_url,
             webUrl = it.url,
             address = it.address,
-            latitude = it.coordinates.latitude,
-            longitude = it.coordinates.longitude,
+            latitude = 0.0,
+            longitude = 0.0,
             categoryId = categoryId,
             city = currentLocation.cityName,
             distance = DistanceMapper.getDistanceBetweenTwoLocationsInMeters(
                 lat1 = currentLocation.latitude,
                 lon1 = currentLocation.longitude,
-                lat2 = it.coordinates.latitude,
-                lon2 = it.coordinates.longitude
+                lat2 = 0.0,
+                lon2 = 0.0
             ).toInt()
         )
     }
 }
 
-data class Coordinates(
+class Coordinates(
     val latitude: Double? = 0.0,
     val longitude: Double? = 0.0
 )
 
-data class LocalResult(
+class LocalResult(
     val address: String = "",
-    val coordinates: CoordinatesX = CoordinatesX(0.0, 0.0),
+    val coordinates: Coordinates = Coordinates(0.0, 0.0),
     val image_url: String = "",
     val position: Int = 0,
     val rating: Double = 0.0,
     val reviews: Int = 0,
+    @Selector(".section-result > .section-result-content > .section-result-text-content > .section-result-header-container > .section-result-header > .section-result-title-container > h3 > span")
     val title: String = "",
     val type: String = "",
     val url: String = ""
-)
-
-data class CoordinatesX(
-    val latitude: Double = 0.0,
-    val longitude: Double = 0.0
 )

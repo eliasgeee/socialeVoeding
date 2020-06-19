@@ -9,11 +9,11 @@ import android.location.LocationListener
 import android.location.LocationManager
 import android.os.Bundle
 import android.os.IBinder
-import com.socialevoeding.bap.domain.model.LocationModel
+import com.socialevoeding.domain.model.LocationModel
 
 
 //Based on https://stackoverflow.com/questions/21085497/how-to-use-android-locationmanager-and-listener/50621540
-class GPSTracker (private val context: Context) : Service(), LocationListener {
+class GPSTracker () : Service(), LocationListener {
 
     var isGPSEnabled = false
     var isNetworkEnabled = false
@@ -21,6 +21,8 @@ class GPSTracker (private val context: Context) : Service(), LocationListener {
     var location : Location? = null
     var latitude = 0.0
     var longitude = 0.0
+
+    var context : Context? = null
 
     // The minimum distance to change Updates in meters
     private val MIN_DISTANCE_CHANGE_FOR_UPDATES: Float = 1500F // 10 meters
@@ -35,7 +37,7 @@ class GPSTracker (private val context: Context) : Service(), LocationListener {
     @SuppressLint("MissingPermission") //permission check in MainActivity
     fun startGPSTracker() : LocationModel {
         try {
-            locationManager = context.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+            locationManager = context!!.getSystemService(Context.LOCATION_SERVICE) as LocationManager
 
             isGPSEnabled = locationManager!!.isProviderEnabled(LocationManager.GPS_PROVIDER)
             isNetworkEnabled = locationManager!!.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
@@ -83,7 +85,11 @@ class GPSTracker (private val context: Context) : Service(), LocationListener {
         catch (e : Exception){
 
         }
-        val model =  LocationModel("", latitude = latitude, longitude = longitude)
+        val model = LocationModel(
+            "",
+            latitude = latitude,
+            longitude = longitude
+        )
         return model
     }
 
@@ -93,7 +99,11 @@ class GPSTracker (private val context: Context) : Service(), LocationListener {
     }
 
     fun getCurrentLocation() : LocationModel {
-        return LocationModel("", latitude = latitude, longitude = longitude)
+        return LocationModel(
+            "",
+            latitude = latitude,
+            longitude = longitude
+        )
     }
 
     fun getCurrentLatitude() : Double{

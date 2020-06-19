@@ -7,7 +7,7 @@ import com.socialevoeding.bap.data.di.dataModule
 import com.socialevoeding.bap.gps.di.gpsModule
 import com.socialevoeding.bap.ui.di.appModule
 import com.socialevoeding.bap.restful.di.networkModule
-import com.socialevoeding.bap.usecases.di.useCaseModule
+import com.socialevoeding.usecases.di.useCaseModule
 import com.socialevoeding.bap.work.RefreshDataWorker
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -28,7 +28,8 @@ class Application : Application() {
 
         startKoin {
             androidContext(this@Application)
-            modules(dataModule, appModule, useCaseModule, networkModule, gpsModule)
+            modules(dataModule, appModule,
+                useCaseModule, networkModule, gpsModule)
             delayedInit()
         }
     }
