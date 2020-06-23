@@ -27,7 +27,7 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
         <service
-            android:name=".gps.GPSTracker"
+            android:name="com.socialevoeding.framework.device.gps.GPSTracker"
             android:foregroundServiceType="location">
     </service>
     </application>

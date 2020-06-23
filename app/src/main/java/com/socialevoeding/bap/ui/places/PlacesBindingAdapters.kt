@@ -4,7 +4,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.socialevoeding.bap.R
-import com.socialevoeding.domain.model.LocationModel
+import com.socialevoeding.domain.model.PlaceLocation
 import com.socialevoeding.domain.model.Place
 
 @BindingAdapter("clock_color")
@@ -30,6 +30,6 @@ fun TextView.setOpeningshoursColor(place: Place) {
 }
 
 @BindingAdapter("eat_in")
-fun TextView.setPlacesStringWithCityName(locationModel: LocationModel?){
-    text = resources.getString(R.string.eat_in_city, locationModel?.cityName)
+fun TextView.setPlacesStringWithCityName(placeLocation: PlaceLocation?){
+    text = resources.getString(R.string.eat_in_city, placeLocation?.cityName)
 }

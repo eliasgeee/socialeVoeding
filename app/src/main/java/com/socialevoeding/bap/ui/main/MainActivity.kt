@@ -12,7 +12,7 @@ import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.socialevoeding.bap.R
 import com.socialevoeding.bap.databinding.ActivityMainBinding
-import com.socialevoeding.bap.gps.GPSTracker
+import com.socialevoeding.framework.device.gps.GPSTracker
 import org.koin.android.viewmodel.ext.android.viewModel
 
 const val REQUESTCODE_LOCATION = 1
@@ -62,13 +62,15 @@ class MainActivity() : AppCompatActivity() {
                     Manifest.permission.ACCESS_FINE_LOCATION
                 )
                 if (locationPermissionOldApi == 0){
-                    val gpsTracker = GPSTracker()
+                    val gpsTracker =
+                        com.socialevoeding.framework.device.gps.GPSTracker()
                     gpsTracker.context = applicationContext
                     gpsTrackerViewModel.startGpsTrackerAndLoadPlaces(gpsTracker)
                 }
             }
         } else {
-            val gpsTracker = GPSTracker()
+            val gpsTracker =
+                com.socialevoeding.framework.device.gps.GPSTracker()
             gpsTracker.context = applicationContext
             gpsTrackerViewModel.startGpsTrackerAndLoadPlaces(gpsTracker)        }
     }
@@ -81,7 +83,8 @@ class MainActivity() : AppCompatActivity() {
         when(requestCode){
             REQUESTCODE_LOCATION -> {
                 if((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)){
-                    val gpsTracker = GPSTracker()
+                    val gpsTracker =
+                        com.socialevoeding.framework.device.gps.GPSTracker()
                     gpsTracker.context = applicationContext
                     gpsTrackerViewModel.startGpsTrackerAndLoadPlaces(gpsTracker)
                 }

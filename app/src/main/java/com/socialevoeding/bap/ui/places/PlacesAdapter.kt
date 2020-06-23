@@ -1,6 +1,8 @@
 package com.socialevoeding.bap.ui.places
 
 import android.content.Context
+import android.graphics.BitmapFactory
+import android.util.Base64
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -10,6 +12,7 @@ import coil.api.load
 import com.socialevoeding.bap.databinding.RvPlaceItemBinding
 import com.socialevoeding.domain.model.Place
 import com.socialevoeding.bap.ui.util.createKilometerLabelFromDistanceInMeters
+import okhttp3.HttpUrl
 
 class PlacesAdapter(private val context: Context, private val clickListener: PlacesClickListener) :
     ListAdapter<Place, PlacesAdapter.PlacesViewHolder>(
@@ -45,8 +48,11 @@ class PlacesAdapter(private val context: Context, private val clickListener: Pla
             val distance = createKilometerLabelFromDistanceInMeters(location.distance)
             binding.txtDistance.text = "$distance km"
 
-            if(location.img.isNotEmpty())
-                binding.imgPlace.load(location.img)
+            if(location.img.isNotEmpty()){
+                val decodedString: ByteArray = Base64.decode(location.img, Base64.DEFAULT)
+                binding.imgPlace.load(bitmap = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.size))
+              //  binding.imgPlace.setImageBitmap(BitmapFactory.decodeByteArray(decodedString, 0, decodedString.size))
+            }
 
             binding.txtPlacesName.text = location.name
 

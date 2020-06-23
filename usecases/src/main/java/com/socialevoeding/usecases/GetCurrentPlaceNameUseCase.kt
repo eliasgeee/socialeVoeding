@@ -1,15 +1,14 @@
 package com.socialevoeding.usecases
 
-import com.socialevoeding.domain.model.LocationModel
-import com.socialevoeding.domain.repositories.GeoLocationRepository
+import com.socialevoeding.domain.model.PlaceLocation
+import com.socialevoeding.domain.repositories.UserLocationRepository
 import com.socialevoeding.usecases.base.UseCase
-import com.socialevoeding.domain.model.Result
 
 class GetCurrentPlaceNameUseCase(
-    private val geoLocationRepository: GeoLocationRepository
-) : UseCase<LocationModel>(){
-    var currentLocationModel : LocationModel? = null
-    override suspend fun executeOnBackground(): LocationModel {
-        return geoLocationRepository.getCurrentGeoLocation(currentLocationModel!!)
+    private val userLocationRepository: UserLocationRepository
+) : UseCase<PlaceLocation>(){
+    var currentPlaceLocation : PlaceLocation? = null
+    override suspend fun executeOnBackground(): PlaceLocation {
+        return userLocationRepository.getCurrentGeoLocation(currentPlaceLocation!!)
     }
 }

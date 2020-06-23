@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,10 +13,11 @@ import com.socialevoeding.bap.R
 import com.socialevoeding.bap.databinding.FragmentCategoryScreenBinding
 import com.socialevoeding.domain.model.Category
 import com.socialevoeding.domain.model.Place
-import com.socialevoeding.bap.gps.GPSTracker
+import com.socialevoeding.framework.device.gps.GPSTracker
 import com.socialevoeding.bap.ui.BaseFragment
 import kotlinx.android.synthetic.main.toolbar.view.*
 import kotlinx.android.synthetic.main.ttsbar.view.*
+import org.koin.android.ext.android.bind
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class PlacesScreenFragment() : BaseFragment() {
@@ -26,7 +26,8 @@ class PlacesScreenFragment() : BaseFragment() {
     private var placesAdapter: PlacesAdapter? = null
     private val placesViewModel: PlacesViewModel by viewModel()
     private var category: Category? = null
-    private var gpsTracker = GPSTracker()
+    private var gpsTracker =
+        com.socialevoeding.framework.device.gps.GPSTracker()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -69,7 +70,7 @@ class PlacesScreenFragment() : BaseFragment() {
 
         placesViewModel.setCurrentLocation(gpsTracker.getCurrentLocation())
 
-        placesViewModel.currentLocation.observe(this, Observer {
+        placesViewModel.currentPlaceLocation.observe(this, Observer {
             if(it != null)
                 if(placesViewModel.places.value!!.isEmpty())
                 placesViewModel.refreshPlaces()
@@ -113,7 +114,7 @@ class PlacesScreenFragment() : BaseFragment() {
             }
         })
 
-        placesViewModel.currentLocation.observe(this, Observer {
+        placesViewModel.currentPlaceLocation.observe(this, Observer {
             binding.txtPlaces.text = resources.getString(R.string.eat_in_city, it.cityName)
         })
 

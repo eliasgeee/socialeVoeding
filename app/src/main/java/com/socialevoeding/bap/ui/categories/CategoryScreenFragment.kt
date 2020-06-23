@@ -49,9 +49,10 @@ class CategoryScreenFragment : BaseFragment() {
             }
         })
 
-        binding.rvCatItems.layoutManager =
-            GridLayoutManager(activity, 2)
-        binding.rvCatItems.adapter = categoryAdapter
+        binding.rvCatItems.apply {
+            layoutManager = GridLayoutManager(activity, 2)
+            adapter = categoryAdapter
+        }
     }
 
     private fun setListeners() {
