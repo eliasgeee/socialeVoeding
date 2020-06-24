@@ -5,11 +5,12 @@ apply plugin: 'kotlin-kapt'
 dependencies {
     implementation project(':data')
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
-    implementation 'org.jsoup:jsoup:1.11.3'
+    def commonDependencies = rootProject.ext.commonDependencies
+    def sharedFrameworkDependencies = rootProject.ext.sharedFramework
+    implementation commonDependencies.kotlin
+    implementation commonDependencies.koin
+    implementation commonDependencies.coroutines
 
-    //koin
-    implementation "org.koin:koin-core:2.1.4"
-    implementation "org.koin:koin-android:2.1.4"
+    implementation sharedFramework.jsoup
 }

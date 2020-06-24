@@ -4,11 +4,12 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion 29
+    def globalConfig = rootProject.extensions.getByName("ext")
+    compileSdkVersion globalConfig["androidCompileSdkVersion"]
 
     defaultConfig {
-        minSdkVersion 14
-        targetSdkVersion 29
+        minSdkVersion globalConfig["androidMinSdkVersion"]
+        targetSdkVersion globalConfig["androidTargetSdkVersion"]
         versionCode 1
         versionName "1.0"
 
@@ -18,7 +19,7 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -28,25 +29,19 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation project(':data')
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.1.0'
     implementation 'androidx.appcompat:appcompat:1.1.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
-    //Retrofit
-    implementation "com.squareup.retrofit2:retrofit:2.7.0"
-    implementation "com.squareup.retrofit2:converter-moshi:2.8.1"
-    implementation "com.squareup.moshi:moshi:1.9.2"
-    implementation "com.squareup.moshi:moshi-kotlin:1.9.2"
-    implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2"
+    def androidDependencies = rootProject.ext.androidDependencies
 
-    // Room and Lifecycle dependencies
-    implementation "androidx.room:room-runtime:2.2.5"
-    kapt "androidx.room:room-compiler:2.2.5"
-
-    //koin
-    implementation "org.koin:koin-core:2.1.4"
-    implementation "org.koin:koin-android:2.1.4"
+    implementation androidDependencies.retrofit
+    implementation androidDependencies.retrofitMoshiConverter
+    implementation androidDependencies.moshi
+    implementation androidDependencies.moshiKotlin
+    implementation androidDependencies.retrofitCoroutines
+    implementation androidDependencies.room
+    kapt androidDependencies.roomCompiler
 }
