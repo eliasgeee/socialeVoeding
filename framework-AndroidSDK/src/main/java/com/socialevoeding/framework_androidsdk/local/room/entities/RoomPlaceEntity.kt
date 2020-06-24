@@ -4,7 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity
+@Entity(tableName = "places")
 class RoomPlaceEntity(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "place_id")

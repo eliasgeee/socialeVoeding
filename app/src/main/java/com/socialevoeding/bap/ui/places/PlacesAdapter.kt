@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
 import com.socialevoeding.bap.databinding.RvPlaceItemBinding
 import com.socialevoeding.domain.model.Place
-import com.socialevoeding.bap.ui.util.createKilometerLabelFromDistanceInMeters
+import com.socialevoeding.util_android.createKilometerLabelFromDistanceInMeters
 
 class PlacesAdapter(private val context: Context, private val clickListener: PlacesClickListener) :
     ListAdapter<Place, PlacesAdapter.PlacesViewHolder>(
@@ -44,7 +44,10 @@ class PlacesAdapter(private val context: Context, private val clickListener: Pla
             }
 
             binding.txtAdres.text = location.address
-            val distance = createKilometerLabelFromDistanceInMeters(location.distance)
+            val distance =
+                com.socialevoeding.util_android.createKilometerLabelFromDistanceInMeters(
+                    location.distance
+                )
             binding.txtDistance.text = "$distance km"
 
             if (location.img.isNotEmpty()) {

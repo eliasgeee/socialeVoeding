@@ -8,6 +8,10 @@ class Place(
     val telephoneNumber: String,
     val webUrl: String,
     val img: String,
-    val placeLocation: PlaceLocation,
-    var openingHours: Array<OpeningDay>
-) : Serializable
+    val address: String,
+    var cityName: String,
+    val latitude: Double,
+    val longitude: Double,
+    var openingHours: Array<OpeningDay>,
+    var categoryId : Int
+)

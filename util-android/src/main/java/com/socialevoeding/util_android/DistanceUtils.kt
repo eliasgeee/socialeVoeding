@@ -1,4 +1,4 @@
-package com.socialevoeding.bap.ui.util
+package com.socialevoeding.util_android
 
 import android.location.Location
 

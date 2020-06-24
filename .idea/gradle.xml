@@ -18,6 +18,8 @@
             <option value="$PROJECT_DIR$/presentation" />
             <option value="$PROJECT_DIR$/scraping" />
             <option value="$PROJECT_DIR$/usecases" />
+            <option value="$PROJECT_DIR$/util" />
+            <option value="$PROJECT_DIR$/util-android" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

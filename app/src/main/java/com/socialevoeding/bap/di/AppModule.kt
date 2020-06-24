@@ -1,4 +1,4 @@
-package com.socialevoeding.bap.ui.di
+package com.socialevoeding.bap.di
 
 import com.socialevoeding.bap.ui.main.GPSTrackerViewModel
 import com.socialevoeding.bap.ui.categories.CategoryViewModel

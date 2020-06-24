@@ -43,4 +43,10 @@ ext {
     sharedFramework = [
             jsoup : 'org.jsoup:jsoup:1.11.3'
     ]
+
+    testDependencies = [
+            junit :'junit:junit:4.13',
+            mockk : "io.mockk:mockk:1.10.0",
+            threeTenBP : "org.threeten:threetenbp:1.4.4"
+    ]
 }

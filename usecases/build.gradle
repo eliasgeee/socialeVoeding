@@ -6,10 +6,17 @@ dependencies {
 
     implementation project(':data')
     implementation project(':domain')
+    implementation project(':util')
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     def commonDependencies = rootProject.ext.commonDependencies
     implementation commonDependencies.kotlin
     implementation commonDependencies.koin
     implementation commonDependencies.coroutines
+
+    def testDependencies = rootProject.ext.testDependencies
+    implementation testDependencies.junit
+    testImplementation testDependencies.junit
+    testImplementation testDependencies.mockk
+    testImplementation(testDependencies.threeTenBP)
 }

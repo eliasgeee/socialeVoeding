@@ -1,4 +1,4 @@
-package com.socialevoeding.bap.ui.util
+package com.socialevoeding.bap.util
 
 import android.content.Context
 import android.net.ConnectivityManager
