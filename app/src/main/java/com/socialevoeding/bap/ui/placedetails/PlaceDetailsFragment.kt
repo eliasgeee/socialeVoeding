@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import coil.api.load
 import com.socialevoeding.bap.R
@@ -28,7 +27,7 @@ class PlaceDetailsFragment : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-      place = PlaceDetailsFragmentArgs.fromBundle(
+        place = PlaceDetailsFragmentArgs.fromBundle(
             requireArguments()
         ).selectedPlace
 
@@ -51,7 +50,7 @@ class PlaceDetailsFragment : BaseFragment() {
         super.onStart()
 
         if (place != null)
-           locationViewModel.setCurrentLocation(place!!)
+            locationViewModel.setCurrentLocation(place!!)
 
         setListeners()
     }

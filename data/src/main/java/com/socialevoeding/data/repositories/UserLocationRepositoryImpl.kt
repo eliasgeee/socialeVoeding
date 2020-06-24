@@ -4,10 +4,10 @@ import com.socialevoeding.data.datasources.remote.UserLocationRemoteDataSource
 import com.socialevoeding.domain.model.PlaceLocation
 import com.socialevoeding.domain.repositories.UserLocationRepository
 
-//TODO
+// TODO
 class UserLocationRepositoryImpl(private val userLocationRemoteDataSource: UserLocationRemoteDataSource) :
     UserLocationRepository {
-    override suspend fun getCurrentGeoLocation(placeLocation: PlaceLocation) : PlaceLocation {
+    override suspend fun getCurrentGeoLocation(placeLocation: PlaceLocation): PlaceLocation {
         val address = userLocationRemoteDataSource.getCurrentGeoLocationAsync(
             latitude = placeLocation.latitude,
             longitude = placeLocation.longitude

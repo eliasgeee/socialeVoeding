@@ -4,5 +4,5 @@ import com.socialevoeding.domain.model.PlaceLocation
 
 interface UserLocationRepository {
 
-    suspend fun getCurrentGeoLocation(placeLocation: PlaceLocation) : PlaceLocation
+    suspend fun getCurrentGeoLocation(placeLocation: PlaceLocation): PlaceLocation
 }

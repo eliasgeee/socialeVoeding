@@ -5,8 +5,8 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import com.google.android.material.snackbar.Snackbar
 
-fun View.showSnackbar(message : String){
-    Snackbar.make(this,message,Snackbar.LENGTH_SHORT).show()
+fun View.showSnackbar(message: String) {
+    Snackbar.make(this, message, Snackbar.LENGTH_SHORT).show()
 }
 
 fun View.hideKeyboard() {
@@ -14,14 +14,14 @@ fun View.hideKeyboard() {
     imm.hideSoftInputFromWindow(windowToken, 0)
 }
 
-fun View.remove(){
+fun View.remove() {
     visibility = View.GONE
 }
 
-fun View.hide(){
+fun View.hide() {
     visibility = View.INVISIBLE
 }
 
-fun View.show(){
+fun View.show() {
     visibility = View.VISIBLE
 }

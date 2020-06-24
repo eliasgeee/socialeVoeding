@@ -2,7 +2,6 @@ package com.socialevoeding.data.mappers
 
 import com.socialevoeding.data.dtos.remote.NetworkPlace
 import com.socialevoeding.data.mappers.base.NetworkMapper
-import com.socialevoeding.data.utils.toPrimaryKey
 import com.socialevoeding.domain.model.Place
 
 object NetworkPlaceMapper :
@@ -15,4 +14,3 @@ object NetworkPlaceMapper :
         TODO("Not yet implemented")
     }
 }
-

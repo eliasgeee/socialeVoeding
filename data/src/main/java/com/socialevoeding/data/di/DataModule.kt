@@ -16,5 +16,4 @@ val dataModule = module {
     ) as PlaceRepository }
     single { CategoryRepositoryImpl(get()) as CategoryRepository }
     single { UserLocationRepositoryImpl(get()) as UserLocationRepository }
-
 }

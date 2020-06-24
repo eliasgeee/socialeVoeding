@@ -22,7 +22,7 @@ class MainActivity() : AppCompatActivity() {
     private lateinit var navController: NavController
     private lateinit var binding: ActivityMainBinding
     private var locationPermissionOldApi: Int = -1
-    private val gpsTrackerViewModel : GPSTrackerViewModel by viewModel()
+    private val gpsTrackerViewModel: GPSTrackerViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,7 +38,6 @@ class MainActivity() : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
     }
-
 
     override fun onSupportNavigateUp(): Boolean {
         val navController = this.findNavController(R.id.nav_host_fragment)
@@ -61,7 +60,7 @@ class MainActivity() : AppCompatActivity() {
                     applicationContext,
                     Manifest.permission.ACCESS_FINE_LOCATION
                 )
-                if (locationPermissionOldApi == 0){
+                if (locationPermissionOldApi == 0) {
                     val gpsTracker =
                         com.socialevoeding.framework.device.gps.GPSTracker()
                     gpsTracker.context = applicationContext
@@ -72,7 +71,7 @@ class MainActivity() : AppCompatActivity() {
             val gpsTracker =
                 com.socialevoeding.framework.device.gps.GPSTracker()
             gpsTracker.context = applicationContext
-            gpsTrackerViewModel.startGpsTrackerAndLoadPlaces(gpsTracker)        }
+            gpsTrackerViewModel.startGpsTrackerAndLoadPlaces(gpsTracker) }
     }
 
     override fun onRequestPermissionsResult(
@@ -80,9 +79,9 @@ class MainActivity() : AppCompatActivity() {
         permissions: Array<out String>,
         grantResults: IntArray
     ) {
-        when(requestCode){
+        when (requestCode) {
             REQUESTCODE_LOCATION -> {
-                if((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)){
+                if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
                     val gpsTracker =
                         com.socialevoeding.framework.device.gps.GPSTracker()
                     gpsTracker.context = applicationContext
@@ -94,12 +93,12 @@ class MainActivity() : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-     //   gpsTrackerViewModel.gpsTracker.value!!.startGPSTracker()
-    }
+        //   gpsTrackerViewModel.gpsTracker.value!!.startGPSTracker()
+        }
 
     override fun onPause() {
         super.onPause()
-  //      gpsTrackerViewModel.gpsTracker.value!!.stopUsingGPS()
+        //      gpsTrackerViewModel.gpsTracker.value!!.stopUsingGPS()
     }
 
     override fun onDestroy() {

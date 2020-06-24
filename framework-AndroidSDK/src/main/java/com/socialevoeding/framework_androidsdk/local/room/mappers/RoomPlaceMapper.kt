@@ -4,7 +4,7 @@ import com.socialevoeding.data.dtos.local.database.PlaceEntity
 import com.socialevoeding.framework_androidsdk.local.room.entities.RoomPlaceEntity
 import com.socialevoeding.framework_androidsdk.local.room.mappers.base.RoomMapperFacade
 
-object RoomPlaceMapper : RoomMapperFacade<RoomPlaceEntity, PlaceEntity>{
+object RoomPlaceMapper : RoomMapperFacade<RoomPlaceEntity, PlaceEntity> {
     override fun mapFromRoomEntity(entity: RoomPlaceEntity): PlaceEntity {
         return PlaceEntity(
             id = entity.id,

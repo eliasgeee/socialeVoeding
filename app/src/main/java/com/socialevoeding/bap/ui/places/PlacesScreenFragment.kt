@@ -17,7 +17,6 @@ import com.socialevoeding.framework.device.gps.GPSTracker
 import com.socialevoeding.bap.ui.BaseFragment
 import kotlinx.android.synthetic.main.toolbar.view.*
 import kotlinx.android.synthetic.main.ttsbar.view.*
-import org.koin.android.ext.android.bind
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class PlacesScreenFragment() : BaseFragment() {
@@ -57,7 +56,7 @@ class PlacesScreenFragment() : BaseFragment() {
     private fun updateUi() {
         initTextToSpeech()
 
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP){
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
             binding.tts.btn_tts_female.visibility = View.GONE
             binding.tts.btn_tts_male.visibility = View.GONE
         }
@@ -71,8 +70,8 @@ class PlacesScreenFragment() : BaseFragment() {
         placesViewModel.setCurrentLocation(gpsTracker.getCurrentLocation())
 
         placesViewModel.currentPlaceLocation.observe(this, Observer {
-            if(it != null)
-                if(placesViewModel.places.value!!.isEmpty())
+            if (it != null)
+                if (placesViewModel.places.value!!.isEmpty())
                 placesViewModel.refreshPlaces()
         })
 
@@ -84,10 +83,10 @@ class PlacesScreenFragment() : BaseFragment() {
         binding.tts.tts_btn_play.text = resources.getString(R.string.stop)
         val sb = StringBuilder()
         sb.append(binding.txtPlaces.text).append(" ")
-        if(placesViewModel.places.value != null)
-        for(place in placesViewModel.places.value!!){
+        if (placesViewModel.places.value != null)
+        for (place in placesViewModel.places.value!!) {
             sb.append(place.name).append(" ")
-            if(place.isOpen)
+            if (place.isOpen)
                 sb.append(resources.getString(R.string.isOpen)).append(" ")
             else
                 sb.append(resources.getString(R.string.isGesloten)).append(" ")
@@ -127,11 +126,10 @@ class PlacesScreenFragment() : BaseFragment() {
         }
 
         binding.tts.tts_btn_play.setOnClickListener {
-            if(binding.tts.tts_btn_play.text == resources.getString(R.string.read)){
+            if (binding.tts.tts_btn_play.text == resources.getString(R.string.read)) {
                 speak(getTextToRead())
                 binding.tts.tts_btn_play.text = resources.getString(R.string.stop)
-            }
-            else{
+            } else {
                 stopSpeech()
                 binding.tts.tts_btn_play.text = resources.getString(R.string.read)
             }

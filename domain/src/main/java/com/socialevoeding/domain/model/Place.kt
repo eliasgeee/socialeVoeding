@@ -7,7 +7,7 @@ class Place(
     val name: String,
     val telephoneNumber: String,
     val webUrl: String,
-    val img : String,
+    val img: String,
     val placeLocation: PlaceLocation,
     var openingHours: Array<OpeningDay>
 ) : Serializable

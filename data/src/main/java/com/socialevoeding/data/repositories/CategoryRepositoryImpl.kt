@@ -7,12 +7,13 @@ import com.socialevoeding.domain.model.Category
 import com.socialevoeding.domain.repositories.CategoryRepository
 
 class CategoryRepositoryImpl(
-    private val CategoryLocalDataSource: CategoryLocalDataSource) :
+    private val CategoryLocalDataSource: CategoryLocalDataSource
+) :
     CategoryRepository {
 
-    override suspend fun getCategories(): MutableList<Category>
-            = DatabaseCategoryMapperFacade.mapFromEntities(CategoryLocalDataSource.getCategories()).toMutableList()
+    override suspend fun getCategories(): MutableList<Category> =
+            DatabaseCategoryMapperFacade.mapFromEntities(CategoryLocalDataSource.getCategories()).toMutableList()
 
-    override suspend fun insertCategoriesIntoDatabase(category : List<Category>)
-            = CategoryLocalDataSource.insert(CategoryDataProvider.getCategories())
+    override suspend fun insertCategoriesIntoDatabase(category: List<Category>) =
+            CategoryLocalDataSource.insert(CategoryDataProvider.getCategories())
 }

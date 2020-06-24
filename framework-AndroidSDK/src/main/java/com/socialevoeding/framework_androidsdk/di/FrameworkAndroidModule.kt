@@ -54,13 +54,13 @@ fun provideRetrofit(): Retrofit {
         .build()
 }
 
-fun provideMoshi() : Moshi {
+fun provideMoshi(): Moshi {
     return Moshi.Builder()
         .add(KotlinJsonAdapterFactory())
         .build()
 }
 
-fun provideGeolocationApi() : GeoLocationApiService {
+fun provideGeolocationApi(): GeoLocationApiService {
     return provideRetrofit()
         .create(GeoLocationApiService::class.java)
 }

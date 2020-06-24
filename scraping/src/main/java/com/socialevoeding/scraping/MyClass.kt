@@ -1,4 +1,3 @@
 package com.socialevoeding.scraping
 
-class MyClass {
-}
+class MyClass

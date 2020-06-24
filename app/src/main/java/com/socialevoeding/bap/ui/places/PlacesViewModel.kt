@@ -24,13 +24,13 @@ class PlacesViewModel(
         get() = _goToPlace
 
     private var _currentLocation = MutableLiveData<PlaceLocation>()
-    val currentPlaceLocation : LiveData<PlaceLocation>
+    val currentPlaceLocation: LiveData<PlaceLocation>
     get() = _currentLocation
 
     init {
             }
 
-    fun refreshPlaces(){
+    fun refreshPlaces() {
         refreshPlacesUseCase.currentPlaceLocation = PlaceLocation(
             cityName = "Gent",
             latitude = 51.054017,
@@ -48,7 +48,7 @@ class PlacesViewModel(
                 print(it.throwable.message)
             }
             }
-      /*  getCurrentPlaceNameUseCase.currentLocationModel = LocationModel(
+        /*  getCurrentPlaceNameUseCase.currentLocationModel = LocationModel(
             cityName = "",
             latitude = 51.054017,
             longitude = 3.7077823

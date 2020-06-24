@@ -6,8 +6,8 @@ import com.socialevoeding.usecases.base.UseCase
 
 class GetCurrentPlaceNameUseCase(
     private val userLocationRepository: UserLocationRepository
-) : UseCase<PlaceLocation>(){
-    var currentPlaceLocation : PlaceLocation? = null
+) : UseCase<PlaceLocation>() {
+    var currentPlaceLocation: PlaceLocation? = null
     override suspend fun executeOnBackground(): PlaceLocation {
         return userLocationRepository.getCurrentGeoLocation(currentPlaceLocation!!)
     }

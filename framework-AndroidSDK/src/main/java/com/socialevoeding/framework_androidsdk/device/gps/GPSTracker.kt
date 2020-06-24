@@ -11,18 +11,17 @@ import android.os.Bundle
 import android.os.IBinder
 import com.socialevoeding.data.dtos.local.device.UserLocationDTO
 
-
-//Based on https://stackoverflow.com/questions/21085497/how-to-use-android-locationmanager-and-listener/50621540
-class GPSTracker () : Service(), LocationListener {
+// Based on https://stackoverflow.com/questions/21085497/how-to-use-android-locationmanager-and-listener/50621540
+class GPSTracker() : Service(), LocationListener {
 
     var isGPSEnabled = false
     var isNetworkEnabled = false
     var canGetLocation = false
-    var location : Location? = null
+    var location: Location? = null
     var latitude = 0.0
     var longitude = 0.0
 
-    var context : Context? = null
+    var context: Context? = null
 
     // The minimum distance to change Updates in meters
     private val MIN_DISTANCE_CHANGE_FOR_UPDATES: Float = 1500F // 10 meters
@@ -34,20 +33,19 @@ class GPSTracker () : Service(), LocationListener {
     // Declaring a Location Manager
     protected var locationManager: LocationManager? = null
 
-    @SuppressLint("MissingPermission") //permission check in MainActivity
-    fun startGPSTracker() : UserLocationDTO {
+    @SuppressLint("MissingPermission") // permission check in MainActivity
+    fun startGPSTracker(): UserLocationDTO {
         try {
             locationManager = context!!.getSystemService(Context.LOCATION_SERVICE) as LocationManager
 
             isGPSEnabled = locationManager!!.isProviderEnabled(LocationManager.GPS_PROVIDER)
             isNetworkEnabled = locationManager!!.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
 
-            if(!isGPSEnabled && !isNetworkEnabled){
+            if (!isGPSEnabled && !isNetworkEnabled) {
                 // no network provider is enabled
-            }
-            else{
+            } else {
                 canGetLocation = true
-                if(isNetworkEnabled){
+                if (isNetworkEnabled) {
                     // First get location from Network Provider
                     locationManager!!.requestLocationUpdates(
                         LocationManager.NETWORK_PROVIDER,
@@ -56,10 +54,10 @@ class GPSTracker () : Service(), LocationListener {
 
                     if (locationManager != null) {
                         location = locationManager!!
-                            .getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+                            .getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
                         if (location != null) {
-                            latitude = location!!.latitude;
-                            longitude = location!!.longitude;
+                            latitude = location!!.latitude
+                            longitude = location!!.longitude
                         }
                     }
                 }
@@ -69,21 +67,19 @@ class GPSTracker () : Service(), LocationListener {
                         locationManager!!.requestLocationUpdates(
                             LocationManager.GPS_PROVIDER,
                             MIN_TIME_BW_UPDATES,
-                            MIN_DISTANCE_CHANGE_FOR_UPDATES, this);
+                            MIN_DISTANCE_CHANGE_FOR_UPDATES, this)
                         if (locationManager != null) {
                             location = locationManager!!
-                                .getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                                .getLastKnownLocation(LocationManager.GPS_PROVIDER)
                             if (location != null) {
-                                latitude = location!!.latitude;
-                                longitude = location!!.longitude;
+                                latitude = location!!.latitude
+                                longitude = location!!.longitude
                             }
                         }
                     }
                 }
             }
-        }
-        catch (e : Exception){
-
+        } catch (e: Exception) {
         }
 
         return UserLocationDTO(
@@ -92,27 +88,27 @@ class GPSTracker () : Service(), LocationListener {
         )
     }
 
-    fun stopUsingGPS() : Boolean {
+    fun stopUsingGPS(): Boolean {
         locationManager?.removeUpdates(this)
         return true
     }
 
-    fun getCurrentLocation() : UserLocationDTO {
+    fun getCurrentLocation(): UserLocationDTO {
         return UserLocationDTO(
             latitude = latitude,
             longitude = longitude
         )
     }
 
-    fun getCurrentLatitude() : Double{
-        if(location != null){
+    fun getCurrentLatitude(): Double {
+        if (location != null) {
             latitude = location!!.latitude
         }
         return latitude
     }
 
-    fun getCurrentLongitude() : Double{
-        if(location != null){
+    fun getCurrentLongitude(): Double {
+        if (location != null) {
             longitude = location!!.longitude
         }
         return longitude

@@ -7,7 +7,6 @@ import com.socialevoeding.data.di.dataModule
 import com.socialevoeding.bap.ui.di.appModule
 import com.socialevoeding.usecases.di.useCaseModule
 import com.socialevoeding.framework_androidsdk.di.frameworkAndroidModule
-import com.socialevoeding.framework_shared.
 import com.socialevoeding.bap.work.RefreshDataWorker
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -30,7 +29,7 @@ class Application : Application() {
             androidContext(this@Application)
             modules(
                 dataModule, appModule,
-                useCaseModule, frameworkAndroidModule,
+                useCaseModule, frameworkAndroidModule
             )
             delayedInit()
         }
@@ -38,7 +37,7 @@ class Application : Application() {
 
     private fun delayedInit() {
         applicationScope.launch {
-           setUpRecurringWork()
+            setUpRecurringWork()
         }
     }
 

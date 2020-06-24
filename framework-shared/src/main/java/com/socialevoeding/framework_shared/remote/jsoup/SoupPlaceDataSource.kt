@@ -9,22 +9,22 @@ import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
 
 class SoupPlaceDataSource : PlaceRemoteDataSource {
-    override suspend fun getPlaces(queryString: String, currenPlaceName : String): List<NetworkPlace> {
+    override suspend fun getPlaces(queryString: String, currenPlaceName: String): List<NetworkPlace> {
         return getPlacesSearch(queryString, currenPlaceName).map {
             getPlacesDetails(it)
             getPacesImages(it)
         }
     }
 
-    fun getPlacesSearch(queryString: String, currentPlaceName: String) : List<NetworkPlace> {
+    fun getPlacesSearch(queryString: String, currentPlaceName: String): List<NetworkPlace> {
         val url = SoupConfig.SOUP_BASE_URL_SEARCH + queryString.replace(' ', '+') + "+" + currentPlaceName
         val document: Document = Jsoup.connect(url).get()
         val btn: Element = document.select(".cMjHbjVt9AZ__button").first()
-        val documentspec : Document = Jsoup.connect(SoupConfig.SOUP_BASE_URL.plus(btn.attr("href"))).get()
+        val documentspec: Document = Jsoup.connect(SoupConfig.SOUP_BASE_URL.plus(btn.attr("href"))).get()
         val links = documentspec.select("div[jsname=GZq3Ke]")
         val places = ArrayList<NetworkPlace>(emptyList())
 
-        for (link in links){
+        for (link in links) {
             places.add(
                 NetworkPlace(
                     name = link.select("div[class=dbg0pd] > div").text(),
@@ -42,7 +42,7 @@ class SoupPlaceDataSource : PlaceRemoteDataSource {
         return places
     }
 
-    private fun getPlacesDetails(place : NetworkPlace) : NetworkPlace {
+    private fun getPlacesDetails(place: NetworkPlace): NetworkPlace {
             val urlPlace = SoupConfig.SOUP_BASE_URL_SEARCH + place.name.replace(
                 ' ',
                 '+'
@@ -66,10 +66,10 @@ class SoupPlaceDataSource : PlaceRemoteDataSource {
         return place
     }
 
-    private fun getPacesImages(place : NetworkPlace) : NetworkPlace {
+    private fun getPacesImages(place: NetworkPlace): NetworkPlace {
         val imgUrl = "http://google.com/search?tbm=isch&q=${place.name}+${place.name}"
 
-        val documentImg : Document = Jsoup.connect(imgUrl).get()
+        val documentImg: Document = Jsoup.connect(imgUrl).get()
 
         var scripts = documentImg.select("script")
         var imgsrchtml =

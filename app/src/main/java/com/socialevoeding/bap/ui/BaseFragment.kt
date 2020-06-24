@@ -1,8 +1,6 @@
 package com.socialevoeding.bap.ui
 
-import android.os.Build
 import android.speech.tts.TextToSpeech
-import android.speech.tts.Voice
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -12,7 +10,7 @@ abstract class BaseFragment() : Fragment(), TextToSpeech.OnInitListener {
 
     private var textToSpeech: TextToSpeech? = null
     private var result: Int? = null
-    private var playButton : View? = null
+    private var playButton: View? = null
 
     fun initTextToSpeech() {
 
@@ -53,14 +51,14 @@ abstract class BaseFragment() : Fragment(), TextToSpeech.OnInitListener {
         Toast.makeText(context, errorString, Toast.LENGTH_SHORT).show()
     }
 
-   fun speak(text : String) {
+    fun speak(text: String) {
         val speechStatus = textToSpeech?.speak(text, TextToSpeech.QUEUE_FLUSH, null)
 
-        if(speechStatus == TextToSpeech.ERROR)
+        if (speechStatus == TextToSpeech.ERROR)
             showError("Uitspreken tekst gaat niet")
     }
 
-    fun changeSpeed(speed : Float){
+    fun changeSpeed(speed: Float) {
         textToSpeech?.setSpeechRate(speed)
     }
 
@@ -69,7 +67,7 @@ abstract class BaseFragment() : Fragment(), TextToSpeech.OnInitListener {
         textToSpeech?.stop()
     }
 
-    fun stopSpeech(){
+    fun stopSpeech() {
         textToSpeech?.stop()
     }
 

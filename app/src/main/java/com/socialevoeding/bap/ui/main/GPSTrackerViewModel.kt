@@ -6,8 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.socialevoeding.domain.model.PlaceLocation
 import com.socialevoeding.framework.device.gps.GPSTracker
 
-class GPSTrackerViewModel(
-) : ViewModel(){
+class GPSTrackerViewModel() : ViewModel() {
 
     private var _currentLocation = MutableLiveData<PlaceLocation>()
     val currentPlaceLocation: LiveData<PlaceLocation>
@@ -17,7 +16,7 @@ class GPSTrackerViewModel(
     val gpsTracker: LiveData<com.socialevoeding.framework.device.gps.GPSTracker>
         get() = _gpsTracker
 
-    fun startGpsTrackerAndLoadPlaces(gpsTracker : com.socialevoeding.framework.device.gps.GPSTracker){
+    fun startGpsTrackerAndLoadPlaces(gpsTracker: com.socialevoeding.framework.device.gps.GPSTracker) {
         _gpsTracker.value = gpsTracker
     }
 }

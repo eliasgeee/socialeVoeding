@@ -12,7 +12,6 @@ val appModule = module {
     viewModel { PlacesViewModel(get(), get(), get()) }
     viewModel { PlaceDetailsViewModel() }
     viewModel {
-        GPSTrackerViewModel(
-        )
+        GPSTrackerViewModel()
     }
 }

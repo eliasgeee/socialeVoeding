@@ -56,7 +56,6 @@ abstract class UseCase<T>() {
             onCancel = block
         }
 
-
         operator fun invoke(result: Result.Success<T>) {
             onComplete?.invoke(result)
         }

@@ -1,4 +1,3 @@
 package com.socialevoeding.presentation.viewObjects
 
-class PlaceDetail {
-}
+class PlaceDetail

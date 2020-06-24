@@ -1,6 +1,5 @@
 package com.socialevoeding.framework_androidsdk.local.room.dao
 
-import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -10,11 +9,11 @@ import com.socialevoeding.framework_androidsdk.local.room.entities.RoomPlaceEnti
 @Dao
 interface PlaceDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertPlaces(places: List<RoomPlaceEntity>)
+    suspend fun insertPlaces(places: List<RoomPlaceEntity>)
 
     @Query("select * from RoomPlaceEntity")
-    fun getPlaces(): List<RoomPlaceEntity>
+    suspend fun getPlaces(): List<RoomPlaceEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(vararg places: RoomPlaceEntity)
+    suspend fun insertAll(vararg places: RoomPlaceEntity)
 }

@@ -2,8 +2,8 @@ package com.socialevoeding.bap.ui.util
 
 import android.location.Location
 
-fun createKilometerLabelFromDistanceInMeters(distance : Int) : String{
-    return (distance / 1000) .toString()
+fun createKilometerLabelFromDistanceInMeters(distance: Int): String {
+    return (distance / 1000).toString()
 }
 
 fun getDistanceBetweenTwoLocationsInMeters(

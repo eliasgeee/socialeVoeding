@@ -10,5 +10,4 @@ val useCaseModule = module {
     factory { InsertPlacesIntoLocalDatabaseUseCase(get()) }
     factory { RefreshPlacesUseCase(get()) }
     factory { GetCurrentPlaceNameUseCase(get()) }
-
 }

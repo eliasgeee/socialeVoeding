@@ -4,7 +4,7 @@ import com.socialevoeding.data.dtos.local.database.CategoryEntity
 
 object CategoryDataProvider {
 
-fun getCategories () : List<CategoryEntity> {
+fun getCategories(): List<CategoryEntity> {
     val cat = CategoryEntity(
         1,
         "Food"

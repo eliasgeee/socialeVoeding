@@ -20,8 +20,7 @@ val Context.screenWidth: Int
 val Context.screenHeight: Int
     get() = resources.displayMetrics.heightPixels
 
-fun Context.showToast(msg: String,length : Int) {
+fun Context.showToast(msg: String, length: Int) {
     Toast.makeText(this, msg,
         Toast.LENGTH_SHORT).show()
 }
-

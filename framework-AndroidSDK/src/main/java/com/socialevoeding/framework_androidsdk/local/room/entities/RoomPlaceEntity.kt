@@ -3,7 +3,6 @@ package com.socialevoeding.framework_androidsdk.local.room.entities
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.socialevoeding.domain.model.Place
 
 @Entity
 class RoomPlaceEntity(
@@ -16,9 +15,9 @@ class RoomPlaceEntity(
     val address: String = "",
     val webUrl: String = "",
     val isOpen: Boolean = false,
-    val img : String,
-    val latitude : Double,
-    val longitude : Double,
-    val city : String,
+    val img: String,
+    val latitude: Double,
+    val longitude: Double,
+    val city: String,
     val categoryId: Int = 0
 )

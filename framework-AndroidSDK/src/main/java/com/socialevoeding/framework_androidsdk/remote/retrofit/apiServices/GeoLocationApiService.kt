@@ -9,9 +9,9 @@ import retrofit2.http.Query
 interface GeoLocationApiService : UserLocationRemoteDataSource {
 
     @GET("reverse?")
-    override fun getCurrentGeoLocationAsync(
-        @Query("lat") latitude : Double?,
-        @Query("lon") longitude : Double?,
-        @Query("format") format : String
-    ) : Deferred<GeolocationObject>
+    override suspend fun getCurrentGeoLocationAsync(
+        @Query("lat") latitude: Double?,
+        @Query("lon") longitude: Double?,
+        @Query("format") format: String
+    ): Deferred<GeolocationObject>
 }

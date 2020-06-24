@@ -7,8 +7,9 @@ import com.socialevoeding.domain.model.Category
 import com.socialevoeding.usecases.GetCategoriesFromLocalDatabaseUseCase
 import com.socialevoeding.usecases.InsertCategoriesIntoLocalDatabaseUseCase
 
-class CategoryViewModel(private val insertCategoriesIntoLocalDatabaseUseCase: InsertCategoriesIntoLocalDatabaseUseCase,
-                        private val getCategoriesFromLocalDatabaseUseCase: GetCategoriesFromLocalDatabaseUseCase
+class CategoryViewModel(
+    private val insertCategoriesIntoLocalDatabaseUseCase: InsertCategoriesIntoLocalDatabaseUseCase,
+    private val getCategoriesFromLocalDatabaseUseCase: GetCategoriesFromLocalDatabaseUseCase
 ) : ViewModel() {
 
     private var _categories = MutableLiveData<List<Category>>()
