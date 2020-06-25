@@ -1,10 +1,10 @@
-package com.socialevoeding.usecases
+package com.socialevoeding.usecases.categorieUseCases
 
 import com.socialevoeding.domain.model.Category
 import com.socialevoeding.domain.repositories.CategoryRepository
 import com.socialevoeding.usecases.base.UseCase
 
-class InsertCategoriesIntoLocalDatabaseUseCase(
+class InitCategoriesUseCase(
     private val categoryRepository: CategoryRepository
 ) : UseCase<Unit>() {
     var categories: List<Category> = emptyList()

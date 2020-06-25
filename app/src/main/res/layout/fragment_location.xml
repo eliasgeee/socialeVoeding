@@ -8,7 +8,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.socialevoeding.bap.ui.placedetails.PlaceDetailsViewModel" />
+            type="com.socialevoeding.presentation_android.viewModels.PlaceDetailsViewModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout

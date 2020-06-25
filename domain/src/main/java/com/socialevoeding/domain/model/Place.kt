@@ -3,7 +3,6 @@ package com.socialevoeding.domain.model
 import java.io.Serializable
 
 class Place(
-    val id: String,
     val name: String,
     val telephoneNumber: String,
     val webUrl: String,
@@ -12,6 +11,5 @@ class Place(
     var cityName: String,
     val latitude: Double,
     val longitude: Double,
-    var openingHours: Array<OpeningDay>,
-    var categoryId : Int
+    var openingHours: Array<OpeningDay>
 )

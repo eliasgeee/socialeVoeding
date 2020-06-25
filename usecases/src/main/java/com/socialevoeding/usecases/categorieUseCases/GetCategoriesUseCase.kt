@@ -1,10 +1,10 @@
-package com.socialevoeding.usecases
+package com.socialevoeding.usecases.categorieUseCases
 
 import com.socialevoeding.domain.model.Category
 import com.socialevoeding.domain.repositories.CategoryRepository
 import com.socialevoeding.usecases.base.UseCase
 
-class GetCategoriesFromLocalDatabaseUseCase(
+class GetCategoriesUseCase(
     private val categoryRepository: CategoryRepository
 ) : UseCase<MutableList<Category>>() {
     override suspend fun executeOnBackground(): MutableList<Category> {

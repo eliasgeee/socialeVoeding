@@ -1,10 +1,10 @@
-package com.socialevoeding.usecases
+package com.socialevoeding.usecases.placeUseCases
 
 import com.socialevoeding.domain.model.Place
 import com.socialevoeding.domain.repositories.PlaceRepository
 import com.socialevoeding.usecases.base.UseCase
 
-class GetPlacesFromLocalDatabaseUseCase(
+class GetPlacesUseCase(
     private val placeRepository: PlaceRepository
 ) : UseCase<MutableList<Place>>() {
     override suspend fun executeOnBackground(): MutableList<Place> {

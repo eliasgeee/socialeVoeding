@@ -12,6 +12,7 @@ import com.socialevoeding.bap.R
 import com.socialevoeding.bap.databinding.FragmentHomeScreenBinding
 import com.socialevoeding.domain.model.Category
 import com.socialevoeding.bap.ui.BaseFragment
+import com.socialevoeding.presentation_android.viewModels.CategoryViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 
 const val REQUESTCODE_LOCATION = 1

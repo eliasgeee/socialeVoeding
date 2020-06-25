@@ -1,21 +1,21 @@
-package com.socialevoeding.bap.ui.places
+package com.socialevoeding.presentation_android.viewModels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.socialevoeding.domain.model.PlaceLocation
 import com.socialevoeding.domain.model.Place
-import com.socialevoeding.usecases.GetCurrentPlaceNameUseCase
-import com.socialevoeding.usecases.GetPlacesFromLocalDatabaseUseCase
-import com.socialevoeding.usecases.RefreshPlacesUseCase
+import com.socialevoeding.usecases.locationUseCases.GetCurrentGeoLocationUseCase
+import com.socialevoeding.usecases.placeUseCases.GetPlacesUseCase
+import com.socialevoeding.usecases.placeUseCases.RefreshPlacesUseCase
 
 class PlacesViewModel(
-    private val getPlacesFromLocalDatabaseUseCase: GetPlacesFromLocalDatabaseUseCase,
+    private val getPlacesUseCase: GetPlacesUseCase,
     private val refreshPlacesUseCase: RefreshPlacesUseCase,
-    private val getCurrentPlaceNameUseCase: GetCurrentPlaceNameUseCase
+    private val getCurrentGeoLocationUseCase: GetCurrentGeoLocationUseCase
 ) : ViewModel() {
 
-    private var _places = MutableLiveData<List<Place>>(emptyList())
+    private var _places = MutableLiveData<List<Place>>()
     val places: LiveData<List<Place>>
         get() = _places
 
@@ -38,7 +38,7 @@ class PlacesViewModel(
         )
         refreshPlacesUseCase.execute {
             onComplete {
-                getPlacesFromLocalDatabaseUseCase.execute {
+                getPlacesUseCase.execute {
                     onComplete {
                         _places.postValue(it.data)
                     }
@@ -87,9 +87,9 @@ class PlacesViewModel(
 
     override fun onCleared() {
         super.onCleared()
-        getPlacesFromLocalDatabaseUseCase.unsubscribe()
+        getPlacesUseCase.unsubscribe()
         refreshPlacesUseCase.unsubscribe()
-        getCurrentPlaceNameUseCase.unsubscribe()
+        getCurrentGeoLocationUseCase.unsubscribe()
     }
 
     fun setCurrentLocation(currentPlaceLocation: PlaceLocation) {

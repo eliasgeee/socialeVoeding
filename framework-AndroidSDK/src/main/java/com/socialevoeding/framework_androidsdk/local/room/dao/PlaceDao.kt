@@ -16,4 +16,7 @@ interface PlaceDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(vararg places: RoomPlaceEntity)
+
+    @Query("DELETE FROM RoomPlaceEntity")
+    suspend fun clear()
 }

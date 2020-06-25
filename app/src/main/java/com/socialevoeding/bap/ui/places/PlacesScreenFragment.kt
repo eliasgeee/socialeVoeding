@@ -15,6 +15,7 @@ import com.socialevoeding.domain.model.Category
 import com.socialevoeding.domain.model.Place
 import com.socialevoeding.framework.device.gps.GPSTracker
 import com.socialevoeding.bap.ui.BaseFragment
+import com.socialevoeding.presentation_android.viewModels.PlacesViewModel
 import kotlinx.android.synthetic.main.toolbar.view.*
 import kotlinx.android.synthetic.main.ttsbar.view.*
 import org.koin.android.viewmodel.ext.android.viewModel

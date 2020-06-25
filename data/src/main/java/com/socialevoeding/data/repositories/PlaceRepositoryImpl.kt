@@ -3,20 +3,22 @@ package com.socialevoeding.data.repositories
 import com.socialevoeding.data.datasources.local.database.PlaceLocalDataSource
 import com.socialevoeding.data.datasources.remote.PlaceRemoteDataSource
 import com.socialevoeding.data.mappers.DatabasePlaceMapper
+import com.socialevoeding.data.mappers.NetworkPlaceMapper
 import com.socialevoeding.domain.model.PlaceLocation
 import com.socialevoeding.domain.model.Place
+import com.socialevoeding.domain.model.UserLocation
 import com.socialevoeding.domain.repositories.PlaceRepository
 
-// TODO
 class PlaceRepositoryImpl(private val placeRemoteDataSource: PlaceRemoteDataSource, private val placeLocalDataSource: PlaceLocalDataSource) :
     PlaceRepository {
 
     override suspend fun refreshPlaces(
-        currentPlaceLocation: PlaceLocation,
-        currentCategoryName: String,
-        currentQueryNames: List<String>
+        userLocation: UserLocation,
+        currentCategoryName: String
     ) {
-        // insertPlacesIntoDatabase(placeRemoteDataSource.getPlaces(currentQueryNames.toString(), currentPlaceLocation.cityName))
+        val places = placeRemoteDataSource.getPlaces(currentCategoryName, userLocation.cityName)
+        placeLocalDataSource.clear()
+        placeLocalDataSource.insertAll(DatabasePlaceMapper.mapToEntities(NetworkPlaceMapper.mapToListOfDomainObjects(places)))
     }
 
     override suspend fun getPlacesFromLocalDatabase(): MutableList<Place> {

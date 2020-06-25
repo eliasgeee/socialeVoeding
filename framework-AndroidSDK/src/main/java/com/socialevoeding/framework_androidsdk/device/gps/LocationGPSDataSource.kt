@@ -9,37 +9,34 @@ import android.location.LocationListener
 import android.location.LocationManager
 import android.os.Bundle
 import android.os.IBinder
+import com.socialevoeding.data.datasources.device.CurrentLocationDataSource
+import com.socialevoeding.data.dtos.local.device.CoordinatesDTO
 import com.socialevoeding.data.dtos.local.device.UserLocationDTO
+import com.socialevoeding.domain.model.Coordinates
 
 // Based on https://stackoverflow.com/questions/21085497/how-to-use-android-locationmanager-and-listener/50621540
-class GPSTracker() : Service(), LocationListener {
+class LocationGPSDataSource(
+    private val locationManager: LocationManager
+) : Service(), LocationListener, CurrentLocationDataSource {
 
-    var isGPSEnabled = false
-    var isNetworkEnabled = false
-    var canGetLocation = false
-    var location: Location? = null
-    var latitude = 0.0
-    var longitude = 0.0
-
-    var context: Context? = null
+    private var isGPSEnabled = false
+    private var isNetworkEnabled = false
+    private var canGetLocation = false
+    private var location: Location? = null
+    private var latitude = 0.0
+    private var longitude = 0.0
+    private var locationPermissionOldApi: Int = -1
 
     // The minimum distance to change Updates in meters
-    private val MIN_DISTANCE_CHANGE_FOR_UPDATES: Float = 1500F // 10 meters
+    private val MIN_DISTANCE_CHANGE_FOR_UPDATES: Float = 1500F
 
     // The minimum time between updates in milliseconds
-    private val MIN_TIME_BW_UPDATES = 900000 // 30 min
-        .toLong()
+    private val MIN_TIME_BW_UPDATES = 900000.toLong()
 
-    // Declaring a Location Manager
-    protected var locationManager: LocationManager? = null
-
-    @SuppressLint("MissingPermission") // permission check in MainActivity
-    fun startGPSTracker(): UserLocationDTO {
-        try {
-            locationManager = context!!.getSystemService(Context.LOCATION_SERVICE) as LocationManager
-
-            isGPSEnabled = locationManager!!.isProviderEnabled(LocationManager.GPS_PROVIDER)
-            isNetworkEnabled = locationManager!!.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
+    @SuppressLint("MissingPermission")
+    private fun startGPSTracker() {
+            isGPSEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
+            isNetworkEnabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
 
             if (!isGPSEnabled && !isNetworkEnabled) {
                 // no network provider is enabled
@@ -47,81 +44,48 @@ class GPSTracker() : Service(), LocationListener {
                 canGetLocation = true
                 if (isNetworkEnabled) {
                     // First get location from Network Provider
-                    locationManager!!.requestLocationUpdates(
+                    locationManager.requestLocationUpdates(
                         LocationManager.NETWORK_PROVIDER,
                         MIN_TIME_BW_UPDATES,
                         MIN_DISTANCE_CHANGE_FOR_UPDATES, this)
 
-                    if (locationManager != null) {
-                        location = locationManager!!
+                        location = locationManager
                             .getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
                         if (location != null) {
                             latitude = location!!.latitude
                             longitude = location!!.longitude
                         }
-                    }
                 }
                 // if GPS Enabled get lat/long using GPS Services
                 if (isGPSEnabled) {
                     if (location == null) {
-                        locationManager!!.requestLocationUpdates(
+                        locationManager.requestLocationUpdates(
                             LocationManager.GPS_PROVIDER,
                             MIN_TIME_BW_UPDATES,
                             MIN_DISTANCE_CHANGE_FOR_UPDATES, this)
-                        if (locationManager != null) {
-                            location = locationManager!!
+                            location = locationManager
                                 .getLastKnownLocation(LocationManager.GPS_PROVIDER)
                             if (location != null) {
                                 latitude = location!!.latitude
                                 longitude = location!!.longitude
                             }
-                        }
                     }
                 }
             }
-        } catch (e: Exception) {
-        }
-
-        return UserLocationDTO(
-            latitude = latitude,
-            longitude = longitude
-        )
     }
 
-    fun stopUsingGPS(): Boolean {
-        locationManager?.removeUpdates(this)
-        return true
+    private fun stopUsingGPS() {
+        locationManager.removeUpdates(this)
     }
 
-    fun getCurrentLocation(): UserLocationDTO {
-        return UserLocationDTO(
-            latitude = latitude,
-            longitude = longitude
-        )
+    override fun getCurrentLocation(): CoordinatesDTO {
+        startGPSTracker()
+        val coordinates = CoordinatesDTO(latitude = latitude, longitude = longitude)
+        stopUsingGPS()
+        return coordinates
     }
 
-    fun getCurrentLatitude(): Double {
-        if (location != null) {
-            latitude = location!!.latitude
-        }
-        return latitude
-    }
-
-    fun getCurrentLongitude(): Double {
-        if (location != null) {
-            longitude = location!!.longitude
-        }
-        return longitude
-    }
-
-    fun canGetLocation(): Boolean {
-        return canGetLocation
-    }
-
-    override fun onBind(intent: Intent?): IBinder? {
-        return null
-    }
-
+    override fun onBind(intent: Intent?): IBinder? { return null }
     override fun onLocationChanged(location: Location?) {}
     override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {}
     override fun onProviderEnabled(provider: String?) {}

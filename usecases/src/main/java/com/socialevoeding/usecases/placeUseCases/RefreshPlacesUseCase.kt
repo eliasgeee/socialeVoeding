@@ -1,17 +1,16 @@
-package com.socialevoeding.usecases
+package com.socialevoeding.usecases.placeUseCases
 
-import com.socialevoeding.domain.model.PlaceLocation
+import com.socialevoeding.domain.model.UserLocation
 import com.socialevoeding.domain.repositories.PlaceRepository
 import com.socialevoeding.usecases.base.UseCase
 
 class RefreshPlacesUseCase(
     private val placeRepository: PlaceRepository
 ) : UseCase<Unit>() {
-    var currentPlaceLocation: PlaceLocation? = null
+    var userLocation: UserLocation? = null
     var currentCategorieName: String = ""
-    var currentQueryNames: List<String> = emptyList()
 
     override suspend fun executeOnBackground() {
-        return placeRepository.refreshPlaces(currentPlaceLocation!!, currentCategorieName, currentQueryNames)
+        return placeRepository.refreshPlaces(userLocation!!, currentCategorieName)
     }
 }

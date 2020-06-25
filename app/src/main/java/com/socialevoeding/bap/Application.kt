@@ -4,7 +4,7 @@ import android.app.Application
 import android.os.Build
 import androidx.work.*
 import com.socialevoeding.data.di.dataModule
-import com.socialevoeding.bap.di.appModule
+import com.socialevoeding.presentation_android.di.presentationModule
 import com.socialevoeding.usecases.di.useCaseModule
 import com.socialevoeding.framework_androidsdk.di.frameworkAndroidModule
 import com.socialevoeding.bap.work.RefreshDataWorker
@@ -28,7 +28,8 @@ class Application : Application() {
         startKoin {
             androidContext(this@Application)
             modules(
-                dataModule, appModule,
+                dataModule,
+                presentationModule,
                 useCaseModule, frameworkAndroidModule
             )
             delayedInit()

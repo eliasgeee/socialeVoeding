@@ -6,13 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
-import coil.api.load
 import com.socialevoeding.bap.R
 import com.socialevoeding.bap.databinding.FragmentLocationBinding
 import com.socialevoeding.domain.model.Category
 import com.socialevoeding.domain.model.Place
 import com.socialevoeding.bap.ui.BaseFragment
-import kotlinx.android.synthetic.main.toolbar.view.*
+import com.socialevoeding.presentation_android.viewModels.PlaceDetailsViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class PlaceDetailsFragment : BaseFragment() {

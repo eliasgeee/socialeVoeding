@@ -45,5 +45,6 @@ dependencies {
     implementation androidDependencies.moshiKotlin
     implementation androidDependencies.retrofitCoroutines
     implementation androidDependencies.room
+    implementation androidDependencies.koinAndroid
     kapt androidDependencies.roomCompiler
 }

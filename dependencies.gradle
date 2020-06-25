@@ -31,7 +31,7 @@ ext {
             lifecycleExt : 'androidx.lifecycle:lifecycle-extensions:2.2.0',
 
             //Workmanager
-            work : "android.arch.work:work-runtime-ktx:1.1.0"
+            work : 'androidx.work:work-runtime-ktx:2.0.1'
     ]
 
     commonDependencies = [

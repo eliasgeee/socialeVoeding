@@ -17,4 +17,8 @@ class RoomPlaceDataSource(private val placeDao: PlaceDao) : PlaceLocalDataSource
     override suspend fun insertAll(places: List<PlaceEntity>) {
         placeDao.insertAll(*RoomPlaceMapper.mapToRoomEntities(places).toTypedArray())
     }
+
+    override suspend fun clear() {
+        placeDao.clear()
+    }
 }

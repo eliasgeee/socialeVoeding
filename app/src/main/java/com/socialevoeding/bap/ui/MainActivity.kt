@@ -1,4 +1,4 @@
-package com.socialevoeding.bap.ui.main
+package com.socialevoeding.bap.ui
 
 import android.Manifest
 import android.content.pm.PackageManager
@@ -13,6 +13,7 @@ import androidx.navigation.findNavController
 import com.socialevoeding.bap.R
 import com.socialevoeding.bap.databinding.ActivityMainBinding
 import com.socialevoeding.framework.device.gps.GPSTracker
+import com.socialevoeding.presentation_android.viewModels.InitViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 
 const val REQUESTCODE_LOCATION = 1
@@ -22,7 +23,7 @@ class MainActivity() : AppCompatActivity() {
     private lateinit var navController: NavController
     private lateinit var binding: ActivityMainBinding
     private var locationPermissionOldApi: Int = -1
-    private val gpsTrackerViewModel: GPSTrackerViewModel by viewModel()
+    private val initViewModel: InitViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,14 +65,14 @@ class MainActivity() : AppCompatActivity() {
                     val gpsTracker =
                         com.socialevoeding.framework.device.gps.GPSTracker()
                     gpsTracker.context = applicationContext
-                    gpsTrackerViewModel.startGpsTrackerAndLoadPlaces(gpsTracker)
+                    initViewModel.startGpsTrackerAndLoadPlaces(gpsTracker)
                 }
             }
         } else {
             val gpsTracker =
                 com.socialevoeding.framework.device.gps.GPSTracker()
             gpsTracker.context = applicationContext
-            gpsTrackerViewModel.startGpsTrackerAndLoadPlaces(gpsTracker) }
+            initViewModel.startGpsTrackerAndLoadPlaces(gpsTracker) }
     }
 
     override fun onRequestPermissionsResult(
@@ -85,7 +86,7 @@ class MainActivity() : AppCompatActivity() {
                     val gpsTracker =
                         com.socialevoeding.framework.device.gps.GPSTracker()
                     gpsTracker.context = applicationContext
-                    gpsTrackerViewModel.startGpsTrackerAndLoadPlaces(gpsTracker)
+                    initViewModel.startGpsTrackerAndLoadPlaces(gpsTracker)
                 }
             }
         }
@@ -103,6 +104,6 @@ class MainActivity() : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        gpsTrackerViewModel.gpsTracker.value!!.stopUsingGPS()
+        initViewModel.gpsTracker.value!!.stopUsingGPS()
     }
 }

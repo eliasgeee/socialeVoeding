@@ -43,8 +43,7 @@ android {
 }
 
 dependencies {
-    implementation project(':usecases')
-    implementation project(':presentation')
+    implementation project(':presentation-android')
     implementation project(':util')
     implementation project(':util-android')
     implementation fileTree(dir: 'libs', include: ['*.jar'])
