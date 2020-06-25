@@ -1,6 +1,6 @@
 package com.socialevoeding.data.dtos.local.device
 
 data class CoordinatesDTO(
-    val latitude : Double,
-    val longitude : Double
+    val latitude: Double,
+    val longitude: Double
 )

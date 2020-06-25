@@ -5,7 +5,7 @@ import com.socialevoeding.domain.model.UserLocation
 import com.socialevoeding.domain.repositories.UserLocationRepository
 import com.socialevoeding.usecases.base.UseCase
 
-class GetLastKnownUserLocationUseCase (
+class GetLastKnownUserLocationUseCase(
     private val userLocationRepository: UserLocationRepository
 ) : UseCase<Either<Unit, UserLocation>>() {
     override suspend fun executeOnBackground(): Either<Unit, UserLocation> {

@@ -18,9 +18,9 @@ class InitViewModel(
     private val initCategoriesUseCase: InitCategoriesUseCase,
     private val refreshPlacesUseCase: RefreshPlacesUseCase,
     private val getCategoriesUseCase: GetCategoriesUseCase
-    ) : ViewModel() {
+) : ViewModel() {
 
-    fun updateLocationAndPlaces(){
+    fun updateLocationAndPlaces() {
         getCurrentCoordinatesUseCase.execute {
             onComplete {
                 getCurrentGeoLocationUseCase.currentCoordinates = it.data
@@ -28,8 +28,8 @@ class InitViewModel(
                     onComplete { currentLocation ->
                         getLastKnownUserLocationUseCase.execute {
                             onComplete { lastKnownLocation ->
-                                when(lastKnownLocation.data){
-                                    //No last known location in cache -> initialize data
+                                when (lastKnownLocation.data) {
+                                    // No last known location in cache -> initialize data
                                     is Either.Left -> initData(currentLocation.data)
                                     is Either.Right -> checkIfRefreshIsNecessary(
                                         currentLocation = currentLocation.data,
@@ -44,8 +44,8 @@ class InitViewModel(
         }
     }
 
-    private fun checkIfRefreshIsNecessary(currentLocation : UserLocation, lastKnownLocation : UserLocation) {
-        if(currentLocation.cityName.getNormalizedName() != lastKnownLocation.cityName.getNormalizedName())
+    private fun checkIfRefreshIsNecessary(currentLocation: UserLocation, lastKnownLocation: UserLocation) {
+        if (currentLocation.cityName.getNormalizedName() != lastKnownLocation.cityName.getNormalizedName())
             refreshPlaces(currentLocation)
     }
 
@@ -64,7 +64,6 @@ class InitViewModel(
                     refreshPlacesUseCase.currentCategorieName = it.name
                     refreshPlacesUseCase.userLocation = currentLocation
                     refreshPlacesUseCase.execute {
-
                     }
                 }
             }

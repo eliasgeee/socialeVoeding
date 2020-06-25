@@ -8,8 +8,8 @@ import com.socialevoeding.li.extensions.getNormalizedName
 object DatabaseCategoryMapperFacade :
     DatabaseMapperFacade<CategoryEntity, Category> {
     override fun mapFromEntity(entity: CategoryEntity): Category {
-        var category : Category? = null
-        if(entity.type == "FOOD")
+        var category: Category? = null
+        if (entity.type == "FOOD")
             category = Category.Food(
                 id = entity.id,
                 name = entity.name
@@ -18,7 +18,7 @@ object DatabaseCategoryMapperFacade :
     }
 
     override fun mapToEntity(model: Category): CategoryEntity {
-        when(model){
+        when (model) {
             is Category.Food -> return CategoryEntity(
                 id = model.id,
                 name = model.name,

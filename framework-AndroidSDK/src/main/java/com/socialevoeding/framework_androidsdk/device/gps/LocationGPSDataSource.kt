@@ -2,7 +2,6 @@ package com.socialevoeding.framework_androidsdk.device.gps
 
 import android.annotation.SuppressLint
 import android.app.Service
-import android.content.Context
 import android.content.Intent
 import android.location.Location
 import android.location.LocationListener
@@ -11,8 +10,6 @@ import android.os.Bundle
 import android.os.IBinder
 import com.socialevoeding.data.datasources.device.CurrentLocationDataSource
 import com.socialevoeding.data.dtos.local.device.CoordinatesDTO
-import com.socialevoeding.data.dtos.local.device.UserLocationDTO
-import com.socialevoeding.domain.model.Coordinates
 
 // Based on https://stackoverflow.com/questions/21085497/how-to-use-android-locationmanager-and-listener/50621540
 class LocationGPSDataSource(

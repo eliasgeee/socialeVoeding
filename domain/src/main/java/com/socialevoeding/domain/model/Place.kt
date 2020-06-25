@@ -1,7 +1,5 @@
 package com.socialevoeding.domain.model
 
-import java.io.Serializable
-
 class Place(
     val name: String,
     val telephoneNumber: String,

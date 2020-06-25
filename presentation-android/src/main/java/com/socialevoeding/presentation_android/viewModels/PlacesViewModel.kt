@@ -4,15 +4,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.socialevoeding.domain.model.Either
-import com.socialevoeding.domain.model.PlaceLocation
-import com.socialevoeding.domain.model.Place
 import com.socialevoeding.domain.model.UserLocation
 import com.socialevoeding.presentation_android.mappers.PlaceViewItemMapper
 import com.socialevoeding.presentation_android.viewItems.PlaceViewItem
-import com.socialevoeding.usecases.locationUseCases.GetCurrentGeoLocationUseCase
 import com.socialevoeding.usecases.locationUseCases.GetLastKnownUserLocationUseCase
 import com.socialevoeding.usecases.placeUseCases.GetPlacesUseCase
-import com.socialevoeding.usecases.placeUseCases.RefreshPlacesUseCase
 
 class PlacesViewModel(
     private val getPlacesUseCase: GetPlacesUseCase,
@@ -34,7 +30,7 @@ class PlacesViewModel(
     init {
         getLastKnownUserLocationUseCase.execute {
             this.onComplete {
-                when(it.data){
+                when (it.data) {
                     is Either.Right -> _currentLocation.postValue((it.data as Either.Right<UserLocation>).b.cityName)
                 }
             }

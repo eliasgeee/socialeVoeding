@@ -1,6 +1,5 @@
 package com.socialevoeding.domain.repositories
 
-import com.socialevoeding.domain.model.PlaceLocation
 import com.socialevoeding.domain.model.Place
 import com.socialevoeding.domain.model.UserLocation
 

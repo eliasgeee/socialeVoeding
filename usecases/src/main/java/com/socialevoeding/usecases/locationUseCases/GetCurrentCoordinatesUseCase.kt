@@ -1,7 +1,6 @@
 package com.socialevoeding.usecases.locationUseCases
 
 import com.socialevoeding.domain.model.Coordinates
-import com.socialevoeding.domain.model.PlaceLocation
 import com.socialevoeding.domain.repositories.UserLocationRepository
 import com.socialevoeding.usecases.base.UseCase
 

@@ -49,16 +49,16 @@ val frameworkAndroidModule = module {
 
     single { provideLocationManager(androidContext()) }
 
-    single{
+    single {
         getSharedPrefs(androidContext())
     }
 }
 
-fun provideLocationManager(context: Context) : LocationManager {
+fun provideLocationManager(context: Context): LocationManager {
     return context.getSystemService(Context.LOCATION_SERVICE) as LocationManager
 }
 
-fun getSharedPrefs(context : Context): SharedPreferences{
+fun getSharedPrefs(context: Context): SharedPreferences {
     return context.getSharedPreferences(STORAGE, Context.MODE_PRIVATE)
 }
 
@@ -83,7 +83,7 @@ fun provideMoshi(): Moshi {
         .build()
 }
 
-fun provideMoshiAdapter() : JsonAdapter<UserLocationDTO> {
+fun provideMoshiAdapter(): JsonAdapter<UserLocationDTO> {
     return provideMoshi().adapter(UserLocationDTO::class.java)
 }
 

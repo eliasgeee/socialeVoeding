@@ -4,7 +4,6 @@ import com.socialevoeding.data.datasources.local.database.PlaceLocalDataSource
 import com.socialevoeding.data.datasources.remote.PlaceRemoteDataSource
 import com.socialevoeding.data.mappers.DatabasePlaceMapper
 import com.socialevoeding.data.mappers.NetworkPlaceMapper
-import com.socialevoeding.domain.model.PlaceLocation
 import com.socialevoeding.domain.model.Place
 import com.socialevoeding.domain.model.UserLocation
 import com.socialevoeding.domain.repositories.PlaceRepository

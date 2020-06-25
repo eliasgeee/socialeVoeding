@@ -1,4 +1,3 @@
 package com.socialevoeding.li.factory
 
-object PlaceFactory {
-}
+object PlaceFactory
