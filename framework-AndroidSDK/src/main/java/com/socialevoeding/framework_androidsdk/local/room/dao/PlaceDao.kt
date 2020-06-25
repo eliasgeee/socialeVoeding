@@ -11,12 +11,12 @@ interface PlaceDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertPlaces(places: List<RoomPlaceEntity>)
 
-    @Query("select * from RoomPlaceEntity")
+    @Query("select * from places")
     suspend fun getPlaces(): List<RoomPlaceEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(vararg places: RoomPlaceEntity)
 
-    @Query("DELETE FROM RoomPlaceEntity")
+    @Query("DELETE FROM places")
     suspend fun clear()
 }

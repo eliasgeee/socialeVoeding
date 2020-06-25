@@ -8,6 +8,6 @@ sealed class Category(
 ){
     class Food(
         id : Int,
-        name: String
+        name: String = "FOOD"
     ) : Category(id, name)
 }

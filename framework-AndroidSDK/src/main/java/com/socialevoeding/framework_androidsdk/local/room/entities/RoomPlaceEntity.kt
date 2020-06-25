@@ -15,6 +15,6 @@ class RoomPlaceEntity(
     val latitude: Double,
     val longitude: Double,
     val city: String,
-    @ForeignKey(entity = RoomCategoryEntity::class, onDelete = ForeignKey.CASCADE)
+    @ForeignKey(entity = RoomCategoryEntity::class, onDelete = ForeignKey.CASCADE, childColumns = ["categoryId"], parentColumns = ["id"])
     val categoryId: Int = 0
 )

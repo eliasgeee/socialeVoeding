@@ -9,7 +9,7 @@ import com.socialevoeding.framework_androidsdk.local.room.dao.PlaceDao
 import com.socialevoeding.framework_androidsdk.local.room.entities.RoomCategoryEntity
 import com.socialevoeding.framework_androidsdk.local.room.entities.RoomPlaceEntity
 
-@Database(entities = [RoomCategoryEntity::class, RoomPlaceEntity::class], version = 6, exportSchema = false)
+@Database(entities = [RoomCategoryEntity::class, RoomPlaceEntity::class], version = 7, exportSchema = false)
 abstract class LocalDb : RoomDatabase() {
     abstract val categoryDao: CategoryDao
     abstract val placeDao: PlaceDao

@@ -3,6 +3,7 @@ package com.socialevoeding.presentation_android.viewModels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.socialevoeding.presentation_android.mappers.CategoryViewItemMapper
 import com.socialevoeding.presentation_android.viewItems.CategoryViewItem
 import com.socialevoeding.usecases.categorieUseCases.GetCategoriesUseCase
 import com.socialevoeding.usecases.categorieUseCases.InitCategoriesUseCase
@@ -23,7 +24,7 @@ class CategoryViewModel(
     init {
         getCategoriesUseCase.execute {
             onComplete {
-                _categories.postValue(it.data)
+                _categories.postValue(CategoryViewItemMapper.mapToViewItems(it.data))
             }
         }
     }

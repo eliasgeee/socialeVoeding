@@ -8,7 +8,7 @@ import com.socialevoeding.framework_androidsdk.local.room.entities.RoomCategoryE
 
 @Dao
 interface CategoryDao {
-    @Query("select * from RoomCategoryEntity")
+    @Query("select * from categories")
     fun getCategories(): List<RoomCategoryEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

@@ -73,7 +73,7 @@ class PlacesScreenFragment() : BaseFragment() {
         placesViewModel.currentPlaceLocation.observe(this, Observer {
             if (it != null)
                 if (placesViewModel.places.value!!.isEmpty())
-                placesViewModel.refreshPlaces()
+                placesViewModel.loadPlaces()
         })
 
         binding.rvPlaces.layoutManager = LinearLayoutManager(requireContext())

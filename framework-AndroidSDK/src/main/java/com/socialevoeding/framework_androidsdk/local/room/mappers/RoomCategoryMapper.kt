@@ -8,14 +8,16 @@ object RoomCategoryMapper : RoomMapperFacade<RoomCategoryEntity, CategoryEntity>
     override fun mapFromRoomEntity(entity: RoomCategoryEntity): CategoryEntity {
         return CategoryEntity(
             id = entity.id,
-            name = entity.name
+            name = entity.name,
+            type = entity.type
         )
     }
 
     override fun mapToRoomEntity(model: CategoryEntity): RoomCategoryEntity {
         return RoomCategoryEntity(
             id = model.id,
-            name = model.name
+            name = model.name,
+            type = model.type
         )
     }
 

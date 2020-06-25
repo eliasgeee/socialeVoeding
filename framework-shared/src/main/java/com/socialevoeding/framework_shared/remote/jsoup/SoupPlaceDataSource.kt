@@ -52,7 +52,7 @@ class SoupPlaceDataSource : PlaceRemoteDataSource {
             place.address = documentPlace.select("span[class=LrzXr]").text()
             place.telephoneNumber = documentPlace.select("span[LrzXr zdqRlf kno-fv]  a").text()
 
-            var hours = documentPlace.select("table[class=WgFkxc] tr")
+            val hours = documentPlace.select("table[class=WgFkxc] tr")
 
             hours.forEach {
                 place.openingHours.add(
@@ -71,7 +71,7 @@ class SoupPlaceDataSource : PlaceRemoteDataSource {
 
         val documentImg: Document = Jsoup.connect(imgUrl).get()
 
-        var scripts = documentImg.select("script")
+        val scripts = documentImg.select("script")
         var imgsrchtml =
             scripts.first { element -> element.html().startsWith("_setImgSrc('0',", 0, true) }
                 .html()

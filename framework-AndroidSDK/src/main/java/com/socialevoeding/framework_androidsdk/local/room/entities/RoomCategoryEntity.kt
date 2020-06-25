@@ -9,5 +9,6 @@ class RoomCategoryEntity(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "category_id")
     val id: Int,
-    val name: String
+    val name: String,
+    val type: String
 )
