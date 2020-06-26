@@ -17,12 +17,11 @@ val presentationModule = module {
     viewModel {
         PlacesViewModel(
             get(),
-            get(),
             get()
         )
     }
     viewModel { PlaceDetailsViewModel() }
     viewModel {
-        InitViewModel()
+        InitViewModel(get(), get(), get(), get(), get(), get())
     }
 }

@@ -10,11 +10,11 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
 import com.socialevoeding.bap.databinding.RvPlaceItemBinding
-import com.socialevoeding.domain.model.Place
+import com.socialevoeding.presentation_android.viewItems.PlaceViewItem
 import com.socialevoeding.util_android.createKilometerLabelFromDistanceInMeters
 
 class PlacesAdapter(private val context: Context, private val clickListener: PlacesClickListener) :
-    ListAdapter<Place, PlacesAdapter.PlacesViewHolder>(
+    ListAdapter<PlaceViewItem, PlacesAdapter.PlacesViewHolder>(
         PlacesDiffCallback()
     ) {
 
@@ -32,7 +32,7 @@ class PlacesAdapter(private val context: Context, private val clickListener: Pla
     class PlacesViewHolder private constructor(val binding: RvPlaceItemBinding, private val viewType: Int) : RecyclerView.ViewHolder(binding.root) {
 
         fun fillViewItems(
-            location: Place,
+            location: PlaceViewItem,
             clickListener: PlacesClickListener,
             context: Context
         ) {
@@ -74,16 +74,16 @@ class PlacesAdapter(private val context: Context, private val clickListener: Pla
     }
 }
 
-class PlacesDiffCallback : DiffUtil.ItemCallback<Place>() {
-    override fun areItemsTheSame(oldLocation: Place, newLocation: Place): Boolean {
-        return newLocation.id == oldLocation.id
+class PlacesDiffCallback : DiffUtil.ItemCallback<PlaceViewItem>() {
+    override fun areItemsTheSame(oldLocation: PlaceViewItem, newLocation: PlaceViewItem): Boolean {
+        return newLocation.longitude == oldLocation.longitude && newLocation.latitude == oldLocation.latitude
     }
 
-    override fun areContentsTheSame(oldLocation: Place, newLocation: Place): Boolean {
-        return newLocation.id == oldLocation.id
+    override fun areContentsTheSame(oldLocation: PlaceViewItem, newLocation: PlaceViewItem): Boolean {
+        return newLocation.longitude == oldLocation.longitude && newLocation.latitude == oldLocation.latitude
     }
 }
 
 interface PlacesClickListener {
-    fun onPlaceClick(place: Place)
+    fun onPlaceClick(place: PlaceViewItem)
 }

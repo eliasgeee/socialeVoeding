@@ -12,7 +12,6 @@ import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.socialevoeding.bap.R
 import com.socialevoeding.bap.databinding.ActivityMainBinding
-import com.socialevoeding.framework.device.gps.GPSTracker
 import com.socialevoeding.presentation_android.viewModels.InitViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -62,17 +61,11 @@ class MainActivity() : AppCompatActivity() {
                     Manifest.permission.ACCESS_FINE_LOCATION
                 )
                 if (locationPermissionOldApi == 0) {
-                    val gpsTracker =
-                        com.socialevoeding.framework.device.gps.GPSTracker()
-                    gpsTracker.context = applicationContext
-                    initViewModel.startGpsTrackerAndLoadPlaces(gpsTracker)
+                    initViewModel.updateLocationAndPlaces()
                 }
             }
         } else {
-            val gpsTracker =
-                com.socialevoeding.framework.device.gps.GPSTracker()
-            gpsTracker.context = applicationContext
-            initViewModel.startGpsTrackerAndLoadPlaces(gpsTracker) }
+            initViewModel.updateLocationAndPlaces()}
     }
 
     override fun onRequestPermissionsResult(
@@ -83,27 +76,9 @@ class MainActivity() : AppCompatActivity() {
         when (requestCode) {
             REQUESTCODE_LOCATION -> {
                 if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
-                    val gpsTracker =
-                        com.socialevoeding.framework.device.gps.GPSTracker()
-                    gpsTracker.context = applicationContext
-                    initViewModel.startGpsTrackerAndLoadPlaces(gpsTracker)
+                    initViewModel.updateLocationAndPlaces()
                 }
             }
         }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        //   gpsTrackerViewModel.gpsTracker.value!!.startGPSTracker()
-        }
-
-    override fun onPause() {
-        super.onPause()
-        //      gpsTrackerViewModel.gpsTracker.value!!.stopUsingGPS()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        initViewModel.gpsTracker.value!!.stopUsingGPS()
     }
 }

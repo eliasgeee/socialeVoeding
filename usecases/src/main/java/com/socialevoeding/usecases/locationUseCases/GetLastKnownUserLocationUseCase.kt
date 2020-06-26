@@ -1,6 +1,6 @@
 package com.socialevoeding.usecases.locationUseCases
 
-import com.socialevoeding.domain.model.Either
+import com.socialevoeding.li.models.Either
 import com.socialevoeding.domain.model.UserLocation
 import com.socialevoeding.domain.repositories.UserLocationRepository
 import com.socialevoeding.usecases.base.UseCase

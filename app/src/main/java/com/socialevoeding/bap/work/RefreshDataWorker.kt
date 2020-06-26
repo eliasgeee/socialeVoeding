@@ -3,7 +3,6 @@ package com.socialevoeding.bap.work
 import android.content.Context
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
-import com.socialevoeding.data.framework.room.database.getDatabase
 
 class RefreshDataWorker(appContext: Context, params: WorkerParameters) : CoroutineWorker(appContext, params) {
 
@@ -12,10 +11,10 @@ class RefreshDataWorker(appContext: Context, params: WorkerParameters) : Corouti
     }
 
     override suspend fun doWork(): Result {
-        val database =
+        /*val database =
             getDatabase(
                 applicationContext
-            )
+            )*/
         return Result.success()
     }
 }

@@ -19,7 +19,7 @@
         android:label="CategoryScreenFragment">
         <argument
             android:name="selectedCategory"
-            app:argType="com.socialevoeding.domain.model.Category" />
+            app:argType="com.socialevoeding.presentation_android.viewItems.CategoryViewItem" />
         <action
             android:id="@+id/actionCategoryScreenFragmentToHomeScreenFragment"
             app:destination="@id/homeScreenFragment"
@@ -37,10 +37,10 @@
         tools:layout="@layout/fragment_location">
         <argument
             android:name="selectedPlace"
-            app:argType="com.socialevoeding.domain.model.Place" />
+            app:argType="com.socialevoeding.presentation_android.viewItems.PlaceViewItem" />
         <argument
             android:name="selectedCategory"
-            app:argType="com.socialevoeding.domain.model.Category" />
+            app:argType="com.socialevoeding.presentation_android.viewItems.CategoryViewItem" />
         <action
             android:id="@+id/actionLocationFragmentToCategoryScreenFragment"
             app:destination="@id/categoryScreenFragment"

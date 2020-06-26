@@ -1,4 +1,4 @@
-package com.socialevoeding.domain.model
+package com.socialevoeding.li.models
 
 /**
  * Represents a value of one of two possible types (a disjoint union).
@@ -22,7 +22,7 @@ sealed class Either<out L, out R> {
 
     fun either(fnL: (L) -> Any, fnR: (R) -> Any): Any =
         when (this) {
-            is Either.Left -> fnL(a)
-            is Either.Right -> fnR(b)
+            is Left -> fnL(a)
+            is Right -> fnR(b)
         }
 }

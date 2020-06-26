@@ -11,5 +11,8 @@ data class PlaceViewItem(
     var cityName: String,
     val latitude: Double,
     val longitude: Double,
-    var openingHours: Array<OpeningDay>
-)
+    var openingHours: Array<OpeningDay>,
+    val distance: Int,
+    val isOpen: Boolean
+) {
+}

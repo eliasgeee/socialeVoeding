@@ -46,5 +46,6 @@ dependencies {
     implementation androidDependencies.retrofitCoroutines
     implementation androidDependencies.room
     implementation androidDependencies.koinAndroid
+    implementation androidDependencies.roomCoroutines
     kapt androidDependencies.roomCompiler
 }

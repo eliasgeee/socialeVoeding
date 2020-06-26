@@ -3,7 +3,7 @@ package com.socialevoeding.framework_androidsdk.local.sharedPreferences
 import android.content.SharedPreferences
 import com.socialevoeding.data.datasources.local.cache.UserLocationCacheDataSource
 import com.socialevoeding.data.dtos.local.device.UserLocationDTO
-import com.socialevoeding.domain.model.Either
+import com.socialevoeding.li.models.Either
 import com.squareup.moshi.JsonAdapter
 
 const val locationKey = "currentLocationUser"

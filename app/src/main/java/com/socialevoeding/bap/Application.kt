@@ -3,11 +3,12 @@ package com.socialevoeding.bap
 import android.app.Application
 import android.os.Build
 import androidx.work.*
-import com.socialevoeding.data.di.dataModule
 import com.socialevoeding.presentation_android.di.presentationModule
-import com.socialevoeding.usecases.di.useCaseModule
-import com.socialevoeding.framework_androidsdk.di.frameworkAndroidModule
 import com.socialevoeding.bap.work.RefreshDataWorker
+import com.socialevoeding.data.di.dataModule
+import com.socialevoeding.framework_androidsdk.di.frameworkAndroidModule
+import com.socialevoeding.framework_shared.di.frameworkSharedModule
+import com.socialevoeding.usecases.di.useCaseModule
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -30,7 +31,7 @@ class Application : Application() {
             modules(
                 dataModule,
                 presentationModule,
-                useCaseModule, frameworkAndroidModule
+                useCaseModule, frameworkAndroidModule, frameworkSharedModule
             )
             delayedInit()
         }

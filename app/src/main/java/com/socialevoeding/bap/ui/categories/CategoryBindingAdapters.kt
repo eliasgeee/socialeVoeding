@@ -4,10 +4,10 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.socialevoeding.bap.R
-import com.socialevoeding.domain.model.Category
+import com.socialevoeding.presentation_android.viewItems.CategoryViewItem
 
 @BindingAdapter("bg_cat")
-fun LinearLayout.setBackground(category: Category?) {
+fun LinearLayout.setBackground(category: CategoryViewItem?) {
     category.let {
         if (category?.id == 1) {
             setBackgroundColor(resources.getColor(R.color.pastel_yellow))
@@ -31,7 +31,7 @@ fun LinearLayout.setBackground(category: Category?) {
 }
 
 @BindingAdapter("cat_name")
-fun TextView.setCategoryName(category: Category?) {
+fun TextView.setCategoryName(category: CategoryViewItem?) {
     category.let {
         if (it!!.name == "FOOD")
             text = resources.getString(R.string.food)

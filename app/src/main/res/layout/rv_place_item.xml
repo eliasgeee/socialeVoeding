@@ -8,7 +8,7 @@
             type="com.socialevoeding.bap.ui.places.PlacesClickListener" />
         <variable
             name="place"
-            type="com.socialevoeding.domain.model.Place" />
+            type="com.socialevoeding.presentation_android.viewItems.PlaceViewItem" />
     </data>
 
     <com.google.android.material.card.MaterialCardView

@@ -10,8 +10,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.socialevoeding.bap.R
 import com.socialevoeding.bap.databinding.FragmentHomeScreenBinding
-import com.socialevoeding.domain.model.Category
 import com.socialevoeding.bap.ui.BaseFragment
+import com.socialevoeding.presentation_android.viewItems.CategoryViewItem
 import com.socialevoeding.presentation_android.viewModels.CategoryViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -44,7 +44,7 @@ class CategoryScreenFragment : BaseFragment() {
     private fun updateUi() {
 
         categoryAdapter = CategoryAdapter(requireContext(), object : CategoryClickListener {
-            override fun onCategoryClick(category: Category) {
+            override fun onCategoryClick(category: CategoryViewItem) {
                 categoryViewModel.goToCategory(category)
             }
         })

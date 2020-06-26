@@ -7,13 +7,10 @@ import com.socialevoeding.framework_androidsdk.local.room.mappers.base.RoomMappe
 object RoomPlaceMapper : RoomMapperFacade<RoomPlaceEntity, PlaceEntity> {
     override fun mapFromRoomEntity(entity: RoomPlaceEntity): PlaceEntity {
         return PlaceEntity(
-            id = entity.id,
             name = entity.name,
-            distance = entity.distance,
             telephoneNumber = entity.telephoneNumber,
             address = entity.address,
             webUrl = entity.webUrl,
-            isOpen = entity.isOpen,
             img = entity.img,
             latitude = entity.latitude,
             longitude = entity.longitude,
@@ -24,13 +21,10 @@ object RoomPlaceMapper : RoomMapperFacade<RoomPlaceEntity, PlaceEntity> {
 
     override fun mapToRoomEntity(model: PlaceEntity): RoomPlaceEntity {
         return RoomPlaceEntity(
-            id = model.id,
             name = model.name,
-            distance = model.distance,
             telephoneNumber = model.telephoneNumber,
             address = model.address,
             webUrl = model.webUrl,
-            isOpen = model.isOpen,
             img = model.img,
             latitude = model.latitude,
             longitude = model.longitude,

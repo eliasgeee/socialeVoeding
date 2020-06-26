@@ -46,6 +46,10 @@ dependencies {
     implementation project(':presentation-android')
     implementation project(':util')
     implementation project(':util-android')
+    implementation project(':data')
+    implementation project(':usecases')
+    implementation project(':framework-AndroidSDK')
+    implementation project(':framework-shared')
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'

@@ -1,7 +1,7 @@
 package com.socialevoeding.presentation_android.viewModels
 
 import androidx.lifecycle.ViewModel
-import com.socialevoeding.domain.model.Either
+import com.socialevoeding.li.models.Either
 import com.socialevoeding.domain.model.UserLocation
 import com.socialevoeding.li.extensions.getNormalizedName
 import com.socialevoeding.usecases.categorieUseCases.GetCategoriesUseCase

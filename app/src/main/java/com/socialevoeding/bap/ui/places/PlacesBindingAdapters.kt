@@ -4,11 +4,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.socialevoeding.bap.R
-import com.socialevoeding.domain.model.PlaceLocation
-import com.socialevoeding.domain.model.Place
+import com.socialevoeding.presentation_android.viewItems.PlaceViewItem
 
 @BindingAdapter("clock_color")
-fun ImageView.setClock(place: Place) {
+fun ImageView.setClock(place: PlaceViewItem) {
     place.let {
         if (place.isOpen)
             setBackgroundColor(resources.getColor(R.color.pastel_green))
@@ -18,7 +17,7 @@ fun ImageView.setClock(place: Place) {
 }
 
 @BindingAdapter("openings_hours_color")
-fun TextView.setOpeningshoursColor(place: Place) {
+fun TextView.setOpeningshoursColor(place: PlaceViewItem) {
     place.let {
         if (place.isOpen)
             setBackgroundColor(resources.getColor(R.color.pastel_green))
@@ -30,6 +29,6 @@ fun TextView.setOpeningshoursColor(place: Place) {
 }
 
 @BindingAdapter("eat_in")
-fun TextView.setPlacesStringWithCityName(placeLocation: PlaceLocation?) {
-    text = resources.getString(R.string.eat_in_city, placeLocation?.cityName)
+fun TextView.setPlacesStringWithCityName(userLocation : String) {
+    text = resources.getString(R.string.eat_in_city, userLocation)
 }

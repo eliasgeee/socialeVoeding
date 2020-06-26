@@ -11,10 +11,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.socialevoeding.bap.R
 import com.socialevoeding.bap.databinding.FragmentCategoryScreenBinding
-import com.socialevoeding.domain.model.Category
-import com.socialevoeding.domain.model.Place
-import com.socialevoeding.framework.device.gps.GPSTracker
 import com.socialevoeding.bap.ui.BaseFragment
+import com.socialevoeding.presentation_android.viewItems.CategoryViewItem
+import com.socialevoeding.presentation_android.viewItems.PlaceViewItem
 import com.socialevoeding.presentation_android.viewModels.PlacesViewModel
 import kotlinx.android.synthetic.main.toolbar.view.*
 import kotlinx.android.synthetic.main.ttsbar.view.*
@@ -25,18 +24,13 @@ class PlacesScreenFragment() : BaseFragment() {
     private lateinit var binding: FragmentCategoryScreenBinding
     private var placesAdapter: PlacesAdapter? = null
     private val placesViewModel: PlacesViewModel by viewModel()
-    private var category: Category? = null
-    private var gpsTracker =
-        com.socialevoeding.framework.device.gps.GPSTracker()
+    private var category: CategoryViewItem? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        gpsTracker.context = context
-        gpsTracker.startGPSTracker()
 
         category = PlacesScreenFragmentArgs.fromBundle(
             requireArguments()
@@ -63,12 +57,10 @@ class PlacesScreenFragment() : BaseFragment() {
         }
 
         placesAdapter = PlacesAdapter(requireContext(), object : PlacesClickListener {
-            override fun onPlaceClick(place: Place) {
+            override fun onPlaceClick(place: PlaceViewItem) {
                 placesViewModel.goToPlace(place)
             }
         })
-
-        placesViewModel.setCurrentLocation(gpsTracker.getCurrentLocation())
 
         placesViewModel.currentPlaceLocation.observe(this, Observer {
             if (it != null)
@@ -115,7 +107,7 @@ class PlacesScreenFragment() : BaseFragment() {
         })
 
         placesViewModel.currentPlaceLocation.observe(this, Observer {
-            binding.txtPlaces.text = resources.getString(R.string.eat_in_city, it.cityName)
+            binding.txtPlaces.text = resources.getString(R.string.eat_in_city, it)
         })
 
         binding.toolbar.btn_toolbar_back.setOnClickListener {
@@ -141,10 +133,5 @@ class PlacesScreenFragment() : BaseFragment() {
         this.findNavController().navigate(
             PlacesScreenFragmentDirections.actionCategoryScreenFragmentToHomeScreenFragment()
         )
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        gpsTracker.stopUsingGPS()
     }
 }
