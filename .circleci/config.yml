@@ -38,14 +38,14 @@ jobs:
           path: domain/build/test-results
       - run:
           name: Run Data Module Unit Tests
-          command: ./gradlew :data:testDebugUnitTest
+          command: ./gradlew :data:test
       - store_artifacts:
           path: data/build/reports
       - store_test_results:
           path: data/build/test-results
       - run:
           name: Run UseCase Module Unit Tests
-          command: ./gradlew :usecases:testDebugUnitTest
+          command: ./gradlew :usecases:test
       - store_artifacts:
           path: usecases/build/reports
       - store_test_results:
@@ -59,14 +59,14 @@ jobs:
           path: frameworkAndroid/build/test-results
       - run:
           name: Run SharedFramework Module Unit Tests
-          command: ./gradlew :framework-shared:testDebugUnitTest
+          command: ./gradlew :framework-shared:test
       - store_artifacts:
           path: frameworkShared/build/reports
       - store_test_results:
           path: frameworkShared/build/test-results
       - run:
           name: Run PresentationAndroid Module Unit Tests
-          command: ./gradlew :presentation-android:testDebugUnitTest
+          command: ./gradlew :presentation-android:test
       - store_artifacts:
           path: presentationAndroid/build/reports
       - store_test_results:
