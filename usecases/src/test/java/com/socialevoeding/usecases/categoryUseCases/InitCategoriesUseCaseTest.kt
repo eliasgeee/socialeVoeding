@@ -42,7 +42,7 @@ class InitCategoriesUseCaseTest {
     }
 
     @Test
-    fun initcategoriesreturnssuccesfromrepository() = runBlocking {
+    fun `init categories returns succes from repository`() = runBlocking {
         coEvery { categoryRepository.insertCategoriesIntoDatabase(categories) } returns Unit
 
         var result: Result<Unit>? = null
@@ -55,7 +55,7 @@ class InitCategoriesUseCaseTest {
             }
             }
         runBlockingTest {
-            delay(10000)
+            delay(200000)
         }
         Assert.assertEquals(Result.Success(Unit), result)
     }
