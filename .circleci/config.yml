@@ -71,11 +71,11 @@ jobs:
           path: presentationAndroid/build/reports
       - store_test_results:
           path: presentationAndroid/build/test-results
-      - run:
-          name: Run Lint Test
-          command: ./gradlew lint
-      - store_artifacts:
-          path: lint/build/reports
+#      - run:
+#          name: Run Lint Test
+#          command: ./gradlew lint
+#      - store_artifacts:
+#          path: lint/build/reports
       - run:
           name: Run Ktlint Test
           command: ./gradlew ktlintFormat
