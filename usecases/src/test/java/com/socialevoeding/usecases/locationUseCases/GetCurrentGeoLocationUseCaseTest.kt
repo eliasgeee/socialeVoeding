@@ -3,7 +3,6 @@ package com.socialevoeding.usecases.locationUseCases
 import com.socialevoeding.domain.model.Coordinates
 import com.socialevoeding.domain.model.UserLocation
 import com.socialevoeding.domain.repositories.UserLocationRepository
-import com.socialevoeding.usecases.locationUseCases.GetCurrentGeoLocationUseCase
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.coVerify
@@ -20,7 +19,7 @@ import org.junit.Before
 import org.junit.Test
 
 @ExperimentalCoroutinesApi
-class GetCurrentGeoLocationUseCaseTest{
+class GetCurrentGeoLocationUseCaseTest {
     private lateinit var getCurrentGeoLocationUseCase: GetCurrentGeoLocationUseCase
     private val userLocationRepository = mockk<UserLocationRepository>()
     private val testCoroutineDispatcher = TestCoroutineDispatcher()
@@ -52,7 +51,7 @@ class GetCurrentGeoLocationUseCaseTest{
     fun getcurrentgeolocationreturnsuserlocationfromrepository() = runBlocking {
         coEvery { userLocationRepository.getCurrentGeoLocation(currentCoordinates) } returns userLocation
 
-        var responseUserLocation : UserLocation? = null
+        var responseUserLocation: UserLocation? = null
 
         testCoroutineDispatcher.runBlockingTest {
             getCurrentGeoLocationUseCase.execute {

@@ -1,10 +1,7 @@
 package com.socialevoeding.usecases.locationUseCases
 
-import com.socialevoeding.domain.model.Coordinates
 import com.socialevoeding.domain.model.UserLocation
 import com.socialevoeding.domain.repositories.UserLocationRepository
-import com.socialevoeding.usecases.locationUseCases.GetCurrentGeoLocationUseCase
-import com.socialevoeding.usecases.locationUseCases.GetLastKnownUserLocationUseCase
 import com.socialevoeding.util_models.Either
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
@@ -40,7 +37,7 @@ class GetLastKnownUserLocationUseCaseTest {
         coEvery { userLocationRepository.getLastKnownUserLocation() } returns Either.Right(userLocation)
 
         testCoroutineDispatcher.runBlockingTest {
-            getLastKnownUserLocationUseCase.execute {  }
+            getLastKnownUserLocationUseCase.execute { }
             coVerify { userLocationRepository.getLastKnownUserLocation() }
         }
     }
@@ -49,12 +46,12 @@ class GetLastKnownUserLocationUseCaseTest {
     fun getlastknownuserlocationreturnsuserlocationfromrepository() = runBlocking {
         coEvery { userLocationRepository.getLastKnownUserLocation() } returns Either.Right(userLocation)
 
-        var responseUserLocation : UserLocation? = null
+        var responseUserLocation: UserLocation? = null
 
         testCoroutineDispatcher.runBlockingTest {
             getLastKnownUserLocationUseCase.execute {
                 onComplete {
-                    responseUserLocation = when(it.data){
+                    responseUserLocation = when (it.data) {
                         is Either.Left -> null
                         is Either.Right -> (it.data as Either.Right<UserLocation>).b
                     }
@@ -73,7 +70,7 @@ class GetLastKnownUserLocationUseCaseTest {
     fun getlastknownuserlocationreturnsunitfromrepository() = runBlocking {
         coEvery { userLocationRepository.getLastKnownUserLocation() } returns Either.Left(Unit)
 
-        var response : Either<Unit, UserLocation>? = null
+        var response: Either<Unit, UserLocation>? = null
 
         testCoroutineDispatcher.runBlockingTest {
             getLastKnownUserLocationUseCase.execute {
