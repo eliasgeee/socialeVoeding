@@ -46,31 +46,31 @@ jobs:
       - run:
           name: Run UseCase Module Unit Tests
           command: ./gradlew :usecases:testDebugUnitTest
-            - store_artifacts:
-                path: usecases/build/reports
-            - store_test_results:
-                path: usecases/build/test-results
+      - store_artifacts:
+          path: usecases/build/reports
+      - store_test_results:
+          path: usecases/build/test-results
       - run:
           name: Run AndroidFramework Module Unit Tests
           command: ./gradlew :framework-AndroidSDK:testDebugUnitTest
-            - store_artifacts:
-                path: frameworkAndroid/build/reports
-            - store_test_results:
-                path: frameworkAndroid/build/test-results
+      - store_artifacts:
+          path: frameworkAndroid/build/reports
+      - store_test_results:
+          path: frameworkAndroid/build/test-results
       - run:
           name: Run SharedFramework Module Unit Tests
           command: ./gradlew :framework-shared:testDebugUnitTest
-            - store_artifacts:
-                path: frameworkShared/build/reports
-            - store_test_results:
-                path: frameworkShared/build/test-results
+      - store_artifacts:
+          path: frameworkShared/build/reports
+      - store_test_results:
+          path: frameworkShared/build/test-results
       - run:
           name: Run PresentationAndroid Module Unit Tests
           command: ./gradlew :presentation-android:testDebugUnitTest
-            - store_artifacts:
-                path: presentationAndroid/build/reports
-            - store_test_results:
-                path: presentationAndroid/build/test-results
+      - store_artifacts:
+          path: presentationAndroid/build/reports
+      - store_test_results:
+          path: presentationAndroid/build/test-results
       - run:
           name: Run Lint Test
           command: ./gradlew lint
@@ -79,5 +79,5 @@ jobs:
       - run:
           name: Run Ktlint Test
           command: ./gradlew ktlintFormat
-            - store_artifacts:
-                path: ktlint/build/reports
+      - store_artifacts:
+          path: ktlint/build/reports
