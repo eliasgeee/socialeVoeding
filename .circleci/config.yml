@@ -23,10 +23,61 @@ jobs:
             - ~/.gradle
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
       - run:
-          name: Run Tests
-          command: ./gradlew lint test
+          name: Run App Module Unit Tests
+          command: ./gradlew :app:testDebugUnitTest
       - store_artifacts:
           path: app/build/reports
-          destination: reports
       - store_test_results:
           path: app/build/test-results
+      - run:
+          name: Run Domain Module Unit Tests
+          command: ./gradlew :domain:test
+      - store_artifacts:
+          path: domain/build/reports
+      - store_test_results:
+          path: domain/build/test-results
+      - run:
+          name: Run Data Module Unit Tests
+          command: ./gradlew :data:testDebugUnitTest
+      - store_artifacts:
+          path: data/build/reports
+      - store_test_results:
+          path: data/build/test-results
+      - run:
+          name: Run UseCase Module Unit Tests
+          command: ./gradlew :usecases:testDebugUnitTest
+            - store_artifacts:
+                path: usecases/build/reports
+            - store_test_results:
+                path: usecases/build/test-results
+      - run:
+          name: Run AndroidFramework Module Unit Tests
+          command: ./gradlew :framework-AndroidSDK:testDebugUnitTest
+            - store_artifacts:
+                path: frameworkAndroid/build/reports
+            - store_test_results:
+                path: frameworkAndroid/build/test-results
+      - run:
+          name: Run SharedFramework Module Unit Tests
+          command: ./gradlew :framework-shared:testDebugUnitTest
+            - store_artifacts:
+                path: frameworkShared/build/reports
+            - store_test_results:
+                path: frameworkShared/build/test-results
+      - run:
+          name: Run PresentationAndroid Module Unit Tests
+          command: ./gradlew :presentation-android:testDebugUnitTest
+            - store_artifacts:
+                path: presentationAndroid/build/reports
+            - store_test_results:
+                path: presentationAndroid/build/test-results
+      - run:
+          name: Run Lint Test
+          command: ./gradlew lint
+      - store_artifacts:
+          path: lint/build/reports
+      - run:
+          name: Run Ktlint Test
+          command: ./gradlew ktlintFormat
+            - store_artifacts:
+                path: ktlint/build/reports
