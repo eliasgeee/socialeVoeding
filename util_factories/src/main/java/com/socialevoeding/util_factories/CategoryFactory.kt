@@ -1,4 +1,4 @@
-package com.socialevoeding.li.factory
+package com.socialevoeding.util_factories
 
 import com.socialevoeding.domain.model.Category
 

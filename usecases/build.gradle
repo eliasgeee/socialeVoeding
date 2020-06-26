@@ -1,25 +1,29 @@
-apply plugin: 'java-library'
 apply plugin: 'kotlin'
-apply plugin: 'kotlin-kapt'
 
 dependencies {
+    implementation "com.jakewharton.threetenabp:threetenabp:1.2.4"
+    def testDependencies = rootProject.ext.testDependencies
+    testImplementation testDependencies.junit
+    testImplementation testDependencies.coroutines
+    testImplementation(testDependencies.threeTenBP) {
+        exclude group:'com.jakewharton.threetenabp', module:'threetenabp'
+    }
+    testImplementation testDependencies.mockk
 
     implementation project(':data')
     implementation project(':domain')
-    implementation project(':util')
     implementation project(':util_models')
+    implementation project(':util_factories')
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     def commonDependencies = rootProject.ext.commonDependencies
     implementation commonDependencies.kotlin
     implementation commonDependencies.koin
     implementation commonDependencies.coroutines
-
-    def testDependencies = rootProject.ext.testDependencies
-    implementation testDependencies.junit
+  /*  implementation testDependencies.junit
     testImplementation testDependencies.junit
     testImplementation testDependencies.mockk
     implementation testDependencies.mockk
     implementation testDependencies.coroutines
-    testImplementation(testDependencies.threeTenBP)
+    testImplementation(testDependencies.threeTenBP)*/
 }

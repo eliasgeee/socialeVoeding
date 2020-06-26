@@ -1,4 +1,4 @@
-package tests.locationUseCases
+package com.socialevoeding.usecases.locationUseCases
 
 import com.socialevoeding.domain.model.Coordinates
 import com.socialevoeding.domain.repositories.UserLocationRepository
@@ -33,7 +33,7 @@ class GetCurrentCoordinatesUseCaseTest {
     }
 
     @Test
-    fun `get current user coordinates use case calls userlocation repository`() = runBlocking {
+    fun getcurrentusercoordinatesusecasecallsuserlocationrepository() = runBlocking {
         coEvery { userLocationRepository.getCurrentUserCoordinates() } returns coordinates
 
         testCoroutineDispatcher.runBlockingTest {
@@ -44,7 +44,7 @@ class GetCurrentCoordinatesUseCaseTest {
     }
 
     @Test
-    fun `get current user coordinates use case returns coordinates user`() = runBlocking {
+    fun getcurrentusercoordinatesusecasereturnscoordinatesuser() = runBlocking {
         coEvery { userLocationRepository.getCurrentUserCoordinates() } returns coordinates
 
         var responseCoordinates: Coordinates? = null

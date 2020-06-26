@@ -1,8 +1,7 @@
-package tests.categoryUseCases
+package com.socialevoeding.usecases.categoryUseCases
 
 import com.socialevoeding.domain.model.Category
 import com.socialevoeding.domain.repositories.CategoryRepository
-import com.socialevoeding.li.factory.CategoryFactory
 import com.socialevoeding.usecases.categorieUseCases.InitCategoriesUseCase
 import com.socialevoeding.util_models.Result
 import io.mockk.*
@@ -13,6 +12,7 @@ import kotlinx.coroutines.test.setMain
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
+import com.socialevoeding.util_factories.CategoryFactory
 
 @ExperimentalCoroutinesApi
 class InitCategoriesUseCaseTest {
@@ -31,7 +31,7 @@ class InitCategoriesUseCaseTest {
     }
 
     @Test
-    fun `init categories use case calls category repository`() = runBlocking {
+    fun initcategoriesusecasecallscategoryrepository() = runBlocking {
         coEvery { categoryRepository.insertCategoriesIntoDatabase(categories) } returns Unit
 
         testCoroutineDispatcher.runBlockingTest {
@@ -42,7 +42,7 @@ class InitCategoriesUseCaseTest {
     }
 
     @Test
-    fun `init categories returns succes from repository`() = runBlocking {
+    fun initcategoriesreturnssuccesfromrepository() = runBlocking {
         coEvery { categoryRepository.insertCategoriesIntoDatabase(categories) } returns Unit
 
         var result: Result<Unit>? = null

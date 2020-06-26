@@ -1,39 +1,39 @@
 package com.socialevoeding.framework_androidsdk.local.room.dao
 
 import com.socialevoeding.framework_androidsdk.local.room.entities.RoomCategoryEntity
-import com.socialevoeding.li.factory.DataFactory
+import tests.categoryUseCases.DataFactory
 
 class CategoryDaoTest {
     private val categories = listOf<RoomCategoryEntity>(
         RoomCategoryEntity(
             id = 1,
-            name = DataFactory.randomString(),
-            type = DataFactory.randomString()
+            name = tests.categoryUseCases.DataFactory.randomString(),
+            type = tests.categoryUseCases.DataFactory.randomString()
         ),
         RoomCategoryEntity(
             id = 2,
-            name = DataFactory.randomString(),
-            type = DataFactory.randomString()
+            name = tests.categoryUseCases.DataFactory.randomString(),
+            type = tests.categoryUseCases.DataFactory.randomString()
         ),
         RoomCategoryEntity(
             id = 3,
-            name = DataFactory.randomString(),
-            type = DataFactory.randomString()
+            name = tests.categoryUseCases.DataFactory.randomString(),
+            type = tests.categoryUseCases.DataFactory.randomString()
         ),
         RoomCategoryEntity(
             id = 4,
-            name = DataFactory.randomString(),
-            type = DataFactory.randomString()
+            name = tests.categoryUseCases.DataFactory.randomString(),
+            type = tests.categoryUseCases.DataFactory.randomString()
         ),
         RoomCategoryEntity(
             id = 5,
-            name = DataFactory.randomString(),
-            type = DataFactory.randomString()
+            name = tests.categoryUseCases.DataFactory.randomString(),
+            type = tests.categoryUseCases.DataFactory.randomString()
         ),
         RoomCategoryEntity(
             id = 6,
-            name = DataFactory.randomString(),
-            type = DataFactory.randomString()
+            name = tests.categoryUseCases.DataFactory.randomString(),
+            type = tests.categoryUseCases.DataFactory.randomString()
         )
     )
 }

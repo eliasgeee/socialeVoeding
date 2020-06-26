@@ -1,7 +1,6 @@
-package tests.categoryUseCases
+package com.socialevoeding.usecases.categoryUseCases
 
 import com.socialevoeding.domain.repositories.CategoryRepository
-import com.socialevoeding.li.factory.CategoryFactory
 import com.socialevoeding.usecases.categorieUseCases.GetCategoriesUseCase
 import io.mockk.*
 import kotlinx.coroutines.*
@@ -11,6 +10,7 @@ import kotlinx.coroutines.test.setMain
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
+import com.socialevoeding.util_factories.CategoryFactory
 
 @ExperimentalCoroutinesApi
 class GetCategoriesUseCaseTest {
@@ -20,13 +20,12 @@ class GetCategoriesUseCaseTest {
 
     @Before
     fun setUp() {
-        MockKAnnotations.init(this)
         getCategoriesUseCase = GetCategoriesUseCase(categoryRepository)
         Dispatchers.setMain(testCoroutineDispatcher)
     }
 
     @Test
-    fun `get categories use case calls category repository`() = runBlocking {
+    fun getcategoriesusecasecallscategoryrepository() = runBlocking {
         coEvery { categoryRepository.getCategories() } returns CategoryFactory.makeCategoriesList(2).toMutableList()
 
         testCoroutineDispatcher.runBlockingTest {
@@ -37,7 +36,7 @@ class GetCategoriesUseCaseTest {
     }
 
     @Test
-    fun `get categories returns categories from category repository`() = runBlocking {
+    fun getcategoriesreturnscategoriesfromcategoryrepository() = runBlocking {
         coEvery { categoryRepository.getCategories() } returns CategoryFactory.makeCategoriesList(2).toMutableList()
 
         var size = 0

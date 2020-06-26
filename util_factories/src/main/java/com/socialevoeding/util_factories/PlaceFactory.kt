@@ -1,0 +1,3 @@
+package com.socialevoeding.util_factories
+
+object PlaceFactory

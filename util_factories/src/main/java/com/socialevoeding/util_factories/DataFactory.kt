@@ -1,4 +1,4 @@
-package com.socialevoeding.li.factory
+package com.socialevoeding.util_factories
 
 import java.security.SecureRandom
 import java.time.LocalDate
@@ -32,7 +32,10 @@ object DataFactory {
     }
 
     fun randomTime(): LocalTime {
-        return LocalTime.of(randomHour(), randomMinute())
+        return LocalTime.of(
+            randomHour(),
+            randomMinute()
+        )
     }
 
     fun randomDate(): LocalDate {
@@ -52,6 +55,9 @@ object DataFactory {
     }
 
     fun randomDateTime(): LocalDateTime {
-        return LocalDateTime.of(randomDate(), randomTime())
+        return LocalDateTime.of(
+            randomDate(),
+            randomTime()
+        )
     }
 }
