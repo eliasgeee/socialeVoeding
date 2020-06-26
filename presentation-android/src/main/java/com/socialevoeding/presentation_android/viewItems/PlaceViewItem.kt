@@ -14,5 +14,4 @@ data class PlaceViewItem(
     var openingHours: Array<OpeningDay>,
     val distance: Int,
     val isOpen: Boolean
-) {
-}
+)

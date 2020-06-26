@@ -28,7 +28,7 @@ class PlaceDetailsFragment : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-       /* place = PlaceDetailsFragmentArgs.fromBundle(
+        /* place = PlaceDetailsFragmentArgs.fromBundle(
             requireArguments()
         ).selectedPlace
 

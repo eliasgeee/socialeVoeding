@@ -65,7 +65,7 @@ class MainActivity() : AppCompatActivity() {
                 }
             }
         } else {
-            initViewModel.updateLocationAndPlaces()}
+            initViewModel.updateLocationAndPlaces() }
     }
 
     override fun onRequestPermissionsResult(

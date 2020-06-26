@@ -6,7 +6,7 @@ object CategoryDataProvider {
 
 fun getCategories(): List<CategoryEntity> {
     val cat = CategoryEntity(
-        id =1,
+        id = 1,
         name = "Food",
         type = "FOOD"
     )

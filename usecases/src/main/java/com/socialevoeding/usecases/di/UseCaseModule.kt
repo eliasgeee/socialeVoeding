@@ -29,6 +29,6 @@ val useCaseModule = module {
             get()
         )
     }
-    factory {GetLastKnownUserLocationUseCase(get())}
+    factory { GetLastKnownUserLocationUseCase(get()) }
     factory { GetCurrentCoordinatesUseCase(get()) }
 }

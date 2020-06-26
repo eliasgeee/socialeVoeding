@@ -29,6 +29,6 @@ fun TextView.setOpeningshoursColor(place: PlaceViewItem) {
 }
 
 @BindingAdapter("eat_in")
-fun TextView.setPlacesStringWithCityName(userLocation : String) {
+fun TextView.setPlacesStringWithCityName(userLocation: String) {
     text = resources.getString(R.string.eat_in_city, userLocation)
 }

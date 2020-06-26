@@ -36,8 +36,6 @@ class CategoryDaoTest {
             type = DataFactory.randomString()
         )
     )
-
-
 }
 
 /*
