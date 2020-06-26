@@ -6,7 +6,7 @@ import com.socialevoeding.data.datasources.remote.UserLocationRemoteDataSource
 import com.socialevoeding.data.mappers.CacheLocationItemMapper
 import com.socialevoeding.data.mappers.DeviceCoordinatesMapper
 import com.socialevoeding.domain.model.Coordinates
-import com.socialevoeding.li.models.Either
+import com.socialevoeding.util_models.Either
 import com.socialevoeding.domain.model.UserLocation
 import com.socialevoeding.domain.repositories.UserLocationRepository
 

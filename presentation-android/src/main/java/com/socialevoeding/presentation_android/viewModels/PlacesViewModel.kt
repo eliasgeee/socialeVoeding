@@ -3,7 +3,7 @@ package com.socialevoeding.presentation_android.viewModels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.socialevoeding.li.models.Either
+import com.socialevoeding.util_models.Either
 import com.socialevoeding.domain.model.UserLocation
 import com.socialevoeding.presentation_android.mappers.PlaceViewItemMapper
 import com.socialevoeding.presentation_android.viewItems.PlaceViewItem

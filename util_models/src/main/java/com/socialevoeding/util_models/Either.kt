@@ -1,4 +1,4 @@
-package com.socialevoeding.li.models
+package com.socialevoeding.util_models
 
 /**
  * Represents a value of one of two possible types (a disjoint union).
