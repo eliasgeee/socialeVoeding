@@ -3,13 +3,11 @@ package tests.categoryUseCases
 import com.socialevoeding.domain.model.Category
 import com.socialevoeding.domain.repositories.CategoryRepository
 import com.socialevoeding.li.factory.CategoryFactory
-import com.socialevoeding.usecases.base.UseCase
 import com.socialevoeding.usecases.categorieUseCases.InitCategoriesUseCase
 import com.socialevoeding.util_models.Result
 import io.mockk.*
 import kotlinx.coroutines.*
 import kotlinx.coroutines.test.TestCoroutineDispatcher
-import kotlinx.coroutines.test.TestCoroutineScope
 import kotlinx.coroutines.test.runBlockingTest
 import kotlinx.coroutines.test.setMain
 import org.junit.Assert
@@ -21,10 +19,10 @@ class InitCategoriesUseCaseTest {
     private lateinit var initCategoriesUseCase: InitCategoriesUseCase
     private val categoryRepository = mockk<CategoryRepository>()
     private val testCoroutineDispatcher = TestCoroutineDispatcher()
-    private lateinit var categories : List<Category>
+    private lateinit var categories: List<Category>
 
     @Before
-    fun setUp(){
+    fun setUp() {
         MockKAnnotations.init(this)
         initCategoriesUseCase = InitCategoriesUseCase(categoryRepository)
         Dispatchers.setMain(testCoroutineDispatcher)
@@ -47,7 +45,7 @@ class InitCategoriesUseCaseTest {
     fun `init categories returns succes from repository`() = runBlocking {
         coEvery { categoryRepository.insertCategoriesIntoDatabase(categories) } returns Unit
 
-        var result : Result<Unit>? = null
+        var result: Result<Unit>? = null
 
         testCoroutineDispatcher.runBlockingTest {
             initCategoriesUseCase.execute {

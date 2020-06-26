@@ -1,5 +1,3 @@
 package tests.locationUseCases
 
-class GetCurrentGeoLocationUseCaseTest {
-
-}
+class GetCurrentGeoLocationUseCaseTest

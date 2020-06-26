@@ -10,7 +10,7 @@ object CategoryFactory {
         )
     }
 
-    fun makeCategoriesList(count: Int = 5) : List<Category>{
+    fun makeCategoriesList(count: Int = 5): List<Category> {
         val categories = mutableListOf<Category>()
         var counter = count
         do {

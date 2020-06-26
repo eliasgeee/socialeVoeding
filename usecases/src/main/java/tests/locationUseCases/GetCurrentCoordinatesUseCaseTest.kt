@@ -26,7 +26,7 @@ class GetCurrentCoordinatesUseCaseTest {
     private val coordinates = Coordinates(420.0, 69.69)
 
     @Before
-    fun setUp(){
+    fun setUp() {
         MockKAnnotations.init(this)
         getCurrentCoordinatesUseCase = GetCurrentCoordinatesUseCase(userLocationRepository)
         Dispatchers.setMain(testCoroutineDispatcher)
@@ -47,7 +47,7 @@ class GetCurrentCoordinatesUseCaseTest {
     fun `get current user coordinates use case returns coordinates user`() = runBlocking {
         coEvery { userLocationRepository.getCurrentUserCoordinates() } returns coordinates
 
-        var responseCoordinates : Coordinates? = null
+        var responseCoordinates: Coordinates? = null
 
         testCoroutineDispatcher.runBlockingTest {
             getCurrentCoordinatesUseCase.execute {
