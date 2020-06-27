@@ -42,10 +42,8 @@ class RefreshPlacesUseCaseTest {
 
         delay(5000)
 
-        testCoroutineDispatcher.runBlockingTest {
-            refreshPlacesUseCase.execute { }
-            coVerify { placeRepository.refreshPlaces(userLocation, name) }
-        }
+        refreshPlacesUseCase.execute { }
+        coVerify { placeRepository.refreshPlaces(userLocation, name) }
     }
 
     @Test
