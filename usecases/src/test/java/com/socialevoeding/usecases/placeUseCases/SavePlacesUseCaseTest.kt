@@ -35,10 +35,9 @@ class SavePlacesUseCaseTest {
     fun `save places use case calls place repository`() = runBlocking {
         coEvery { placeRepository.insertPlacesIntoDatabase(emptyList()) } returns Unit
 
-        testCoroutineDispatcher.runBlockingTest {
-            savePlacesUseCase.execute { }
-            coVerify { placeRepository.insertPlacesIntoDatabase(emptyList()) }
-        }
+        savePlacesUseCase.execute { }
+
+        coVerify { placeRepository.insertPlacesIntoDatabase(emptyList()) }
     }
 
     @Test
