@@ -10,7 +10,6 @@ import com.socialevoeding.util_models.Either
 import com.socialevoeding.domain.model.UserLocation
 import com.socialevoeding.domain.repositories.UserLocationRepository
 
-// TODO
 class UserLocationRepositoryImpl(
     private val userLocationRemoteDataSource: UserLocationRemoteDataSource,
     private val userLocationCacheDataSource: UserLocationCacheDataSource,
