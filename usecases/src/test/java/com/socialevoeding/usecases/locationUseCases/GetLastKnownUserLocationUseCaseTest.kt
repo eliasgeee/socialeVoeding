@@ -57,7 +57,7 @@ class GetLastKnownUserLocationUseCaseTest {
                     }
                 }
             }
-            delay(300000)
+            Thread.sleep(5000)
         }
         runBlockingTest {
             delay(20000000)

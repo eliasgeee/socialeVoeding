@@ -45,7 +45,8 @@ class InitCategoriesUseCaseTest {
     fun `init categories returns succes from repository`() = runBlocking {
         coEvery { categoryRepository.insertCategoriesIntoDatabase(categories) } returns Unit
 
-        var result: Result<Unit>? = null
+        var result = mockk<Result<Unit>>()
+        Thread.sleep(5000)
 
         testCoroutineDispatcher.runBlockingTest {
             initCategoriesUseCase.execute {
@@ -54,9 +55,11 @@ class InitCategoriesUseCaseTest {
                 }
             }
             }
+
         runBlockingTest {
-            delay(200000)
+            delay(5000)
         }
-        Assert.assertEquals(Result.Success(Unit), result)
+
+            Assert.assertEquals(Result.Success(Unit), result)
     }
 }

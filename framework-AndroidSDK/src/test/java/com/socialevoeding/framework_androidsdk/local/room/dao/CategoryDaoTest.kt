@@ -1,3 +1,4 @@
+/*
 package com.socialevoeding.framework_androidsdk.local.room.dao
 
 import com.socialevoeding.framework_androidsdk.local.room.entities.RoomCategoryEntity
@@ -38,6 +39,7 @@ class CategoryDaoTest {
     )
 }
 
+*/
 /*
 @RunWith(MockitoJUnitRunner::class)
 class GetLocationsTests {
