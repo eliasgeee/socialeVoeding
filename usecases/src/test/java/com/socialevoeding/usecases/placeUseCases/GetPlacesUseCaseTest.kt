@@ -1,11 +1,7 @@
 package com.socialevoeding.usecases.placeUseCases
 
-import com.socialevoeding.domain.model.Place
-import com.socialevoeding.domain.repositories.CategoryRepository
 import com.socialevoeding.domain.repositories.PlaceRepository
-import com.socialevoeding.usecases.categorieUseCases.GetCategoriesUseCase
 import com.socialevoeding.util_factories.PlaceFactory
-import com.socialevoeding.util_models.Result
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
@@ -37,7 +33,7 @@ class GetPlacesUseCaseTest {
         coEvery { placeRepository.getPlacesFromLocalDatabase() } returns PlaceFactory.makePlacesList(3).toMutableList()
 
         testCoroutineDispatcher.runBlockingTest {
-            getPlacesUseCase.execute {  }
+            getPlacesUseCase.execute { }
             coVerify { placeRepository.getPlacesFromLocalDatabase() }
         }
     }

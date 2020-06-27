@@ -1,9 +1,8 @@
 package com.socialevoeding.util_factories
 
-import com.socialevoeding.domain.model.Category
 import com.socialevoeding.domain.model.Place
 
-object PlaceFactory{
+object PlaceFactory {
     fun makePlace(): Place {
         return Place(
             name = DataFactory.randomString(),
