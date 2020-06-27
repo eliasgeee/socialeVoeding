@@ -41,6 +41,7 @@ class GetCategoriesUseCaseTest {
 
         var size = 0
 
+        Thread.sleep(5000)
         testCoroutineDispatcher.runBlockingTest {
             getCategoriesUseCase.execute {
                 onComplete {

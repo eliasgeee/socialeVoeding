@@ -72,6 +72,7 @@ class GetLastKnownUserLocationUseCaseTest {
 
         var response: Either<Unit, UserLocation>? = null
 
+        Thread.sleep(5000)
         testCoroutineDispatcher.runBlockingTest {
             getLastKnownUserLocationUseCase.execute {
                 onComplete {

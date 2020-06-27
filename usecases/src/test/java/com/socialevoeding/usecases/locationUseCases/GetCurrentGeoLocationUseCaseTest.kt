@@ -53,6 +53,7 @@ class GetCurrentGeoLocationUseCaseTest {
 
         var responseUserLocation: UserLocation? = null
 
+        Thread.sleep(5000)
         testCoroutineDispatcher.runBlockingTest {
             getCurrentGeoLocationUseCase.execute {
                 onComplete {

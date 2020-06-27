@@ -47,6 +47,7 @@ class GetCurrentCoordinatesUseCaseTest {
         coEvery { userLocationRepository.getCurrentUserCoordinates() } returns coordinates
 
         var responseCoordinates: Coordinates? = null
+        Thread.sleep(5000)
 
         testCoroutineDispatcher.runBlockingTest {
             getCurrentCoordinatesUseCase.execute {
