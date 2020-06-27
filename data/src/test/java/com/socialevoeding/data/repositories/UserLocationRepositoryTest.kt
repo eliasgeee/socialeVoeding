@@ -1,0 +1,6 @@
+package com.socialevoeding.data.repositories
+
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+
+@ExperimentalCoroutinesApi
+class UserLocationRepositoryTest

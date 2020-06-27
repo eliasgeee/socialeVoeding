@@ -1,6 +1,6 @@
 package com.socialevoeding.data.datasources.local.database
 
-import com.socialevoeding.data.dtos.local.database.PlaceEntity
+import com.socialevoeding.data_entities.PlaceEntity
 
 interface PlaceLocalDataSource {
     suspend fun insertPlaces(places: List<PlaceEntity>)

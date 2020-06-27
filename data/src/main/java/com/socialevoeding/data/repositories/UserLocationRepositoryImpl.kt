@@ -14,7 +14,9 @@ import com.socialevoeding.domain.repositories.UserLocationRepository
 class UserLocationRepositoryImpl(
     private val userLocationRemoteDataSource: UserLocationRemoteDataSource,
     private val userLocationCacheDataSource: UserLocationCacheDataSource,
-    private val currentLocationDataSource: CurrentLocationDataSource
+    private val currentLocationDataSource: CurrentLocationDataSource,
+    private val cacheLocationItemMapper: CacheLocationItemMapper,
+    private val deviceCoordinatesMapper: DeviceCoordinatesMapper
 ) :
     UserLocationRepository {
     override suspend fun getCurrentGeoLocation(currentCoordinates: Coordinates): UserLocation {
@@ -31,12 +33,12 @@ class UserLocationRepositoryImpl(
 
     override suspend fun getLastKnownUserLocation(): Either<Unit, UserLocation> {
         return when (val result = userLocationCacheDataSource.getLastKnownUserLocation()) {
-            is Either.Right -> CacheLocationItemMapper.mapToDomainObject(result)
+            is Either.Right -> cacheLocationItemMapper.mapToDomainObject(result)
             is Either.Left -> result
         }
     }
 
     override suspend fun getCurrentUserCoordinates(): Coordinates {
-        return DeviceCoordinatesMapper.mapToDomainObject(currentLocationDataSource.getCurrentLocation())
+        return deviceCoordinatesMapper.mapToDomainObject(currentLocationDataSource.getCurrentLocation())
     }
 }

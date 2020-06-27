@@ -1,7 +1,6 @@
-package com.socialevoeding.data.dtos.local.database
+package com.socialevoeding.data_entities
 
 data class PlaceEntity(
-    val id: Int = 0,
     val name: String = "",
     val distance: Int = 0,
     val telephoneNumber: String = "",

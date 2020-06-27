@@ -1,6 +1,6 @@
 package com.socialevoeding.data.datasources.local.database
 
-import com.socialevoeding.data.dtos.local.database.CategoryEntity
+import com.socialevoeding.data_entities.CategoryEntity
 
 interface CategoryLocalDataSource {
     suspend fun getCategories(): List<CategoryEntity>

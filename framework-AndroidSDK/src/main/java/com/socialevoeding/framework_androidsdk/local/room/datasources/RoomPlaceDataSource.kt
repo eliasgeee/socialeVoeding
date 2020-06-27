@@ -1,7 +1,7 @@
 package com.socialevoeding.framework_androidsdk.local.room.datasources
 
 import com.socialevoeding.data.datasources.local.database.PlaceLocalDataSource
-import com.socialevoeding.data.dtos.local.database.PlaceEntity
+import com.socialevoeding.data_entities.PlaceEntity
 import com.socialevoeding.framework_androidsdk.local.room.dao.PlaceDao
 import com.socialevoeding.framework_androidsdk.local.room.mappers.RoomPlaceMapper
 

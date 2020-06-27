@@ -1,4 +1,4 @@
-package com.socialevoeding.data.dtos.local.database
+package com.socialevoeding.data_entities
 
 data class CategoryEntity(
     val id: Int,
