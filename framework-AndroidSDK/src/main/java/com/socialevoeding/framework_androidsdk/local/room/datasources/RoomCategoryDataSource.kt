@@ -1,7 +1,7 @@
 package com.socialevoeding.framework_androidsdk.local.room.datasources
 
 import com.socialevoeding.data.datasources.local.database.CategoryLocalDataSource
-import com.socialevoeding.data.dtos.local.database.CategoryEntity
+import com.socialevoeding.data_entities.CategoryEntity
 import com.socialevoeding.framework_androidsdk.local.room.dao.CategoryDao
 import com.socialevoeding.framework_androidsdk.local.room.mappers.RoomCategoryMapper
 

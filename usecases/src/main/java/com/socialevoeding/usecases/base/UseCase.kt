@@ -2,7 +2,7 @@ package com.socialevoeding.usecases.base
 
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
-import com.socialevoeding.li.models.Result
+import com.socialevoeding.util_models.Result
 
 typealias CompletionBlock<T> = UseCase.Request<T>.() -> Unit
 

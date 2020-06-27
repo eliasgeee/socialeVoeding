@@ -1,8 +1,8 @@
 package com.socialevoeding.domain.repositories
 
 import com.socialevoeding.domain.model.Coordinates
-import com.socialevoeding.li.models.Either
 import com.socialevoeding.domain.model.UserLocation
+import com.socialevoeding.util_models.Either
 
 interface UserLocationRepository {
 

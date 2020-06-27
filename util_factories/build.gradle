@@ -1,0 +1,10 @@
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':domain')
+    implementation project(':data_entities')
+    def commonDependencies = rootProject.ext.commonDependencies
+    implementation commonDependencies.kotlin
+}

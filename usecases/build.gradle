@@ -1,22 +1,25 @@
-apply plugin: 'java-library'
 apply plugin: 'kotlin'
-apply plugin: 'kotlin-kapt'
 
 dependencies {
+    def testDependencies = rootProject.ext.testDependencies
+    testImplementation testDependencies.junit
+    testImplementation testDependencies.coroutines
+    testImplementation testDependencies.mockk
 
     implementation project(':data')
     implementation project(':domain')
-    implementation project(':util')
+    implementation project(':util_models')
+    implementation project(':util_factories')
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     def commonDependencies = rootProject.ext.commonDependencies
     implementation commonDependencies.kotlin
     implementation commonDependencies.koin
     implementation commonDependencies.coroutines
-
-    def testDependencies = rootProject.ext.testDependencies
-    implementation testDependencies.junit
+  /*  implementation testDependencies.junit
     testImplementation testDependencies.junit
     testImplementation testDependencies.mockk
-    testImplementation(testDependencies.threeTenBP)
+    implementation testDependencies.mockk
+    implementation testDependencies.coroutines
+    testImplementation(testDependencies.threeTenBP)*/
 }

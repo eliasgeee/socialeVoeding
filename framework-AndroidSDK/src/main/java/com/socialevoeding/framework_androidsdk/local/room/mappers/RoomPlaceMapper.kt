@@ -1,6 +1,6 @@
 package com.socialevoeding.framework_androidsdk.local.room.mappers
 
-import com.socialevoeding.data.dtos.local.database.PlaceEntity
+import com.socialevoeding.data_entities.PlaceEntity
 import com.socialevoeding.framework_androidsdk.local.room.entities.RoomPlaceEntity
 import com.socialevoeding.framework_androidsdk.local.room.mappers.base.RoomMapperFacade
 

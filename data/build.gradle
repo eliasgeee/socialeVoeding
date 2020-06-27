@@ -5,10 +5,18 @@ apply plugin: 'kotlin-kapt'
 dependencies {
     implementation project(':domain')
     implementation project(':util')
+    implementation project(':util_models')
+    implementation project(':util_factories')
+    implementation project(':data_entities')
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     def commonDependencies = rootProject.ext.commonDependencies
     implementation commonDependencies.kotlin
     implementation commonDependencies.koin
     implementation commonDependencies.coroutines
+
+    def testDependencies = rootProject.ext.testDependencies
+    testImplementation testDependencies.junit
+    testImplementation testDependencies.coroutines
+    testImplementation testDependencies.mockk
 }

@@ -19,7 +19,7 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -30,6 +30,8 @@ dependencies {
     implementation project(':data')
     implementation project(':util')
     implementation project(':util-android')
+    implementation project(':util_models')
+    implementation project(':data_entities')
 
     implementation 'androidx.core:core-ktx:1.1.0'
     implementation 'androidx.appcompat:appcompat:1.1.0'

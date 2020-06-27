@@ -1,6 +1,6 @@
 package com.socialevoeding.data
 
-import com.socialevoeding.data.dtos.local.database.CategoryEntity
+import com.socialevoeding.data_entities.CategoryEntity
 
 object CategoryDataProvider {
 

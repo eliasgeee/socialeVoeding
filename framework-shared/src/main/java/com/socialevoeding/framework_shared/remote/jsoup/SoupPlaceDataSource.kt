@@ -16,7 +16,7 @@ class SoupPlaceDataSource : PlaceRemoteDataSource {
         }
     }
 
-    fun getPlacesSearch(queryString: String, currentPlaceName: String): List<NetworkPlace> {
+    private fun getPlacesSearch(queryString: String, currentPlaceName: String): List<NetworkPlace> {
         val url = SoupConfig.SOUP_BASE_URL_SEARCH + queryString.replace(' ', '+') + "+" + currentPlaceName
         val document: Document = Jsoup.connect(url).get()
         val btn: Element = document.select(".cMjHbjVt9AZ__button").first()

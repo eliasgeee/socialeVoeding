@@ -1,6 +1,6 @@
 package com.socialevoeding.data.mappers
 
-import com.socialevoeding.data.dtos.local.database.CategoryEntity
+import com.socialevoeding.data_entities.CategoryEntity
 import com.socialevoeding.data.mappers.base.DatabaseMapperFacade
 import com.socialevoeding.domain.model.Category
 import com.socialevoeding.li.extensions.getNormalizedName

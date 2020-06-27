@@ -2,7 +2,7 @@ package com.socialevoeding.data.mappers
 
 import com.socialevoeding.data.dtos.local.device.UserLocationDTO
 import com.socialevoeding.data.mappers.base.CacheMapper
-import com.socialevoeding.li.models.Either
+import com.socialevoeding.util_models.Either
 import com.socialevoeding.domain.model.UserLocation
 
 object CacheLocationItemMapper : CacheMapper<Either.Right<UserLocationDTO>, Either.Right<UserLocation>> {

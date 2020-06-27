@@ -12,14 +12,16 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/data" />
+            <option value="$PROJECT_DIR$/data_entities" />
             <option value="$PROJECT_DIR$/domain" />
             <option value="$PROJECT_DIR$/framework-AndroidSDK" />
             <option value="$PROJECT_DIR$/framework-shared" />
             <option value="$PROJECT_DIR$/presentation-android" />
-            <option value="$PROJECT_DIR$/scraping" />
             <option value="$PROJECT_DIR$/usecases" />
             <option value="$PROJECT_DIR$/util" />
             <option value="$PROJECT_DIR$/util-android" />
+            <option value="$PROJECT_DIR$/util_factories" />
+            <option value="$PROJECT_DIR$/util_models" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
