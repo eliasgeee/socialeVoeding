@@ -24,21 +24,23 @@ class RefreshPlacesUseCaseTest {
     private val testCoroutineDispatcher = TestCoroutineDispatcher()
     private lateinit var places: List<Place>
     private val name = DataFactory.randomString()
-    private lateinit var userLocation: UserLocation
+    private val userLocation = UserLocation(420.0, 420.0, "Gent")
 
     @Before
     fun setUp() {
         refreshPlacesUseCase = RefreshPlacesUseCase(placeRepository)
         Dispatchers.setMain(testCoroutineDispatcher)
         places = PlaceFactory.makePlacesList(5)
-        userLocation = mockk()
-        refreshPlacesUseCase.currentCategorieName = name
-        refreshPlacesUseCase.userLocation = userLocation
     }
 
     @Test
-    fun refreshplaceusecasecallsplacerepository() = runBlocking {
+    fun `refresh places use case calls place repository`() = runBlockingTest {
+        refreshPlacesUseCase.currentCategorieName = name
+        refreshPlacesUseCase.userLocation = userLocation
+
         coEvery { placeRepository.refreshPlaces(userLocation, name) } returns Unit
+
+        delay(5000)
 
         testCoroutineDispatcher.runBlockingTest {
             refreshPlacesUseCase.execute { }
@@ -47,7 +49,10 @@ class RefreshPlacesUseCaseTest {
     }
 
     @Test
-    fun refreshplaceusereturnssuccesfromsplacerepository() = runBlocking {
+    fun `refresh places use case returns succes from place repository`() = runBlocking {
+        refreshPlacesUseCase.currentCategorieName = name
+        refreshPlacesUseCase.userLocation = userLocation
+
         coEvery { placeRepository.refreshPlaces(userLocation, name) } returns Unit
 
         var result = mockk<Result<Unit>>()

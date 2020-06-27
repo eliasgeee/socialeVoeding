@@ -29,7 +29,7 @@ class GetPlacesUseCaseTest {
     }
 
     @Test
-    fun getcategoriesusecasecallscategoryrepository() = runBlocking {
+    fun `get places use case calls place repository`() = runBlocking {
         coEvery { placeRepository.getPlacesFromLocalDatabase() } returns PlaceFactory.makePlacesList(3).toMutableList()
 
         testCoroutineDispatcher.runBlockingTest {
@@ -39,7 +39,7 @@ class GetPlacesUseCaseTest {
     }
 
     @Test
-    fun getcategoriesusereturnslistofplacesfromplacerepository() = runBlocking {
+    fun `get places use case returns list of places from place repository`() = runBlocking {
         coEvery { placeRepository.getPlacesFromLocalDatabase() } returns PlaceFactory.makePlacesList(3).toMutableList()
 
         var size = 0

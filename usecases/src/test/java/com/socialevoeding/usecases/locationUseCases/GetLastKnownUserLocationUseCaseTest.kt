@@ -33,7 +33,7 @@ class GetLastKnownUserLocationUseCaseTest {
     }
 
     @Test
-    fun getlastknownuserlocationusecasecallsuserlocationrepository() = runBlocking {
+    fun `get last known user location use case calls user location repository`() = runBlocking {
         coEvery { userLocationRepository.getLastKnownUserLocation() } returns Either.Right(userLocation)
 
         testCoroutineDispatcher.runBlockingTest {
@@ -43,7 +43,7 @@ class GetLastKnownUserLocationUseCaseTest {
     }
 
     @Test
-    fun getlastknownuserlocationreturnsuserlocationfromrepository() = runBlocking {
+    fun `get last known user location returns user location from repository`() = runBlocking {
         coEvery { userLocationRepository.getLastKnownUserLocation() } returns Either.Right(userLocation)
 
         var responseUserLocation: UserLocation? = null
@@ -67,7 +67,7 @@ class GetLastKnownUserLocationUseCaseTest {
     }
 
     @Test
-    fun getlastknownuserlocationreturnsunitfromrepository() = runBlocking {
+    fun `get last known user location returns unit from repository`() = runBlocking {
         coEvery { userLocationRepository.getLastKnownUserLocation() } returns Either.Left(Unit)
 
         var response: Either<Unit, UserLocation>? = null
