@@ -32,7 +32,7 @@ class GetCurrentCoordinatesUseCaseTest {
     }
 
     @Test
-    fun getcurrentusercoordinatesusecasecallsuserlocationrepository() = runBlocking {
+    fun `get current user coordinates use case calls user locationrepository`() = runBlocking {
         coEvery { userLocationRepository.getCurrentUserCoordinates() } returns coordinates
 
         testCoroutineDispatcher.runBlockingTest {
@@ -43,7 +43,7 @@ class GetCurrentCoordinatesUseCaseTest {
     }
 
     @Test
-    fun getcurrentusercoordinatesusecasereturnscoordinatesuser() = runBlocking {
+    fun `get current user coordinates use case returns coordinates user`() = runBlocking {
         coEvery { userLocationRepository.getCurrentUserCoordinates() } returns coordinates
 
         var responseCoordinates: Coordinates? = null

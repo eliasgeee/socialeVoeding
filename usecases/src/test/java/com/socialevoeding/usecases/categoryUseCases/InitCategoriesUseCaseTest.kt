@@ -31,12 +31,12 @@ class InitCategoriesUseCaseTest {
     }
 
     @Test
-    fun initcategoriesusecasecallscategoryrepository() = runBlocking {
+    fun `init categories use case calls category repository`() = runBlocking {
         coEvery { categoryRepository.insertCategoriesIntoDatabase(categories) } returns Unit
 
         testCoroutineDispatcher.runBlockingTest {
-
             initCategoriesUseCase.execute {}
+            Thread.sleep(1000)
             coVerify { categoryRepository.insertCategoriesIntoDatabase(categories) }
         }
     }

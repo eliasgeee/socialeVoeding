@@ -37,7 +37,7 @@ class GetCurrentGeoLocationUseCaseTest {
     }
 
     @Test
-    fun getcurrentgeolocationusecasecallsuserlocationrepository() = runBlocking {
+    fun `get current geolocation usecase calls user location repository`() = runBlocking {
         coEvery { userLocationRepository.getCurrentGeoLocation(currentCoordinates) } returns userLocation
 
         testCoroutineDispatcher.runBlockingTest {
@@ -48,7 +48,7 @@ class GetCurrentGeoLocationUseCaseTest {
     }
 
     @Test
-    fun getcurrentgeolocationreturnsuserlocationfromrepository() = runBlocking {
+    fun `get current geolocation returns user location from repository`() = runBlocking {
         coEvery { userLocationRepository.getCurrentGeoLocation(currentCoordinates) } returns userLocation
 
         var responseUserLocation: UserLocation? = null

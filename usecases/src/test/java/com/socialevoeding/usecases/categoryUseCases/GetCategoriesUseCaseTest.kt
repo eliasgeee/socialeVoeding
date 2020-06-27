@@ -25,7 +25,7 @@ class GetCategoriesUseCaseTest {
     }
 
     @Test
-    fun getcategoriesusecasecallscategoryrepository() = runBlocking {
+    fun `get categories use case calls category repository`() = runBlocking {
         coEvery { categoryRepository.getCategories() } returns CategoryFactory.makeCategoriesList(2).toMutableList()
 
         testCoroutineDispatcher.runBlockingTest {
@@ -36,7 +36,7 @@ class GetCategoriesUseCaseTest {
     }
 
     @Test
-    fun getcategoriesreturnscategoriesfromcategoryrepository() = runBlocking {
+    fun `get categories returns categories from category repository`() = runBlocking {
         coEvery { categoryRepository.getCategories() } returns CategoryFactory.makeCategoriesList(2).toMutableList()
 
         var size = 0
