@@ -9,10 +9,10 @@ import com.socialevoeding.util_models.Either
 object PlaceFactory {
     fun makePlace(): Either<Unit, Place> {
         return buildPlace {
-            name { DataFactory.randomString(MIN_LENGTH_NAME + 1) }
-            longitude { 50.0 }
-            latitude { 50.0 }
-            cityName { DataFactory.randomString(MIN_LENGTH_NAME + 1) }
+            name = DataFactory.randomString(MIN_LENGTH_NAME + 1)
+            longitude = 50.0
+            latitude = 50.0
+            cityName = DataFactory.randomString(MIN_LENGTH_NAME + 1)
         }
     }
 

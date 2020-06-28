@@ -11,14 +11,14 @@ object PlacePlaceMapper : PlaceMapperFacade<PlaceEntity, Place> {
 
     override fun mapFromEntity(entity: PlaceEntity): Either <Unit, Place> {
         return buildPlace {
-            name { entity.name }
-            latitude { entity.latitude }
-            longitude { entity.longitude }
-            cityName { entity.city }
-            telephoneNumber { entity.telephoneNumber }
-            webUrl { entity.webUrl }
-            img { entity.img }
-            address { entity.address }
+            name = entity.name
+            latitude = entity.latitude
+            longitude = entity.longitude
+            cityName = entity.city
+            telephoneNumber = entity.telephoneNumber
+            webUrl = entity.webUrl
+            img = entity.img
+            address = entity.address
         }
     }
 
