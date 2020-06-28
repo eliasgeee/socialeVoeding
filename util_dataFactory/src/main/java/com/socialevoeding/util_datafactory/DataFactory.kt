@@ -1,4 +1,4 @@
-package com.socialevoeding.util_factories
+package com.socialevoeding.util_datafactory
 
 import java.security.SecureRandom
 import java.time.LocalDate

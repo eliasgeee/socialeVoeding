@@ -13,6 +13,7 @@
       <module name="scraping" target="1.7" />
       <module name="usecases" target="1.7" />
       <module name="util" target="1.7" />
+      <module name="util_dataFactory" target="1.7" />
       <module name="util_factories" target="1.7" />
       <module name="util_models" target="1.7" />
     </bytecodeTargetLevel>

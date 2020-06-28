@@ -8,6 +8,7 @@ dependencies {
     implementation project(':util_models')
     implementation project(':util_factories')
     implementation project(':data_entities')
+    implementation project(':util_dataFactory')
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     def commonDependencies = rootProject.ext.commonDependencies

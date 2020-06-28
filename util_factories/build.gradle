@@ -5,6 +5,8 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':domain')
     implementation project(':data_entities')
+    implementation project(':util_dataFactory')
+    implementation project(':util_models')
     def commonDependencies = rootProject.ext.commonDependencies
     implementation commonDependencies.kotlin
 }
