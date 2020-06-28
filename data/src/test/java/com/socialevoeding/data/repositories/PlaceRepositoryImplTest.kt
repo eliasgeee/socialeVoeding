@@ -1,16 +1,16 @@
 package com.socialevoeding.data.repositories
 
 import com.socialevoeding.data.dtos.remote.NetworkPlace
-import com.socialevoeding.data.mappers.DatabasePlaceMapper
+import com.socialevoeding.data.mappers.PlacePlaceMapper
 import com.socialevoeding.data.mappers.NetworkPlaceMapper
 import com.socialevoeding.data.mockSources.PlaceLocalDataSourceImplementation
 import com.socialevoeding.data.mockSources.PlaceLocalDataSourceMock
 import com.socialevoeding.data.mockSources.PlaceRemoteDataSourceMock
 import com.socialevoeding.data.mockSources.PlaceRemoteDataSourceMockImplementation
 import com.socialevoeding.data_entities.PlaceEntity
-import com.socialevoeding.domain.model.Place
+import com.socialevoeding.domain.model.place.Place
 import com.socialevoeding.domain.model.UserLocation
-import com.socialevoeding.util_factories.DataFactory
+import com.socialevoeding.util_datafactory.DataFactory
 import com.socialevoeding.util_factories.PlaceEntityFactory
 import com.socialevoeding.util_factories.PlaceFactory
 import io.mockk.coEvery
@@ -38,7 +38,7 @@ class PlaceRepositoryImplTest {
         NetworkPlace(DataFactory.randomString())
     )
     private val userLocation = mockk<UserLocation>()
-    private val databasePlaceMapper = mockk<DatabasePlaceMapper>()
+    private val databasePlaceMapper = mockk<PlacePlaceMapper>()
     private val networkPlaceMapper = mockk<NetworkPlaceMapper>()
 
     private val placeRepositoryImpl = PlaceRepositoryImpl(

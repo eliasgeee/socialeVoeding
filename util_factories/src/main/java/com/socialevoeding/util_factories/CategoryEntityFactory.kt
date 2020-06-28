@@ -1,6 +1,7 @@
 package com.socialevoeding.util_factories
 
 import com.socialevoeding.data_entities.CategoryEntity
+import com.socialevoeding.util_datafactory.DataFactory
 
 object CategoryEntityFactory {
     fun makeCategoryEntity(): CategoryEntity {

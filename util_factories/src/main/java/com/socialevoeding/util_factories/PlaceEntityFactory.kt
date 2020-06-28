@@ -1,6 +1,7 @@
 package com.socialevoeding.util_factories
 
 import com.socialevoeding.data_entities.PlaceEntity
+import com.socialevoeding.util_datafactory.DataFactory
 
 object PlaceEntityFactory {
     fun makePlaceEntity(): PlaceEntity {

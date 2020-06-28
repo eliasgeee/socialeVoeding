@@ -5,8 +5,12 @@ apply plugin: 'kotlin-kapt'
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':util_models')
+    implementation project(':util_dataFactory')
 
     def commonDependencies = rootProject.ext.commonDependencies
     implementation commonDependencies.kotlin
+
+    def testDependencies = rootProject.ext.testDependencies
+    testImplementation testDependencies.junit
 }
 

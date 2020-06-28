@@ -37,8 +37,8 @@ fun provideDeviceCoordinatesMapper(): DeviceCoordinatesMapper {
     return DeviceCoordinatesMapper
 }
 
-fun provideDatabasePlaceMapper(): DatabasePlaceMapper {
-    return DatabasePlaceMapper
+fun provideDatabasePlaceMapper(): PlacePlaceMapper {
+    return PlacePlaceMapper
 }
 
 fun provideNetworkPlaceMapper(): NetworkPlaceMapper {

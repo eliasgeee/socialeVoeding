@@ -1,6 +1,7 @@
 package com.socialevoeding.util_factories
 
 import com.socialevoeding.domain.model.Category
+import com.socialevoeding.util_datafactory.DataFactory
 
 object CategoryFactory {
 

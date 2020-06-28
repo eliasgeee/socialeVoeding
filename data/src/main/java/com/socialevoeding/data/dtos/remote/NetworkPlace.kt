@@ -3,8 +3,8 @@ package com.socialevoeding.data.dtos.remote
 data class NetworkPlace(
     var name: String = "",
     val networkCoordinates: NetworkCoordinates = NetworkCoordinates(
-        0.0,
-        0.0
+        Double.NaN,
+        Double.NaN
     ),
     val rating: Float = 0F,
     val url: String = ""

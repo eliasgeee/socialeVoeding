@@ -3,16 +3,16 @@ package com.socialevoeding.data.repositories
 import com.socialevoeding.data.datasources.local.database.PlaceLocalDataSource
 import com.socialevoeding.data.datasources.remote.PlaceRemoteDataSource
 import com.socialevoeding.data.dtos.remote.NetworkPlace
-import com.socialevoeding.data.mappers.DatabasePlaceMapper
+import com.socialevoeding.data.mappers.PlacePlaceMapper
 import com.socialevoeding.data.mappers.NetworkPlaceMapper
-import com.socialevoeding.domain.model.Place
+import com.socialevoeding.domain.model.place.Place
 import com.socialevoeding.domain.model.UserLocation
 import com.socialevoeding.domain.repositories.PlaceRepository
 
 class PlaceRepositoryImpl(
     private val placeRemoteDataSource: PlaceRemoteDataSource,
     private val placeLocalDataSource: PlaceLocalDataSource,
-    private val databasePlaceMapper: DatabasePlaceMapper,
+    private val databasePlaceMapper: PlacePlaceMapper,
     private val networkPlaceMapper: NetworkPlaceMapper
 ) :
     PlaceRepository {
@@ -31,7 +31,7 @@ class PlaceRepositoryImpl(
     }
 
     override suspend fun getPlacesFromLocalDatabase(): MutableList<Place> {
-        return DatabasePlaceMapper.mapFromEntities(placeLocalDataSource.getPlaces()).toMutableList()
+        return PlacePlaceMapper.mapFromEntities(placeLocalDataSource.getPlaces()).toMutableList()
     }
 
     override suspend fun insertPlacesIntoDatabase(places: List<Place>) {

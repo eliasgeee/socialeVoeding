@@ -1,6 +1,6 @@
 package com.socialevoeding.domain.repositories
 
-import com.socialevoeding.domain.model.Place
+import com.socialevoeding.domain.model.place.Place
 import com.socialevoeding.domain.model.UserLocation
 
 interface PlaceRepository {

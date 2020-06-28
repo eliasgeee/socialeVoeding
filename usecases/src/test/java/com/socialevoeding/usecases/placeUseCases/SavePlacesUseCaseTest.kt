@@ -1,6 +1,6 @@
 package com.socialevoeding.usecases.placeUseCases
 
-import com.socialevoeding.domain.model.Place
+import com.socialevoeding.domain.model.place.Place
 import com.socialevoeding.domain.repositories.PlaceRepository
 import com.socialevoeding.util_factories.PlaceFactory
 import com.socialevoeding.util_models.Result

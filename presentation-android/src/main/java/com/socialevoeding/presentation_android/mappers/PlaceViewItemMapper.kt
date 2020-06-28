@@ -1,6 +1,6 @@
 package com.socialevoeding.presentation_android.mappers
 
-import com.socialevoeding.domain.model.Place
+import com.socialevoeding.domain.model.place.Place
 import com.socialevoeding.presentation_android.mappers.base.ViewItemMapper
 import com.socialevoeding.presentation_android.viewItems.PlaceViewItem
 
