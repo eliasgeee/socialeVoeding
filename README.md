@@ -8,3 +8,4 @@ Todo:
 - prob implement PlaceBuilder diff
 - add detekt to pipeline
 - find a way to delete useless modules, change names and move related modules to a shared folder
+- make extension functions inline functions where possible
