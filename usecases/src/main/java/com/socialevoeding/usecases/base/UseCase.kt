@@ -6,15 +6,18 @@ import com.socialevoeding.util_models.Result
 
 typealias CompletionBlock<T> = UseCase.Request<T>.() -> Unit
 
-abstract class UseCase<T>() {
+abstract class UseCase<T, in Params>(
+    ioDispatcher: CoroutineDispatcher,
+    mainDispatcher : CoroutineDispatcher
+) {
 
     private var parentJob: Job = Job()
-    var backgroundContext: CoroutineContext = Dispatchers.IO
-    var foregroundContext: CoroutineContext = Dispatchers.Main
+    private var backgroundContext: CoroutineContext = ioDispatcher
+    private var foregroundContext: CoroutineContext = mainDispatcher
 
     protected abstract suspend fun executeOnBackground(): T
 
-    fun execute(block: CompletionBlock<T>) {
+    open fun execute(params: Params, block: CompletionBlock<T>) {
         val response = Request<T>().apply { block() }
         unsubscribe()
         parentJob = Job()

@@ -32,10 +32,11 @@ class SavePlacesUseCaseTest {
     }
 
     @Test
-    fun `save places use case calls place repository`() = runBlocking {
+    fun `save places use case calls place repository`() = testCoroutineDispatcher.runBlockingTest {
         coEvery { placeRepository.insertPlacesIntoDatabase(emptyList()) } returns Unit
 
         savePlacesUseCase.execute { }
+        advanceTimeBy(1_000)
 
         coVerify { placeRepository.insertPlacesIntoDatabase(emptyList()) }
     }
@@ -46,23 +47,24 @@ class SavePlacesUseCaseTest {
 
         var result: Result<Unit>? = null
 
-        savePlacesUseCase.execute {
-            Thread.sleep(5000)
-
-            onComplete {
-                result = it
+        pauseDispatcher {
+            savePlacesUseCase.execute {
+                onComplete {
+                    result = it
+                }
             }
+
+            runCurrent()
+            advanceTimeBy(2_000)
         }
 
-        Thread.sleep(6000)
-        delay(10000)
-
+        delay(5_000)
         Assert.assertEquals(Result.Success(Unit), result)
     }
 
     @After
-    fun tearDown() {
-        Dispatchers.resetMain() // reset main dispatcher to the original Main dispatcher
+    fun tearDown(){
+        Dispatchers.resetMain()
         testCoroutineDispatcher.cleanupTestCoroutines()
     }
 }

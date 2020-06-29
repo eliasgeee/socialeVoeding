@@ -6,7 +6,9 @@ import com.socialevoeding.usecases.base.UseCase
 
 class GetCategoriesUseCase(
     private val categoryRepository: CategoryRepository
-) : UseCase<MutableList<Category>>() {
+) : UseCase<MutableList<Category>>(
+    ioDispatcher : IoDispatcher
+) {
     override suspend fun executeOnBackground(): MutableList<Category> {
         return categoryRepository.getCategories()
     }

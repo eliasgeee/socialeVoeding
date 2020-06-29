@@ -10,8 +10,10 @@ import com.socialevoeding.util_models.Result
 import io.mockk.*
 import kotlinx.coroutines.*
 import kotlinx.coroutines.test.TestCoroutineDispatcher
+import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runBlockingTest
 import kotlinx.coroutines.test.setMain
+import org.junit.After
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
@@ -34,40 +36,45 @@ class RefreshPlacesUseCaseTest {
     }
 
     @Test
-    fun `refresh places use case calls place repository`() = runBlockingTest {
+    fun `refresh places use case calls place repository`() = testCoroutineDispatcher.runBlockingTest {
         refreshPlacesUseCase.currentCategorieName = name
         refreshPlacesUseCase.userLocation = userLocation
 
         coEvery { placeRepository.refreshPlaces(userLocation, name) } returns Unit
 
-        delay(5000)
-
         refreshPlacesUseCase.execute { }
+
+        advanceTimeBy(1_000)
+
         coVerify { placeRepository.refreshPlaces(userLocation, name) }
     }
 
     @Test
-    fun `refresh places use case returns succes from place repository`() = runBlocking {
+    fun `refresh places use case returns success from place repository`() = testCoroutineDispatcher.runBlockingTest {
         refreshPlacesUseCase.currentCategorieName = name
         refreshPlacesUseCase.userLocation = userLocation
 
         coEvery { placeRepository.refreshPlaces(userLocation, name) } returns Unit
 
-        var result = mockk<Result<Unit>>()
-        Thread.sleep(5000)
+        var result : Result<Unit>? = null
 
-        val request = mockk<UseCase.Request<Unit>>()
-
-        testCoroutineDispatcher.runBlockingTest {
+        pauseDispatcher {
             refreshPlacesUseCase.execute {
                 onComplete {
                     result = it
-                }
-            }
+                } }
+
+            runCurrent()
+            advanceTimeBy(2_000)
         }
 
-        val useCase = mockk<UseCase<Unit>>()
-
+        delay(5_000)
         Assert.assertEquals(Result.Success(Unit), result)
+    }
+
+    @After
+    fun tearDown(){
+        Dispatchers.resetMain()
+        testCoroutineDispatcher.cleanupTestCoroutines()
     }
 }
