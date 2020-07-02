@@ -1,4 +1,3 @@
-include ':framework_retrofit'
 include ':util_dataFactory'
 include ':data_entities'
 include ':util_factories'
