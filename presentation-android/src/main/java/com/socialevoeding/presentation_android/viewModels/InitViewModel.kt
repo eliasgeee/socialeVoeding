@@ -1,6 +1,7 @@
 package com.socialevoeding.presentation_android.viewModels
 
 import androidx.lifecycle.ViewModel
+import com.socialevoeding.domain.model.Coordinates
 import com.socialevoeding.util_models.Either
 import com.socialevoeding.domain.model.UserLocation
 import com.socialevoeding.li.extensions.getNormalizedName
@@ -21,9 +22,10 @@ class InitViewModel(
 ) : ViewModel() {
 
     fun updateLocationAndPlaces() {
-        getCurrentCoordinatesUseCase.execute {
-            onComplete {
-                getCurrentGeoLocationUseCase.currentCoordinates = it.data
+      //  getCurrentCoordinatesUseCase.execute {
+     //       onComplete {
+     //           getCurrentGeoLocationUseCase.currentCoordinates = it.data
+                getCurrentGeoLocationUseCase.currentCoordinates = Coordinates(latitude = 51.0543, longitude = 3.7174)
                 getCurrentGeoLocationUseCase.execute {
                     onComplete { currentLocation ->
                         getLastKnownUserLocationUseCase.execute {
@@ -41,8 +43,8 @@ class InitViewModel(
                     }
                 }
             }
-        }
-    }
+    //    }
+  //  }
 
     private fun checkIfRefreshIsNecessary(currentLocation: UserLocation, lastKnownLocation: UserLocation) {
         if (currentLocation.cityName.getNormalizedName() != lastKnownLocation.cityName.getNormalizedName())

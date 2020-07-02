@@ -5,8 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.socialevoeding.util_models.Either
 import com.socialevoeding.domain.model.UserLocation
+import com.socialevoeding.presentation_android.ViewItem
 import com.socialevoeding.presentation_android.mappers.PlaceViewItemMapper
-import com.socialevoeding.presentation_android.viewItems.PlaceViewItem
 import com.socialevoeding.usecases.locationUseCases.GetLastKnownUserLocationUseCase
 import com.socialevoeding.usecases.placeUseCases.GetPlacesUseCase
 
@@ -15,12 +15,12 @@ class PlacesViewModel(
     private val getLastKnownUserLocationUseCase: GetLastKnownUserLocationUseCase
 ) : ViewModel() {
 
-    private var _places = MutableLiveData<List<PlaceViewItem>>()
-    val places: LiveData<List<PlaceViewItem>>
+    private var _places = MutableLiveData<List<ViewItem.PlaceViewItem>>()
+    val places: LiveData<List<ViewItem.PlaceViewItem>>
         get() = _places
 
-    private var _goToPlace = MutableLiveData<PlaceViewItem>()
-    val goToPlace: LiveData<PlaceViewItem>
+    private var _goToPlace = MutableLiveData<ViewItem.PlaceViewItem>()
+    val goToPlace: LiveData<ViewItem.PlaceViewItem>
         get() = _goToPlace
 
     private var _currentLocation = MutableLiveData<String>()
@@ -39,13 +39,13 @@ class PlacesViewModel(
 
     fun loadPlaces() {
         getPlacesUseCase.execute {
-            onComplete {
-                _places.postValue(PlaceViewItemMapper.mapToViewItems(it.data))
+            onComplete { places ->
+                _places.postValue(places.data.map { place -> PlaceViewItemMapper.mapToViewItem(place) })
             }
         }
     }
 
-    fun goToPlace(place: PlaceViewItem) {
+    fun goToPlace(place: ViewItem.PlaceViewItem) {
         _goToPlace.value = place
     }
 

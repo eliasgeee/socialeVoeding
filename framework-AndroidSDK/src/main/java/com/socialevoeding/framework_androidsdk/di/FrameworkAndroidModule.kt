@@ -7,7 +7,10 @@ import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterF
 import com.socialevoeding.data.datasources.device.CurrentLocationDataSource
 import com.socialevoeding.data.datasources.local.cache.UserLocationCacheDataSource
 import com.socialevoeding.data.datasources.local.database.CategoryLocalDataSource
+import com.socialevoeding.data.datasources.local.database.PlaceLocalDataSource
+import com.socialevoeding.data.datasources.remote.Environment
 import com.socialevoeding.data.datasources.remote.NetworkConfig
+import com.socialevoeding.data.datasources.remote.UserLocationRemoteDataSource
 import com.socialevoeding.data.dtos.local.device.UserLocationDTO
 import com.socialevoeding.framework_androidsdk.device.gps.LocationGPSDataSource
 import com.socialevoeding.framework_androidsdk.local.room.dao.CategoryDao
@@ -17,11 +20,19 @@ import com.socialevoeding.framework_androidsdk.local.room.database.getDatabase
 import com.socialevoeding.framework_androidsdk.local.room.datasources.RoomCategoryDataSource
 import com.socialevoeding.framework_androidsdk.local.room.datasources.RoomPlaceDataSource
 import com.socialevoeding.framework_androidsdk.local.sharedPreferences.SharedPrefUserLocationDataSource
+import com.socialevoeding.framework_androidsdk.remote.ServiceFactory
+import com.socialevoeding.framework_androidsdk.remote.ServiceProvider
+import com.socialevoeding.framework_androidsdk.remote.ServiceProviderImpl
+import com.socialevoeding.framework_androidsdk.remote.UserLocationRemoteDataSourceImpl
 import com.socialevoeding.framework_androidsdk.remote.retrofit.apiServices.GeoLocationApiService
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import okhttp3.OkHttpClient
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
+import retrofit2.CallAdapter
+import retrofit2.Converter
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
@@ -29,29 +40,46 @@ private const val STORAGE = "com.socialevoeding.bap.USERLOCATION"
 
 val frameworkAndroidModule = module {
 
-    single {
-        getDatabase(
-            androidContext()
-        )
-    }
+    single { getDatabase (androidContext()) }
 
     single { provideCategoryDao(get()) }
-    single { provideLocationDao(get()) }
+    single { providePlaceDao(get()) }
 
     single { RoomCategoryDataSource(get()) as CategoryLocalDataSource }
-    single { RoomPlaceDataSource(get()) as RoomPlaceDataSource }
+    single { RoomPlaceDataSource(get()) as PlaceLocalDataSource }
     single { SharedPrefUserLocationDataSource(get(), get()) as UserLocationCacheDataSource }
     single { LocationGPSDataSource(get()) as CurrentLocationDataSource }
 
-    single { provideRetrofit() }
-    single { provideGeolocationApi() }
-    single { provideMoshiAdapter() }
+//    single { provideMoshiAdapterLocationDTO() }
 
     single { provideLocationManager(androidContext()) }
 
+    single { getSharedPrefs(androidContext()) }
+
+  //  single { provideMoshi() }
+
+    single { Environment(NetworkConfig.BASE_URL_GEOLOCATION) }
+
     single {
-        getSharedPrefs(androidContext())
+        ServiceFactory(
+            MoshiConverterFactory.create(provideMoshi()).asLenient(),
+            CoroutineCallAdapterFactory(),
+            get(),
+            get()
+        )
     }
+
+    single { ServiceProviderImpl(get()) }
+
+    single { UserLocationRemoteDataSourceImpl(get()) as UserLocationRemoteDataSource }
+
+    single { provideMoshi() }
+
+    single { provideRetrofitClient() }
+}
+
+fun provideRetrofitClient() : OkHttpClient{
+    return OkHttpClient().newBuilder().build()
 }
 
 fun provideLocationManager(context: Context): LocationManager {
@@ -66,28 +94,17 @@ fun provideCategoryDao(db: LocalDb): CategoryDao {
     return db.categoryDao
 }
 
-fun provideLocationDao(db: LocalDb): PlaceDao {
+fun providePlaceDao(db: LocalDb): PlaceDao {
     return db.placeDao
-}
-
-fun provideRetrofit(): Retrofit {
-    return Retrofit.Builder()
-        .baseUrl(NetworkConfig.BASE_URL_GEOLOCATION)
-        .addConverterFactory(MoshiConverterFactory.create())
-        .addCallAdapterFactory(CoroutineCallAdapterFactory())
-        .build()
 }
 
 fun provideMoshi(): Moshi {
     return Moshi.Builder()
+        .add(KotlinJsonAdapterFactory())
         .build()
 }
 
-fun provideMoshiAdapter(): JsonAdapter<UserLocationDTO> {
-    return provideMoshi().adapter(UserLocationDTO::class.java)
-}
 
-fun provideGeolocationApi(): GeoLocationApiService {
-    return provideRetrofit()
-        .create(GeoLocationApiService::class.java)
-}
+/*fun provideMoshiAdapterLocationDTO(): JsonAdapter<UserLocationDTO> {
+    return provideMoshi().adapter(UserLocationDTO::class.java)
+}*/

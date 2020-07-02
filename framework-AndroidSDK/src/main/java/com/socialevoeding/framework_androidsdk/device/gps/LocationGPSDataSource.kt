@@ -14,7 +14,9 @@ import com.socialevoeding.data.dtos.local.device.CoordinatesDTO
 // Based on https://stackoverflow.com/questions/21085497/how-to-use-android-locationmanager-and-listener/50621540
 class LocationGPSDataSource(
     private val locationManager: LocationManager
-) : Service(), LocationListener, CurrentLocationDataSource {
+) :
+    //Service(), LocationListener,
+    CurrentLocationDataSource {
 
     private var isGPSEnabled = false
     private var isNetworkEnabled = false
@@ -22,7 +24,6 @@ class LocationGPSDataSource(
     private var location: Location? = null
     private var latitude = 0.0
     private var longitude = 0.0
-    private var locationPermissionOldApi: Int = -1
 
     // The minimum distance to change Updates in meters
     private val MIN_DISTANCE_CHANGE_FOR_UPDATES: Float = 1500F
@@ -41,11 +42,11 @@ class LocationGPSDataSource(
                 canGetLocation = true
                 if (isNetworkEnabled) {
                     // First get location from Network Provider
-                    locationManager.requestLocationUpdates(
+                    /*locationManager.requestLocationUpdates(
                         LocationManager.NETWORK_PROVIDER,
                         MIN_TIME_BW_UPDATES,
                         MIN_DISTANCE_CHANGE_FOR_UPDATES, this)
-
+*/
                         location = locationManager
                             .getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
                         if (location != null) {
@@ -56,10 +57,10 @@ class LocationGPSDataSource(
                 // if GPS Enabled get lat/long using GPS Services
                 if (isGPSEnabled) {
                     if (location == null) {
-                        locationManager.requestLocationUpdates(
+                        /*locationManager.requestLocationUpdates(
                             LocationManager.GPS_PROVIDER,
                             MIN_TIME_BW_UPDATES,
-                            MIN_DISTANCE_CHANGE_FOR_UPDATES, this)
+                            MIN_DISTANCE_CHANGE_FOR_UPDATES, this)*/
                             location = locationManager
                                 .getLastKnownLocation(LocationManager.GPS_PROVIDER)
                             if (location != null) {
@@ -72,7 +73,7 @@ class LocationGPSDataSource(
     }
 
     private fun stopUsingGPS() {
-        locationManager.removeUpdates(this)
+        //locationManager.removeUpdates(this)
     }
 
     override fun getCurrentLocation(): CoordinatesDTO {
@@ -82,9 +83,9 @@ class LocationGPSDataSource(
         return coordinates
     }
 
-    override fun onBind(intent: Intent?): IBinder? { return null }
+    /*override fun onBind(intent: Intent?): IBinder? { return null }
     override fun onLocationChanged(location: Location?) {}
     override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {}
     override fun onProviderEnabled(provider: String?) {}
-    override fun onProviderDisabled(provider: String?) {}
+    override fun onProviderDisabled(provider: String?) {}*/
 }

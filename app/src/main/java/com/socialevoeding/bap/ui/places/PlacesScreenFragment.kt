@@ -12,8 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.socialevoeding.bap.R
 import com.socialevoeding.bap.databinding.FragmentCategoryScreenBinding
 import com.socialevoeding.bap.ui.BaseFragment
-import com.socialevoeding.presentation_android.viewItems.CategoryViewItem
-import com.socialevoeding.presentation_android.viewItems.PlaceViewItem
+import com.socialevoeding.presentation_android.ViewItem
 import com.socialevoeding.presentation_android.viewModels.PlacesViewModel
 import kotlinx.android.synthetic.main.toolbar.view.*
 import kotlinx.android.synthetic.main.ttsbar.view.*
@@ -24,7 +23,7 @@ class PlacesScreenFragment() : BaseFragment() {
     private lateinit var binding: FragmentCategoryScreenBinding
     private var placesAdapter: PlacesAdapter? = null
     private val placesViewModel: PlacesViewModel by viewModel()
-    private var category: CategoryViewItem? = null
+    private var category: ViewItem.CategoryViewItem? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,9 +31,9 @@ class PlacesScreenFragment() : BaseFragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        category = PlacesScreenFragmentArgs.fromBundle(
+       /* category = PlacesScreenFragmentArgs.fromBundle(
             requireArguments()
-        ).selectedCategory
+        ).selectedCategory*/
 
         binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_category_screen, container, false)
@@ -57,7 +56,7 @@ class PlacesScreenFragment() : BaseFragment() {
         }
 
         placesAdapter = PlacesAdapter(requireContext(), object : PlacesClickListener {
-            override fun onPlaceClick(place: PlaceViewItem) {
+            override fun onPlaceClick(place: ViewItem.PlaceViewItem) {
                 placesViewModel.goToPlace(place)
             }
         })
@@ -79,12 +78,12 @@ class PlacesScreenFragment() : BaseFragment() {
         if (placesViewModel.places.value != null)
         for (place in placesViewModel.places.value!!) {
             sb.append(place.name).append(" ")
-            if (place.isOpen)
+            if (place.isOpen!!)
                 sb.append(resources.getString(R.string.isOpen)).append(" ")
             else
                 sb.append(resources.getString(R.string.isGesloten)).append(" ")
             sb.append(resources.getString(R.string.distance)).append(" ")
-            sb.append(place.distance / 1000).append(" kilometres ")
+            sb.append(place.distance?.div(1000)).append(" kilometres ")
             sb.append(resources.getString(R.string.address)).append(" ")
             sb.append(place.address)
         }
@@ -98,9 +97,9 @@ class PlacesScreenFragment() : BaseFragment() {
 
         placesViewModel.goToPlace.observe(this, Observer {
             if (it != null) {
-                this.findNavController().navigate(
+              /*  this.findNavController().navigate(
                     PlacesScreenFragmentDirections.actionCategoryScreenFragmentToLocationFragment(it, category!!)
-                )
+                )*/
 
                 placesViewModel.placeNavigated()
             }

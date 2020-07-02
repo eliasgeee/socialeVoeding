@@ -1,7 +1,7 @@
-package com.socialevoeding.data.dtos.remote
+package com.socialevoeding.framework_retrofit
 
 data class GeolocationObject(
-    val networkGeolocationAddress: NetworkGeolocationAddress,
+    val address: Address,
     val boundingbox: List<String>,
     val display_name: String,
     val lat: String,
@@ -12,7 +12,7 @@ data class GeolocationObject(
     val place_id: Int
 )
 
-data class NetworkGeolocationAddress(
+data class Address(
     val city: String,
     val city_district: String,
     val country: String,

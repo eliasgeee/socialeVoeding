@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.socialevoeding.bap.R
 import com.socialevoeding.bap.databinding.FragmentHomeScreenBinding
 import com.socialevoeding.bap.ui.BaseFragment
-import com.socialevoeding.presentation_android.viewItems.CategoryViewItem
+import com.socialevoeding.presentation_android.ViewItem
 import com.socialevoeding.presentation_android.viewModels.CategoryViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -44,7 +44,7 @@ class CategoryScreenFragment : BaseFragment() {
     private fun updateUi() {
 
         categoryAdapter = CategoryAdapter(requireContext(), object : CategoryClickListener {
-            override fun onCategoryClick(category: CategoryViewItem) {
+            override fun onCategoryClick(category: ViewItem.CategoryViewItem) {
                 categoryViewModel.goToCategory(category)
             }
         })
@@ -62,10 +62,10 @@ class CategoryScreenFragment : BaseFragment() {
 
         categoryViewModel.goToCategory.observe(this, Observer {
             if (it != null) {
-                this.findNavController().navigate(
+             /*   this.findNavController().navigate(
                     CategoryScreenFragmentDirections.actionHomeScreenFragmentToCategoryScreenFragmen(it)
                 )
-
+*/
                 categoryViewModel.onCategoryNavigated()
             }
         })

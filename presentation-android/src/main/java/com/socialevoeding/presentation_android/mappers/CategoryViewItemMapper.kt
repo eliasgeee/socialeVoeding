@@ -1,15 +1,14 @@
 package com.socialevoeding.presentation_android.mappers
 
 import com.socialevoeding.domain.model.Category
+import com.socialevoeding.presentation_android.ViewItem
 import com.socialevoeding.presentation_android.mappers.base.ViewItemMapper
-import com.socialevoeding.presentation_android.viewItems.CategoryViewItem
 
-object CategoryViewItemMapper : ViewItemMapper<CategoryViewItem, Category> {
-    override fun mapToViewItem(model: Category): CategoryViewItem {
-        TODO("Not yet implemented")
-    }
-
-    override fun mapToViewItems(models: List<Category>): List<CategoryViewItem> {
-        TODO("Not yet implemented")
+object CategoryViewItemMapper : ViewItemMapper<ViewItem.CategoryViewItem, Category> {
+    override fun mapToViewItem(model: Category): ViewItem.CategoryViewItem {
+        return ViewItem.CategoryViewItem(
+            id = model.id,
+            name = model.name
+        )
     }
 }

@@ -17,6 +17,7 @@
             <option value="$PROJECT_DIR$/domain" />
             <option value="$PROJECT_DIR$/framework-AndroidSDK" />
             <option value="$PROJECT_DIR$/framework-shared" />
+            <option value="$PROJECT_DIR$/framework_retrofit" />
             <option value="$PROJECT_DIR$/presentation-android" />
             <option value="$PROJECT_DIR$/usecases" />
             <option value="$PROJECT_DIR$/util" />

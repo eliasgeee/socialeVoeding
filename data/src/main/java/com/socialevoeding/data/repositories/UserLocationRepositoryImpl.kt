@@ -23,7 +23,7 @@ class UserLocationRepositoryImpl(
         return userLocationRemoteDataSource.getCurrentGeoLocationAsync(
             latitude = currentCoordinates.latitude,
             longitude = currentCoordinates.longitude
-        ).await().createUserLocation(currentCoordinates)
+        ).createUserLocation(currentCoordinates)
     }
 
     override suspend fun getLastKnownUserLocation(): Either<Unit, UserLocation> {

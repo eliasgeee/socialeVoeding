@@ -1,13 +1,10 @@
-package com.socialevoeding.framework_androidsdk.remote.retrofit.apiServices
+package com.socialevoeding.framework_retrofit
 
-import com.socialevoeding.data.datasources.remote.UserLocationRemoteDataSource
-import com.socialevoeding.data.dtos.remote.GeolocationObject
 import kotlinx.coroutines.Deferred
-import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-interface GeoLocationApiService {
+interface ReverseGeolocationApiService {
 
     @GET("reverse?")
     fun getCurrentGeoLocationAsync(

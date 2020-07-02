@@ -66,6 +66,9 @@ class MainActivity() : AppCompatActivity() {
             }
         } else {
             initViewModel.updateLocationAndPlaces() }
+
+        //TODO verwijderen
+        initViewModel.updateLocationAndPlaces()
     }
 
     override fun onRequestPermissionsResult(

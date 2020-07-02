@@ -10,16 +10,15 @@ import coil.api.load
 import com.socialevoeding.bap.R
 import com.socialevoeding.bap.databinding.FragmentLocationBinding
 import com.socialevoeding.bap.ui.BaseFragment
-import com.socialevoeding.presentation_android.viewItems.CategoryViewItem
-import com.socialevoeding.presentation_android.viewItems.PlaceViewItem
+import com.socialevoeding.presentation_android.ViewItem
 import com.socialevoeding.presentation_android.viewModels.PlaceDetailsViewModel
 import kotlinx.android.synthetic.main.toolbar.view.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class PlaceDetailsFragment : BaseFragment() {
 
-    private var place: PlaceViewItem? = null
-    private var category: CategoryViewItem? = null
+    private var place: ViewItem.PlaceViewItem? = null
+    private var category: ViewItem.CategoryViewItem? = null
     private lateinit var binding: FragmentLocationBinding
     private val locationViewModel: PlaceDetailsViewModel by viewModel()
 
@@ -51,16 +50,16 @@ class PlaceDetailsFragment : BaseFragment() {
         super.onStart()
 
         if (place != null)
-            locationViewModel.setCurrentLocation(place!!)
+            locationViewModel.setCurrentPlace(place!!)
 
         setListeners()
     }
 
     private fun setListeners() {
         binding.toolbarLocation.btn_toolbar_back.setOnClickListener {
-            this.findNavController().navigate(
+          /*  this.findNavController().navigate(
                 PlaceDetailsFragmentDirections.actionLocationFragmentToCategoryScreenFragment(category!!)
-            )
+            )*/
         }
 
         binding.toolbarLocation.btn_toolbar_home.setOnClickListener {

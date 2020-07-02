@@ -50,4 +50,9 @@ dependencies {
     implementation androidDependencies.koinAndroid
     implementation androidDependencies.roomCoroutines
     kapt androidDependencies.roomCompiler
+
+    def commonDependencies = rootProject.ext.commonDependencies
+    implementation commonDependencies.kotlin
+    implementation commonDependencies.koin
+    implementation commonDependencies.coroutines
 }

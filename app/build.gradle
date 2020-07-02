@@ -50,6 +50,7 @@ dependencies {
     implementation project(':usecases')
     implementation project(':framework-AndroidSDK')
     implementation project(':framework-shared')
+    implementation project(':framework_retrofit')
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
