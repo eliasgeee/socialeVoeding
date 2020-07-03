@@ -55,4 +55,7 @@ dependencies {
     implementation commonDependencies.kotlin
     implementation commonDependencies.koin
     implementation commonDependencies.coroutines
+
+    def sharedFrameworkDependencies = rootProject.ext.sharedFramework
+    implementation sharedFramework.jsoup
 }

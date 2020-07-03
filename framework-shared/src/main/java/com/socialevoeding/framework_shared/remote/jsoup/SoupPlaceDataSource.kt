@@ -10,7 +10,7 @@ import org.jsoup.nodes.Element
 
 class SoupPlaceDataSource : PlaceRemoteDataSource {
     override suspend fun getPlaces(queryString: String, currenPlaceName: String): List<NetworkPlace> {
-        return getPlacesSearch(queryString, currenPlaceName).map {
+        return getPlacesSearch("eten daklozen gent", currenPlaceName).map {
             getPlacesDetails(it)
             getPacesImages(it)
         }

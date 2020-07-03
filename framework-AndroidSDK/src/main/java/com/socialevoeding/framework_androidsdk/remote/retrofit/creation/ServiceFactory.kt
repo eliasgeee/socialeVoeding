@@ -1,6 +1,5 @@
-package com.socialevoeding.framework_androidsdk.remote
+package com.socialevoeding.framework_androidsdk.remote.retrofit.creation
 
-import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.socialevoeding.data.datasources.remote.Environment
 import com.squareup.moshi.Moshi
 import okhttp3.OkHttpClient
@@ -18,6 +17,7 @@ class ServiceFactory (
     fun <T> create(serviceType: Class<T>): T {
         return create(
             serviceType,
+            httpClient,
             converterFactory,
             callAdapterFactory,
             environment.baseUrl
@@ -25,12 +25,13 @@ class ServiceFactory (
     }
 
     private fun getNetAdapter(
+        client: OkHttpClient,
         converterFactory: Converter.Factory,
         callAdapterFactory: CallAdapter.Factory,
         baseUrl: String
     ): Retrofit {
         val builder = Retrofit.Builder()
-//            .client(client)
+            .client(client)
             .addConverterFactory(converterFactory)
             .addCallAdapterFactory(callAdapterFactory)
             .baseUrl(baseUrl)
@@ -39,11 +40,12 @@ class ServiceFactory (
 
     private fun <T> create(
         serviceType: Class<T>,
+        client: OkHttpClient,
         converterFactory: Converter.Factory,
         callAdapterFactory: CallAdapter.Factory,
         baseUrl: String
     ): T {
-        val retrofit = getNetAdapter(converterFactory, callAdapterFactory, baseUrl)
+        val retrofit = getNetAdapter(client, converterFactory, callAdapterFactory, baseUrl)
         return retrofit.create(serviceType)
     }
 }

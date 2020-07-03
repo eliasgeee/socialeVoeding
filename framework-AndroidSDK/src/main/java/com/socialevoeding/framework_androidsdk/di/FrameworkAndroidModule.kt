@@ -10,8 +10,8 @@ import com.socialevoeding.data.datasources.local.database.CategoryLocalDataSourc
 import com.socialevoeding.data.datasources.local.database.PlaceLocalDataSource
 import com.socialevoeding.data.datasources.remote.Environment
 import com.socialevoeding.data.datasources.remote.NetworkConfig
+import com.socialevoeding.data.datasources.remote.PlaceRemoteDataSource
 import com.socialevoeding.data.datasources.remote.UserLocationRemoteDataSource
-import com.socialevoeding.data.dtos.local.device.UserLocationDTO
 import com.socialevoeding.framework_androidsdk.device.gps.LocationGPSDataSource
 import com.socialevoeding.framework_androidsdk.local.room.dao.CategoryDao
 import com.socialevoeding.framework_androidsdk.local.room.dao.PlaceDao
@@ -20,21 +20,19 @@ import com.socialevoeding.framework_androidsdk.local.room.database.getDatabase
 import com.socialevoeding.framework_androidsdk.local.room.datasources.RoomCategoryDataSource
 import com.socialevoeding.framework_androidsdk.local.room.datasources.RoomPlaceDataSource
 import com.socialevoeding.framework_androidsdk.local.sharedPreferences.SharedPrefUserLocationDataSource
-import com.socialevoeding.framework_androidsdk.remote.ServiceFactory
-import com.socialevoeding.framework_androidsdk.remote.ServiceProvider
-import com.socialevoeding.framework_androidsdk.remote.ServiceProviderImpl
-import com.socialevoeding.framework_androidsdk.remote.UserLocationRemoteDataSourceImpl
-import com.socialevoeding.framework_androidsdk.remote.retrofit.apiServices.GeoLocationApiService
-import com.squareup.moshi.JsonAdapter
+import com.socialevoeding.framework_androidsdk.remote.datasources.PlaceRemoteDataSourceImpl
+import com.socialevoeding.framework_androidsdk.remote.retrofit.creation.ServiceFactory
+import com.socialevoeding.framework_androidsdk.remote.retrofit.creation.ServiceProviderImpl
+import com.socialevoeding.framework_androidsdk.remote.datasources.UserLocationRemoteDataSourceImpl
+import com.socialevoeding.framework_androidsdk.remote.retrofit.converters.ConverterTypes
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.OkHttpClient
 import org.koin.android.ext.koin.androidContext
+import org.koin.core.qualifier.named
 import org.koin.dsl.module
-import retrofit2.CallAdapter
-import retrofit2.Converter
-import retrofit2.Retrofit
-import retrofit2.converter.moshi.MoshiConverterFactory
+import java.time.Duration
+import java.util.concurrent.TimeUnit
 
 private const val STORAGE = "com.socialevoeding.bap.USERLOCATION"
 
@@ -49,6 +47,7 @@ val frameworkAndroidModule = module {
     single { RoomPlaceDataSource(get()) as PlaceLocalDataSource }
     single { SharedPrefUserLocationDataSource(get(), get()) as UserLocationCacheDataSource }
     single { LocationGPSDataSource(get()) as CurrentLocationDataSource }
+    single { provideOkHttpClient() }
 
 //    single { provideMoshiAdapterLocationDTO() }
 
@@ -58,28 +57,54 @@ val frameworkAndroidModule = module {
 
   //  single { provideMoshi() }
 
-    single { Environment(NetworkConfig.BASE_URL_GEOLOCATION) }
+    single(named("geolocation_env")) { Environment(NetworkConfig.BASE_URL_GEOLOCATION) }
+    single(named("places_search_env")) {Environment(NetworkConfig.BASE_URL_SEARCH)}
 
-    single {
+    single(named("geolocation_service")) {
         ServiceFactory(
-            MoshiConverterFactory.create(provideMoshi()).asLenient(),
+            ConverterTypes.provideConverters(),
             CoroutineCallAdapterFactory(),
             get(),
-            get()
+            get(named("geolocation_env"))
         )
     }
 
-    single { ServiceProviderImpl(get()) }
+    single(named("places_search_service")) {
+        ServiceFactory(
+            ConverterTypes.provideConverters(),
+            CoroutineCallAdapterFactory(),
+            get(),
+            get(named("places_search_env"))
+        )
+    }
 
-    single { UserLocationRemoteDataSourceImpl(get()) as UserLocationRemoteDataSource }
+    single(named("geolocation_serviceProv")) {
+        ServiceProviderImpl(
+            get(named("geolocation_service"))
+        )
+    }
+
+    single(named("places_search_serviceProv")) {
+        ServiceProviderImpl(
+            get(named("places_search_service"))
+        )
+    }
+
+    single { UserLocationRemoteDataSourceImpl(
+        get(named("geolocation_serviceProv"))
+    ) as UserLocationRemoteDataSource }
 
     single { provideMoshi() }
 
-    single { provideRetrofitClient() }
+    single { PlaceRemoteDataSourceImpl(
+        get(named("places_search_serviceProv"))
+    ) as PlaceRemoteDataSource }
 }
 
-fun provideRetrofitClient() : OkHttpClient{
-    return OkHttpClient().newBuilder().build()
+fun provideOkHttpClient() : OkHttpClient {
+    return OkHttpClient()
+        .newBuilder()
+        .build()
 }
 
 fun provideLocationManager(context: Context): LocationManager {
@@ -103,7 +128,6 @@ fun provideMoshi(): Moshi {
         .add(KotlinJsonAdapterFactory())
         .build()
 }
-
 
 /*fun provideMoshiAdapterLocationDTO(): JsonAdapter<UserLocationDTO> {
     return provideMoshi().adapter(UserLocationDTO::class.java)
