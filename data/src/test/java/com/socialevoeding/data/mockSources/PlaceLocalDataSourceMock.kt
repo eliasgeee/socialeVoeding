@@ -1,7 +1,8 @@
+/*
 package com.socialevoeding.data.mockSources
 
 import com.socialevoeding.data.datasources.local.database.PlaceLocalDataSource
-import com.socialevoeding.entities.PlaceEntity
+import com.socialevoeding.data_entities.PlaceEntity
 
 class PlaceLocalDataSourceMock(private val placeLocalDataSourceImplementation: PlaceLocalDataSourceImplementation) : PlaceLocalDataSource {
     override suspend fun insertPlaces(places: List<PlaceEntity>) {
@@ -44,4 +45,4 @@ class PlaceLocalDataSourceImplementation {
     suspend fun clear() {
         cachedPlaces = emptyList()
     }
-}
+}*/

@@ -10,7 +10,6 @@
     <ID>ConstructorParameterNaming:GeolocationObject.kt$GeolocationObject$val osm_type: String</ID>
     <ID>ConstructorParameterNaming:GeolocationObject.kt$GeolocationObject$val place_id: Int</ID>
     <ID>FunctionOnlyReturningConstant:PlacesScreenFragment.kt$PlacesScreenFragment$private fun getTextToRead(): String</ID>
-    <ID>FunctionOnlyReturningConstant:UserLocationRemoteDataSourceMock.kt$UserLocationRemoteDataSourceMockImpl$suspend fun getCurrentGeoLocationAsync( latitude: Double?, longitude: Double?, format: String ): Deferred&lt;GeolocationObject&gt;?</ID>
     <ID>LongParameterList:RoomPlaceEntity.kt$RoomPlaceEntity$( val name: String = "", val telephoneNumber: String = "", val address: String = "", val webUrl: String = "", val img: String, val latitude: Double, val longitude: Double, val city: String, @ForeignKey(entity = RoomCategoryEntity::class, onDelete = ForeignKey.CASCADE, childColumns = ["categoryId"], parentColumns = ["id"]) val categoryId: Int = 0 )</ID>
     <ID>LongParameterList:ViewItem.kt$ViewItem.PlaceViewItem$( val name: String? = "", val telephoneNumber: String? = "", val webUrl: String? = "", val img: String? = "", val address: String? = "", var cityName: String? = "", val latitude: Double? = Double.NaN, val longitude: Double? = Double.NaN, var openingHours: @RawValue Array&lt;OpeningDay&gt;? = emptyArray(), val distance: Int? = 0, val isOpen: Boolean? = null )</ID>
     <ID>MagicNumber:Application.kt$Application$7</ID>
@@ -42,10 +41,9 @@
     <ID>MaxLineLength:CategoryViewModel.kt$CategoryViewModel$_viewState.postValue(ViewState.Succes(it.data.map { cat -&gt; CategoryViewItemMapper.mapToViewItem(cat) }))</ID>
     <ID>MaxLineLength:GetCurrentGeoLocationUseCase.kt$GetCurrentGeoLocationUseCase$override suspend fun executeOnBackground(): UserLocation</ID>
     <ID>MaxLineLength:GetLastKnownUserLocationUseCase.kt$GetLastKnownUserLocationUseCase$override suspend fun executeOnBackground(): Either&lt;Unit, UserLocation&gt;</ID>
-    <ID>MaxLineLength:PlaceLocalDataSourceMock.kt$PlaceLocalDataSourceMock : PlaceLocalDataSource</ID>
+    <ID>MaxLineLength:PlaceLocalDataSourceMock.kt$.PlaceLocalDataSourceMock.kt</ID>
     <ID>MaxLineLength:PlaceRemoteDataSourceImpl.kt$PlaceRemoteDataSourceImpl${ return serviceProviderImpl.getPlacesService() .getRedirectUrlAsync("https://www.google.com/search?q=" + "voedselbank+gent") .flatMapMerge { serviceProviderImpl.getPlacesService() .getPlacesAsync("https://www.google.com$it") } // var redirectUrl = responseRedirect.string() // val string = serviceProviderImpl.getPlacesService().getPlacesAsync("https://www.google.com" + responseRedirect).string() }</ID>
-    <ID>MaxLineLength:PlaceRemoteDataSourceMock.kt$PlaceRemoteDataSourceMock : PlaceRemoteDataSource</ID>
-    <ID>MaxLineLength:PlaceRemoteDataSourceMock.kt$PlaceRemoteDataSourceMock$return placeRemoteDataSourceMockImplementation.getPlaces(queryString = queryString, currenPlaceName = currenPlaceName)</ID>
+    <ID>MaxLineLength:PlaceRemoteDataSourceMock.kt$com.socialevoeding.data.mockSources.PlaceRemoteDataSourceMock.kt</ID>
     <ID>MaxLineLength:PlaceRepositoryImpl.kt$PlaceRepositoryImpl$override suspend fun insertPlacesIntoDatabase(places: List&lt;Place&gt;)</ID>
     <ID>MaxLineLength:PlaceRepositoryImpl.kt$PlaceRepositoryImpl$private suspend</ID>
     <ID>MaxLineLength:PlacesAdapter.kt$PlacesAdapter$PlacesViewHolder : ViewHolder</ID>
@@ -57,8 +55,7 @@
     <ID>MaxLineLength:SoupPlaceDataSource.kt$SoupPlaceDataSource$val documentPlace: Document = Jsoup.connect(SoupConfig.SOUP_BASE_URL_SEARCH + this.name).timeout(120 * 1000).get()</ID>
     <ID>MaxLineLength:UserLocationRemoteDataSourceImpl.kt$UserLocationRemoteDataSourceImpl : UserLocationRemoteDataSource</ID>
     <ID>MaxLineLength:UserLocationRemoteDataSourceImpl.kt$UserLocationRemoteDataSourceImpl$return serviceProviderImpl.getGeolocationService().getCurrentGeoLocationAsync(latitude, longitude, format).await().address.city</ID>
-    <ID>MaxLineLength:UserLocationRepositoryTest.kt$UserLocationRepositoryTest$private val userLocationCurrentLocationDeviceDataSourceMockImpl = mockk&lt;UserLocationCurrentLocationDeviceDataSourceMockImpl&gt;()</ID>
-    <ID>MaxLineLength:UserLocationRepositoryTest.kt$UserLocationRepositoryTest$private val userLocationRemoteDataSourceMock = UserLocationRemoteDataSourceMock(userLocationRemoteDataSourceMockImpl)</ID>
+    <ID>MaxLineLength:UserLocationRepositoryTest.kt$.UserLocationRepositoryTest.kt</ID>
     <ID>MaxLineLength:ViewItem.kt$com.socialevoeding.presentation_android.ViewItem.kt</ID>
     <ID>MemberNameEqualsClassName:Either.kt$Either$fun either(fnL: (L) -&gt; Any, fnR: (R) -&gt; Any): Any</ID>
     <ID>NestedBlockDepth:LocationGPSDataSource.kt$LocationGPSDataSource$@SuppressLint("MissingPermission") private fun startGPSTracker()</ID>
@@ -123,14 +120,11 @@
     <ID>NewLineAtEndOfFile:PlaceEntityFactory.kt$com.socialevoeding.util_factories.PlaceEntityFactory.kt</ID>
     <ID>NewLineAtEndOfFile:PlaceFactory.kt$com.socialevoeding.util_factories.PlaceFactory.kt</ID>
     <ID>NewLineAtEndOfFile:PlaceLocalDataSource.kt$com.socialevoeding.data.datasources.local.database.PlaceLocalDataSource.kt</ID>
-    <ID>NewLineAtEndOfFile:PlaceLocalDataSourceMock.kt$com.socialevoeding.data.mockSources.PlaceLocalDataSourceMock.kt</ID>
     <ID>NewLineAtEndOfFile:PlaceMapperFacade.kt$com.socialevoeding.data.mappers.base.PlaceMapperFacade.kt</ID>
     <ID>NewLineAtEndOfFile:PlacePlaceMapper.kt$com.socialevoeding.data.mappers.PlacePlaceMapper.kt</ID>
     <ID>NewLineAtEndOfFile:PlaceRemoteDataSource.kt$com.socialevoeding.data.datasources.remote.PlaceRemoteDataSource.kt</ID>
     <ID>NewLineAtEndOfFile:PlaceRemoteDataSourceImpl.kt$com.socialevoeding.framework_androidsdk.remote.datasources.PlaceRemoteDataSourceImpl.kt</ID>
-    <ID>NewLineAtEndOfFile:PlaceRemoteDataSourceMock.kt$com.socialevoeding.data.mockSources.PlaceRemoteDataSourceMock.kt</ID>
     <ID>NewLineAtEndOfFile:PlaceRepository.kt$com.socialevoeding.domain.repositories.PlaceRepository.kt</ID>
-    <ID>NewLineAtEndOfFile:PlaceRepositoryImplTest.kt$com.socialevoeding.data.repositories.PlaceRepositoryImplTest.kt</ID>
     <ID>NewLineAtEndOfFile:PlaceTest.kt$com.socialevoeding.domain.PlaceTest.kt</ID>
     <ID>NewLineAtEndOfFile:PlaceViewItemMapper.kt$com.socialevoeding.presentation_android.mappers.PlaceViewItemMapper.kt</ID>
     <ID>NewLineAtEndOfFile:PlacesAdapter.kt$com.socialevoeding.bap.ui.places.PlacesAdapter.kt</ID>
@@ -167,9 +161,7 @@
     <ID>NewLineAtEndOfFile:UserLocationDTO.kt$com.socialevoeding.data.dtos.local.device.UserLocationDTO.kt</ID>
     <ID>NewLineAtEndOfFile:UserLocationRemoteDataSource.kt$com.socialevoeding.data.datasources.remote.UserLocationRemoteDataSource.kt</ID>
     <ID>NewLineAtEndOfFile:UserLocationRemoteDataSourceImpl.kt$com.socialevoeding.framework_androidsdk.remote.datasources.UserLocationRemoteDataSourceImpl.kt</ID>
-    <ID>NewLineAtEndOfFile:UserLocationRemoteDataSourceMock.kt$com.socialevoeding.data.mockSources.UserLocationRemoteDataSourceMock.kt</ID>
     <ID>NewLineAtEndOfFile:UserLocationRepository.kt$com.socialevoeding.domain.repositories.UserLocationRepository.kt</ID>
-    <ID>NewLineAtEndOfFile:UserLocationRepositoryTest.kt$com.socialevoeding.data.repositories.UserLocationRepositoryTest.kt</ID>
     <ID>NewLineAtEndOfFile:UserLocationUtils.kt$com.socialevoeding.data.utils.UserLocationUtils.kt</ID>
     <ID>NewLineAtEndOfFile:ViewExtensions.kt$com.socialevoeding.bap.util.ViewExtensions.kt</ID>
     <ID>NewLineAtEndOfFile:ViewItem.kt$com.socialevoeding.presentation_android.ViewItem.kt</ID>

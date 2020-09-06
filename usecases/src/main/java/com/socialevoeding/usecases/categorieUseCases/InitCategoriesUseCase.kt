@@ -7,9 +7,9 @@ import com.socialevoeding.usecases.base.UseCase
 class InitCategoriesUseCase(
     private val categoryRepository: CategoryRepository
 ) : UseCase<Unit>() {
-    var category: List<Category> = emptyList()
+    var categories: List<Category> = emptyList()
 
     override suspend fun executeOnBackground() {
-        return categoryRepository.insertCategoriesIntoDatabase(category)
+        return categoryRepository.insertCategoriesIntoDatabase(categories)
     }
 }

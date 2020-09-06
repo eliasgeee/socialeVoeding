@@ -1,9 +1,6 @@
 package com.socialevoeding.data.mockSources
 
-import com.socialevoeding.data.datasources.remote.UserLocationRemoteDataSource
-import com.socialevoeding.data.dtos.remote.GeolocationObject
-import kotlinx.coroutines.Deferred
-
+/*
 class UserLocationRemoteDataSourceMock(
     private val userLocationRemoteDataSourceMockImpl: UserLocationRemoteDataSourceMockImpl
 ) : UserLocationRemoteDataSource {
@@ -28,4 +25,4 @@ class UserLocationRemoteDataSourceMockImpl {
     ): Deferred<GeolocationObject>? {
         return null
     }
-}
+}*/

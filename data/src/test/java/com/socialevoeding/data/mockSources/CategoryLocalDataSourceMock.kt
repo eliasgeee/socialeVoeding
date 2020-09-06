@@ -1,7 +1,7 @@
 package com.socialevoeding.data.mockSources
 
 import com.socialevoeding.data.datasources.local.database.CategoryLocalDataSource
-import com.socialevoeding.entities.CategoryEntity
+import com.socialevoeding.data_entities.CategoryEntity
 
 class CategoryLocalDataSourceMock(private val categoryDatabaseSourceMock: CategoryDatabaseSourceMock) : CategoryLocalDataSource {
     override suspend fun getCategories(): List<CategoryEntity> {

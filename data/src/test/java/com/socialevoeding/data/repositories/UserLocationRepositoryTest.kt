@@ -1,3 +1,4 @@
+/*
 package com.socialevoeding.data.repositories
 
 import com.socialevoeding.data.dtos.local.device.CoordinatesDTO
@@ -171,4 +172,4 @@ class UserLocationRepositoryTest {
         coVerify { userLocationCurrentLocationDeviceDataSourceMock.getCurrentLocation() }
         coVerify { userLocationCurrentLocationDeviceDataSourceMockImpl.getCurrentLocation() }
     }
-}
+}*/
