@@ -20,11 +20,7 @@ class PlaceRepositoryImpl(
     private val networkPlaceMapper: NetworkPlaceMapper
 ) : PlaceRepository {
 
-    @FlowPreview
-    override suspend fun refreshPlaces(
-        userLocation: UserLocation,
-        currentCategoryName: String
-    ) {
+    override suspend fun refreshPlaces(userLocation: UserLocation, currentCategoryName: String) {
         clearLocalDataSource()
         getPlacesFromRemoteDataSource(currentCategoryName, userLocation.cityName).collect { places ->
             insertRemotePlacesIntoDatabase(places)

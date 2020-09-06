@@ -5,6 +5,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.socialevoeding.framework_androidsdk.local.room.entities.RoomPlaceEntity
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface PlaceDao {
@@ -12,7 +13,7 @@ interface PlaceDao {
     suspend fun insertPlaces(places: List<RoomPlaceEntity>)
 
     @Query("select * from places")
-    suspend fun getPlaces(): List<RoomPlaceEntity>
+    fun getPlaces(): Flow<List<RoomPlaceEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(vararg places: RoomPlaceEntity)

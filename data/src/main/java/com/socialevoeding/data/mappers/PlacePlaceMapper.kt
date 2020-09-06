@@ -37,10 +37,10 @@ object PlacePlaceMapper : PlaceMapperFacade<PlaceEntity, Place> {
     }
 
     override fun mapFromEntities(entities: List<PlaceEntity>): List<Place> {
-        val models: List<Place> = emptyList()
+        val models =  ArrayList<Place>()
         entities.forEach {
             when (val place = mapFromEntity(it)) {
-                is Either.Right -> models.plus(place)
+                is Either.Right -> models.add(place.b)
             }
         }
         return models

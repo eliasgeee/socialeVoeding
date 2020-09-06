@@ -50,6 +50,6 @@ class Place(builder: PlaceBuilder) {
         telephoneNumber = builder.telephoneNumber
         webUrl = builder.webUrl
         img = builder.img
-        address = builder.img
+        address = builder.address
     }
 }

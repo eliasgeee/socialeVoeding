@@ -22,10 +22,17 @@ class SoupPlaceDataSource : PlaceRemoteDataSource {
             val elements = getPlacesElements(redirectUrl)
             val places = ArrayList<NetworkPlace>()
             for (element in elements){
-                places.add(getNetWorkPlace(element).getPlaceDetails().getImage())
+                val placeToAdd = getNetWorkPlace(element)
+                    .setCity(currentPlaceName)
+                places.add(placeToAdd)
+                emit(places)
+                placeToAdd.getPlaceDetails()
+                places.add(placeToAdd)
+                emit(places)
+                placeToAdd.getImage()
+                places.add(placeToAdd)
                 emit(places)
             }
-
         }
     }
 
@@ -72,11 +79,11 @@ class SoupPlaceDataSource : PlaceRemoteDataSource {
 
     private fun NetworkPlace.getPlaceDetails() : NetworkPlace {
                 try{
-                    val urlPlace = SoupConfig.SOUP_BASE_URL_SEARCH + this.name.replace(
+                    /*val urlPlace = SoupConfig.SOUP_BASE_URL_SEARCH + this.name.replace(
                         ' ',
                         '+'
-                    ) + "+" + this.name
-                    val documentPlace: Document = Jsoup.connect(urlPlace).get()
+                    ) + "+" + this.name*/
+                    val documentPlace: Document = Jsoup.connect(SoupConfig.SOUP_BASE_URL_SEARCH + this.name).timeout(120 * 1000).get()
 
                     this.address = documentPlace.select("span[class=LrzXr]").text()
                     this.telephoneNumber = documentPlace.select("span[LrzXr zdqRlf kno-fv]  a").text()
@@ -92,15 +99,16 @@ class SoupPlaceDataSource : PlaceRemoteDataSource {
                         )
                     }
                 }
-                catch (e : Exception){}
+                catch (e : Exception){
+                    e.message
+                }
         return this
     }
 
     private fun NetworkPlace.getImage(): NetworkPlace {
                 try {
                     val imgUrl = "http://google.com/search?tbm=isch&q=${this.name}"
-
-                    val documentImg: Document = Jsoup.connect(imgUrl).get()
+                    val documentImg: Document = Jsoup.connect(imgUrl).timeout(120 * 1000).get()
 
                     val scripts = documentImg.select("script")
                     var imgsrchtml =
@@ -114,7 +122,13 @@ class SoupPlaceDataSource : PlaceRemoteDataSource {
                     // imgsrchtml = imgsrchtml.replace(Base64Regex.baseRegex, "")
                     this.img_url = imgsrchtml
                 }
-                catch (e : Exception){}
+                catch (e : Exception){
+                    e.message
+                }
         return this
     }
+
+    fun NetworkPlace.setCity(city : String) : NetworkPlace {
+        cityName = city
+        return this}
 }
