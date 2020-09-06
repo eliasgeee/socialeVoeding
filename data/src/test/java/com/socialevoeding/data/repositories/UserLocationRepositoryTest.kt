@@ -23,6 +23,7 @@ import org.junit.Test
 
 @ExperimentalCoroutinesApi
 class UserLocationRepositoryTest {
+
     private val userLocationRemoteDataSourceMockImpl = mockk<UserLocationRemoteDataSourceMockImpl>()
     private val userLocationRemoteDataSourceMock = UserLocationRemoteDataSourceMock(userLocationRemoteDataSourceMockImpl)
     private val userLocationCacheDataSourceMockImpl = mockk<UserLocationCacheDataSourceMockImpl>()
