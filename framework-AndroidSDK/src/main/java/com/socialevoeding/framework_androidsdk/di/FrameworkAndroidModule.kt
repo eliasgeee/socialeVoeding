@@ -21,24 +21,25 @@ import com.socialevoeding.framework_androidsdk.local.room.datasources.RoomCatego
 import com.socialevoeding.framework_androidsdk.local.room.datasources.RoomPlaceDataSource
 import com.socialevoeding.framework_androidsdk.local.sharedPreferences.SharedPrefUserLocationDataSource
 import com.socialevoeding.framework_androidsdk.remote.datasources.PlaceRemoteDataSourceImpl
-import com.socialevoeding.framework_androidsdk.remote.retrofit.creation.ServiceFactory
-import com.socialevoeding.framework_androidsdk.remote.retrofit.creation.ServiceProviderImpl
 import com.socialevoeding.framework_androidsdk.remote.datasources.UserLocationRemoteDataSourceImpl
 import com.socialevoeding.framework_androidsdk.remote.retrofit.converters.ConverterTypes
+import com.socialevoeding.framework_androidsdk.remote.retrofit.creation.ServiceFactory
+import com.socialevoeding.framework_androidsdk.remote.retrofit.creation.ServiceProviderImpl
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import okhttp3.OkHttpClient
+import okhttp3.*
+import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
-import java.time.Duration
+import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
 
 private const val STORAGE = "com.socialevoeding.bap.USERLOCATION"
 
 val frameworkAndroidModule = module {
 
-    single { getDatabase (androidContext()) }
+    single { getDatabase(androidContext()) }
 
     single { provideCategoryDao(get()) }
     single { providePlaceDao(get()) }
@@ -55,10 +56,10 @@ val frameworkAndroidModule = module {
 
     single { getSharedPrefs(androidContext()) }
 
-  //  single { provideMoshi() }
+        //  single { provideMoshi() }
 
     single(named("geolocation_env")) { Environment(NetworkConfig.BASE_URL_GEOLOCATION) }
-    single(named("places_search_env")) {Environment(NetworkConfig.BASE_URL_SEARCH)}
+    single(named("places_search_env")) { Environment(NetworkConfig.BASE_URL_SEARCH) }
 
     single(named("geolocation_service")) {
         ServiceFactory(
@@ -96,15 +97,26 @@ val frameworkAndroidModule = module {
 
     single { provideMoshi() }
 
-    single { PlaceRemoteDataSourceImpl(
+    /*single { PlaceRemoteDataSourceImpl(
         get(named("places_search_serviceProv"))
-    ) as PlaceRemoteDataSource }
+    ) as PlaceRemoteDataSource
+    }*/
 }
 
-fun provideOkHttpClient() : OkHttpClient {
+fun provideOkHttpClient(): OkHttpClient {
+    val dispatcher = Dispatcher(Executors.newFixedThreadPool(20))
+    dispatcher.maxRequests = 20
+    dispatcher.maxRequestsPerHost = 1
     return OkHttpClient()
         .newBuilder()
-        .build()
+        .addNetworkInterceptor(object : Interceptor {
+            override fun intercept(chain: Interceptor.Chain): Response {
+                val request = chain.request().newBuilder().header("User-Agent", "COOL APP 9000").build()
+                return chain.proceed(request)
+            }
+        }).addNetworkInterceptor(HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BODY })
+        .dispatcher(dispatcher)
+        .connectionPool(ConnectionPool(100, 30, TimeUnit.SECONDS)).build()
 }
 
 fun provideLocationManager(context: Context): LocationManager {

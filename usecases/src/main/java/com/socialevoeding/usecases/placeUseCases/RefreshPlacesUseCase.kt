@@ -7,10 +7,11 @@ import com.socialevoeding.usecases.base.UseCase
 class RefreshPlacesUseCase(
     private val placeRepository: PlaceRepository
 ) : UseCase<Unit>() {
+
     var userLocation: UserLocation? = null
-    var currentCategorieName: String = ""
+    var currentCategoryName: String = ""
 
     override suspend fun executeOnBackground() {
-        return placeRepository.refreshPlaces(userLocation!!, currentCategorieName)
+        return placeRepository.refreshPlaces(userLocation = userLocation!!, currentCategoryName = currentCategoryName)
     }
 }

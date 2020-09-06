@@ -31,7 +31,7 @@ class Application : Application() {
             modules(
                 dataModule,
                 presentationModule,
-                useCaseModule, frameworkAndroidModule
+                useCaseModule, frameworkAndroidModule, frameworkSharedModule
             )
             delayedInit()
         }

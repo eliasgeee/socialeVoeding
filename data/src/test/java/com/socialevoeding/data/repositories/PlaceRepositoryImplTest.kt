@@ -7,7 +7,7 @@ import com.socialevoeding.data.mockSources.PlaceLocalDataSourceImplementation
 import com.socialevoeding.data.mockSources.PlaceLocalDataSourceMock
 import com.socialevoeding.data.mockSources.PlaceRemoteDataSourceMock
 import com.socialevoeding.data.mockSources.PlaceRemoteDataSourceMockImplementation
-import com.socialevoeding.data_entities.PlaceEntity
+import com.socialevoeding.entities.PlaceEntity
 import com.socialevoeding.domain.model.place.Place
 import com.socialevoeding.domain.model.UserLocation
 import com.socialevoeding.util_datafactory.DataFactory

@@ -20,6 +20,7 @@ object PlacesConverter : Converter<ResponseBody, String> {
 
     override fun convert(value: ResponseBody): String? {
         val response = value.string()
-        return ""
+        val links = Jsoup.parse(response).select("div[jsname=GZq3Ke]")
+        return response
     }
 }

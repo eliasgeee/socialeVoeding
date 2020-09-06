@@ -6,7 +6,7 @@ import retrofit2.Retrofit
 import java.lang.reflect.Type
 
 class AnnotatedConverterFactory(
-    private val factories : LinkedHashMap<String, Converter.Factory>
+    private val factories: LinkedHashMap<String, Converter.Factory>
 ) : Converter.Factory() {
 
     override fun responseBodyConverter(
@@ -14,7 +14,7 @@ class AnnotatedConverterFactory(
         annotations: Array<Annotation>,
         retrofit: Retrofit
     ): Converter<ResponseBody, *>? {
-        for(annotation in annotations) run {
+        for (annotation in annotations) run {
             val factory: Converter.Factory? = factories[annotation.annotationClass.simpleName]
 
             factory?.let {

@@ -4,7 +4,7 @@ import com.socialevoeding.data.CategoryDataProvider
 import com.socialevoeding.data.mappers.DatabaseCategoryMapperFacade
 import com.socialevoeding.data.mockSources.CategoryDatabaseSourceMock
 import com.socialevoeding.data.mockSources.CategoryLocalDataSourceMock
-import com.socialevoeding.data_entities.CategoryEntity
+import com.socialevoeding.entities.CategoryEntity
 import com.socialevoeding.domain.model.Category
 import com.socialevoeding.util_factories.CategoryEntityFactory
 import com.socialevoeding.util_factories.CategoryFactory

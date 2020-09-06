@@ -12,7 +12,7 @@ import com.socialevoeding.usecases.locationUseCases.GetCurrentGeoLocationUseCase
 import com.socialevoeding.usecases.locationUseCases.GetLastKnownUserLocationUseCase
 import com.socialevoeding.usecases.placeUseCases.RefreshPlacesUseCase
 
-class InitViewModel(
+class LocationViewModel(
     private val getCurrentGeoLocationUseCase: GetCurrentGeoLocationUseCase,
     private val getLastKnownUserLocationUseCase: GetLastKnownUserLocationUseCase,
     private val getCurrentCoordinatesUseCase: GetCurrentCoordinatesUseCase,
@@ -22,9 +22,9 @@ class InitViewModel(
 ) : ViewModel() {
 
     fun updateLocationAndPlaces() {
-      //  getCurrentCoordinatesUseCase.execute {
-     //       onComplete {
-     //           getCurrentGeoLocationUseCase.currentCoordinates = it.data
+        //  getCurrentCoordinatesUseCase.execute {
+        //       onComplete {
+        //           getCurrentGeoLocationUseCase.currentCoordinates = it.data
                 getCurrentGeoLocationUseCase.currentCoordinates = Coordinates(latitude = 51.0543, longitude = 3.7174)
                 getCurrentGeoLocationUseCase.execute {
                     onComplete { currentLocation ->
@@ -44,7 +44,7 @@ class InitViewModel(
                 }
             }
     //    }
-  //  }
+    //  }
 
     private fun checkIfRefreshIsNecessary(currentLocation: UserLocation, lastKnownLocation: UserLocation) {
         if (currentLocation.cityName.getNormalizedName() != lastKnownLocation.cityName.getNormalizedName())
@@ -63,7 +63,7 @@ class InitViewModel(
         getCategoriesUseCase.execute {
             onComplete {
                 it.data.forEach {
-                    refreshPlacesUseCase.currentCategorieName = it.name
+                    refreshPlacesUseCase.currentCategoryName = it.name
                     refreshPlacesUseCase.userLocation = currentLocation
                     refreshPlacesUseCase.execute {
                     }

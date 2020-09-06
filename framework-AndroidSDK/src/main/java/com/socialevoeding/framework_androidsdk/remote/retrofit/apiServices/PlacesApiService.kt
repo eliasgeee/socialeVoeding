@@ -1,32 +1,31 @@
 package com.socialevoeding.framework_androidsdk.remote.retrofit.apiServices
 
 import com.socialevoeding.data.dtos.remote.NetworkPlace
+import com.socialevoeding.framework_androidsdk.remote.retrofit.converters.Places
 import com.socialevoeding.framework_androidsdk.remote.retrofit.converters.PlacesRedirect
 import com.socialevoeding.framework_androidsdk.remote.retrofit.converters.SearchRedirect
 import kotlinx.coroutines.Deferred
-import retrofit2.http.GET
-import retrofit2.http.Path
-import retrofit2.http.Query
+import kotlinx.coroutines.flow.Flow
+import okhttp3.ResponseBody
+import retrofit2.http.*
 
 interface PlacesApiService {
 
-    @GET("search?") @SearchRedirect
-    fun getPlacesSearchRedirectUrlAsync(
-        @Query("q") query: String?
-    ): Deferred<String>
+    @Streaming
+    @PlacesRedirect @GET
+    suspend fun getRedirectUrlAsync(
+        @Url url : String?
+    ): Flow<String>
 
-    @GET("{redirectUrl}") @PlacesRedirect
-    fun getPlacesDetailsRedirectUrlAsync(
-        @Path("redirectUrl") redirectUrl : String?
-    ): Deferred<String>
-
-    @GET("{redirectUrl}")
-    fun getPlacesAsync(
-        @Path("redirectUrl") redirectUrl: String?
-    ): Deferred<List<NetworkPlace>>
+    @Streaming
+    @GET @Places
+    suspend fun getPlacesAsync(
+        // @Path("redirectUrl") redirectUrl: String?
+        @Url redirectUrl: String?
+    ): Flow<List<NetworkPlace>>
 
     @GET("search?tbm=isch")
-    fun getDetailsAsync(
+    suspend fun getDetailsAsync(
         @Query("q") query: String?
     ): Deferred<List<NetworkPlace>>
 }

@@ -16,7 +16,7 @@ class UserLocationCacheDataSourceMock(
     }
 }
 
-class UserLocationCacheDataSourceMockImpl() {
+class UserLocationCacheDataSourceMockImpl {
     fun storeLastKnownUserLocation(currentLocation: UserLocationDTO) {
         // do something
     }

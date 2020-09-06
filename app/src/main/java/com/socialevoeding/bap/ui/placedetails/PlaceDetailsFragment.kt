@@ -27,13 +27,13 @@ class PlaceDetailsFragment : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        /* place = PlaceDetailsFragmentArgs.fromBundle(
+        place = PlaceDetailsFragmentArgs.fromBundle(
             requireArguments()
         ).selectedPlace
 
         category = PlaceDetailsFragmentArgs.fromBundle(
             requireArguments()
-        ).selectedCategory*/
+        ).selectedCategory
 
         binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_location, container, false)
@@ -57,9 +57,9 @@ class PlaceDetailsFragment : BaseFragment() {
 
     private fun setListeners() {
         binding.toolbarLocation.btn_toolbar_back.setOnClickListener {
-          /*  this.findNavController().navigate(
+            this.findNavController().navigate(
                 PlaceDetailsFragmentDirections.actionLocationFragmentToCategoryScreenFragment(category!!)
-            )*/
+            )
         }
 
         binding.toolbarLocation.btn_toolbar_home.setOnClickListener {

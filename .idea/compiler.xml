@@ -3,7 +3,7 @@
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
       <module name="data" target="1.7" />
-      <module name="data_entities" target="1.7" />
+      <module name="data.entities" target="1.7" />
       <module name="data_modules" target="1.7" />
       <module name="domain" target="1.7" />
       <module name="framework" target="1.7" />

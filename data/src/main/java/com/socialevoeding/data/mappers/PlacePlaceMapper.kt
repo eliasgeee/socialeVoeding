@@ -1,7 +1,7 @@
 package com.socialevoeding.data.mappers
 
-import com.socialevoeding.data_entities.PlaceEntity
 import com.socialevoeding.data.mappers.base.PlaceMapperFacade
+import com.socialevoeding.data_entities.PlaceEntity
 import com.socialevoeding.domain.model.place.Place
 import com.socialevoeding.domain.model.place.buildPlace
 import com.socialevoeding.util_factories.PlaceEntityFactory
@@ -23,7 +23,17 @@ object PlacePlaceMapper : PlaceMapperFacade<PlaceEntity, Place> {
     }
 
     override fun mapToEntity(model: Place): PlaceEntity {
-        return PlaceEntityFactory.makePlaceEntity()
+        return PlaceEntity(
+            name = model.name,
+            distance = 0,
+            longitude = model.longitude,
+            latitude = model.latitude,
+            webUrl = model.webUrl!!,
+            img = model.img!!,
+            telephoneNumber = model.telephoneNumber!!,
+            city = model.cityName,
+            address = model.address!!
+        )
     }
 
     override fun mapFromEntities(entities: List<PlaceEntity>): List<Place> {

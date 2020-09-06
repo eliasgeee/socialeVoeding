@@ -51,6 +51,9 @@ dependencies {
     implementation androidDependencies.roomCoroutines
     kapt androidDependencies.roomCompiler
 
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.2.1'
+    implementation 'com.squareup.retrofit2:converter-scalars:2.5.0'
+
     def commonDependencies = rootProject.ext.commonDependencies
     implementation commonDependencies.kotlin
     implementation commonDependencies.koin

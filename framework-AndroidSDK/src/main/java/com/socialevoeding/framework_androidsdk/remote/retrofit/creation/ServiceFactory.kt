@@ -1,19 +1,17 @@
 package com.socialevoeding.framework_androidsdk.remote.retrofit.creation
 
 import com.socialevoeding.data.datasources.remote.Environment
-import com.squareup.moshi.Moshi
 import okhttp3.OkHttpClient
 import retrofit2.CallAdapter
 import retrofit2.Converter
 import retrofit2.Retrofit
-import retrofit2.converter.moshi.MoshiConverterFactory
 
-class ServiceFactory (
+class ServiceFactory(
     private val converterFactory: Converter.Factory,
     private val callAdapterFactory: CallAdapter.Factory,
     private val httpClient: OkHttpClient,
     private val environment: Environment
-){
+) {
     fun <T> create(serviceType: Class<T>): T {
         return create(
             serviceType,

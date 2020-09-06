@@ -10,7 +10,7 @@ class PlaceRemoteDataSourceMock(private val placeRemoteDataSourceMockImplementat
     }
 }
 
-class PlaceRemoteDataSourceMockImplementation() {
+class PlaceRemoteDataSourceMockImplementation {
     suspend fun getPlaces(queryString: String, currenPlaceName: String): List<NetworkPlace> {
         return emptyList()
     }

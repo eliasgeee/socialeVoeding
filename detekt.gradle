@@ -3,7 +3,7 @@ apply plugin: 'io.gitlab.arturbosch.detekt'
 detekt {
     toolVersion = "1.10.0"                                 // Version of the Detekt CLI that will be used. When unspecified the latest detekt version found will be used. Override to stay on the same version.
     input = files("$rootDir/app/src", "$rootDir/data/src",
-            "$rootDir/data_entities/src", "$rootDir/domain/src",
+            "$rootDir/data-entities/src", "$rootDir/domain/src",
             "$rootDir/framework-AndroidSDK/src", "$rootDir/framework-shared/src",
             "$rootDir/presentation-android/src", "$rootDir/usecases/src",
             "$rootDir/util/src", "$rootDir/util-android/src",
@@ -12,10 +12,11 @@ detekt {
     parallel = false                                      // Builds the AST in parallel. Rules are always executed in parallel. Can lead to speedups in larger projects. `false` by default.
     config = files("$rootDir/default-detekt-config.yml")                  // Define the detekt configuration(s) you want to use. Defaults to the default detekt configuration.
     buildUponDefaultConfig = false                        // Interpret config files as updates to the default config. `false` by default.
-  //  baseline = file("path/to/baseline.xml")               // Specifying a baseline file. All findings stored in this file in subsequent runs of detekt.
+    baseline = file("baseline.xml")               // Specifying a baseline file. All findings stored in this file in subsequent runs of detekt.
     disableDefaultRuleSets = false                        // Disables all default detekt rulesets and will only run detekt with custom rules defined in plugins passed in with `detektPlugins` configuration. `false` by default.
     debug = false                                         // Adds debug output during task execution. `false` by default.
     ignoreFailures = false                                // If set to `true` the build does not fail when the maxIssues count was reached. Defaults to `false`.
+
     reports {
         xml {
             enabled = true                                // Enable/Disable XML report (default: true)

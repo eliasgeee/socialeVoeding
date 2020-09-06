@@ -1,7 +1,7 @@
 package com.socialevoeding.data.mockSources
 
 import com.socialevoeding.data.datasources.local.database.CategoryLocalDataSource
-import com.socialevoeding.data_entities.CategoryEntity
+import com.socialevoeding.entities.CategoryEntity
 
 class CategoryLocalDataSourceMock(private val categoryDatabaseSourceMock: CategoryDatabaseSourceMock) : CategoryLocalDataSource {
     override suspend fun getCategories(): List<CategoryEntity> {
@@ -13,7 +13,7 @@ class CategoryLocalDataSourceMock(private val categoryDatabaseSourceMock: Catego
     }
 }
 
-class CategoryDatabaseSourceMock() {
+class CategoryDatabaseSourceMock {
     suspend fun insert(categories: List<CategoryEntity>) {
         // do something
     }

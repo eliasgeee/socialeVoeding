@@ -7,24 +7,24 @@ import com.socialevoeding.util_models.Either
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 
-const val locationKey = "currentLocationUser"
+const val LOCATION_KEY = "currentLocationUser"
 
 class SharedPrefUserLocationDataSource(
     private val cache: SharedPreferences,
     private val moshi: Moshi
 ) : UserLocationCacheDataSource {
 
-    private var jsonAdapter : JsonAdapter<UserLocationDTO>? = null
+    private var jsonAdapter: JsonAdapter<UserLocationDTO>? = null
 
     override fun storeLastKnownUserLocation(currentLocation: UserLocationDTO) {
         clearLastKnownUserLocation()
         jsonAdapter = moshi.adapter(UserLocationDTO::class.java)
-        cache.edit().putString(locationKey, jsonAdapter!!.toJson(currentLocation)).apply()
+        cache.edit().putString(LOCATION_KEY, jsonAdapter!!.toJson(currentLocation)).apply()
     }
 
     override fun getLastKnownUserLocation(): Either<Unit, UserLocationDTO> {
         jsonAdapter = moshi.adapter(UserLocationDTO::class.java)
-        cache.getString(locationKey, null).apply {
+        cache.getString(LOCATION_KEY, null).apply {
             return if (this == null)
                 Either.Left(Unit)
             else

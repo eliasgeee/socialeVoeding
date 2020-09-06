@@ -8,7 +8,6 @@ import com.socialevoeding.usecases.base.UseCase
 class GetLastKnownUserLocationUseCase(
     private val userLocationRepository: UserLocationRepository
 ) : UseCase<Either<Unit, UserLocation>>() {
-    override suspend fun executeOnBackground(): Either<Unit, UserLocation> {
-        return userLocationRepository.getLastKnownUserLocation()
-    }
+
+    override suspend fun executeOnBackground(): Either<Unit, UserLocation> = userLocationRepository.getLastKnownUserLocation()
 }
