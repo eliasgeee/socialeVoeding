@@ -12,17 +12,17 @@ import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.socialevoeding.bap.R
 import com.socialevoeding.bap.databinding.ActivityMainBinding
-import com.socialevoeding.presentation_android.viewModels.InitViewModel
+import com.socialevoeding.presentation_android.viewModels.LocationViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 
 const val REQUESTCODE_LOCATION = 1
 
-class MainActivity() : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController
     private lateinit var binding: ActivityMainBinding
     private var locationPermissionOldApi: Int = -1
-    private val initViewModel: InitViewModel by viewModel()
+    private val locationViewModel: LocationViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,11 +61,14 @@ class MainActivity() : AppCompatActivity() {
                     Manifest.permission.ACCESS_FINE_LOCATION
                 )
                 if (locationPermissionOldApi == 0) {
-                    initViewModel.updateLocationAndPlaces()
+                    locationViewModel.updateLocationAndPlaces()
                 }
             }
         } else {
-            initViewModel.updateLocationAndPlaces() }
+            locationViewModel.updateLocationAndPlaces() }
+
+        // TODO verwijderen
+        locationViewModel.updateLocationAndPlaces()
     }
 
     override fun onRequestPermissionsResult(
@@ -76,7 +79,7 @@ class MainActivity() : AppCompatActivity() {
         when (requestCode) {
             REQUESTCODE_LOCATION -> {
                 if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
-                    initViewModel.updateLocationAndPlaces()
+                    locationViewModel.updateLocationAndPlaces()
                 }
             }
         }

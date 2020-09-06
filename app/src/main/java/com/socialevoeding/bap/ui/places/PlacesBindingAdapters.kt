@@ -4,12 +4,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.socialevoeding.bap.R
-import com.socialevoeding.presentation_android.viewItems.PlaceViewItem
+import com.socialevoeding.presentation_android.ViewItem
 
 @BindingAdapter("clock_color")
-fun ImageView.setClock(place: PlaceViewItem) {
+fun ImageView.setClock(place: ViewItem.PlaceViewItem) {
     place.let {
-        if (place.isOpen)
+        if (place.isOpen!!)
             setBackgroundColor(resources.getColor(R.color.pastel_green))
         else
             setBackgroundColor(resources.getColor(R.color.pastel_red))
@@ -17,9 +17,9 @@ fun ImageView.setClock(place: PlaceViewItem) {
 }
 
 @BindingAdapter("openings_hours_color")
-fun TextView.setOpeningshoursColor(place: PlaceViewItem) {
+fun TextView.setOpeningshoursColor(place: ViewItem.PlaceViewItem) {
     place.let {
-        if (place.isOpen)
+        if (place.isOpen!!)
             setBackgroundColor(resources.getColor(R.color.pastel_green))
         else {
             setBackgroundColor(resources.getColor(R.color.pastel_red))

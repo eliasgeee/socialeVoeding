@@ -12,19 +12,21 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.socialevoeding.bap.R
 import com.socialevoeding.bap.databinding.FragmentCategoryScreenBinding
 import com.socialevoeding.bap.ui.BaseFragment
-import com.socialevoeding.presentation_android.viewItems.CategoryViewItem
-import com.socialevoeding.presentation_android.viewItems.PlaceViewItem
+import com.socialevoeding.bap.util.hide
+import com.socialevoeding.bap.util.show
+import com.socialevoeding.presentation_android.ViewItem
+import com.socialevoeding.presentation_android.ViewState
 import com.socialevoeding.presentation_android.viewModels.PlacesViewModel
 import kotlinx.android.synthetic.main.toolbar.view.*
 import kotlinx.android.synthetic.main.ttsbar.view.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class PlacesScreenFragment() : BaseFragment() {
+class PlacesScreenFragment : BaseFragment() {
 
     private lateinit var binding: FragmentCategoryScreenBinding
     private var placesAdapter: PlacesAdapter? = null
     private val placesViewModel: PlacesViewModel by viewModel()
-    private var category: CategoryViewItem? = null
+    private var category: ViewItem.CategoryViewItem? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -57,43 +59,56 @@ class PlacesScreenFragment() : BaseFragment() {
         }
 
         placesAdapter = PlacesAdapter(requireContext(), object : PlacesClickListener {
-            override fun onPlaceClick(place: PlaceViewItem) {
+            override fun onPlaceClick(place: ViewItem.PlaceViewItem) {
                 placesViewModel.goToPlace(place)
             }
-        })
-
-        placesViewModel.currentPlaceLocation.observe(this, Observer {
-            if (it != null)
-                if (placesViewModel.places.value!!.isEmpty())
-                placesViewModel.loadPlaces()
         })
 
         binding.rvPlaces.layoutManager = LinearLayoutManager(requireContext())
         binding.rvPlaces.adapter = placesAdapter
     }
 
+    private fun showError(message: String) {
+        binding.errorMsg.text = message
+        binding.errorMsg.show()
+    }
+
     private fun getTextToRead(): String {
-        binding.tts.tts_btn_play.text = resources.getString(R.string.stop)
+        /* binding.tts.tts_btn_play.text = resources.getString(R.string.stop)
         val sb = StringBuilder()
         sb.append(binding.txtPlaces.text).append(" ")
         if (placesViewModel.places.value != null)
         for (place in placesViewModel.places.value!!) {
             sb.append(place.name).append(" ")
-            if (place.isOpen)
+            if (place.isOpen!!)
                 sb.append(resources.getString(R.string.isOpen)).append(" ")
             else
                 sb.append(resources.getString(R.string.isGesloten)).append(" ")
             sb.append(resources.getString(R.string.distance)).append(" ")
-            sb.append(place.distance / 1000).append(" kilometres ")
+            sb.append(place.distance?.div(1000)).append(" kilometres ")
             sb.append(resources.getString(R.string.address)).append(" ")
             sb.append(place.address)
         }
-        return sb.toString()
+        return sb.toString()*/
+        return ""
     }
 
     private fun startListeners() {
-        placesViewModel.places.observe(this, Observer {
-            placesAdapter!!.submitList(it)
+        placesViewModel.viewState.observe(this, Observer {
+            when (it) {
+                is ViewState.Loading -> {
+                    binding.loadingSpinner.show()
+                    binding.errorMsg.hide()
+                }
+                is ViewState.Error -> {
+                    binding.loadingSpinner.hide()
+                    showError(it.errorMessage) }
+                is ViewState.Succes<*> -> {
+                    binding.errorMsg.hide()
+                    binding.loadingSpinner.hide()
+                    placesAdapter!!.submitList(it.succes as MutableList<ViewItem.PlaceViewItem>?)
+                }
+            }
         })
 
         placesViewModel.goToPlace.observe(this, Observer {
@@ -106,8 +121,20 @@ class PlacesScreenFragment() : BaseFragment() {
             }
         })
 
-        placesViewModel.currentPlaceLocation.observe(this, Observer {
-            binding.txtPlaces.text = resources.getString(R.string.eat_in_city, it)
+        placesViewModel.currentLocationState.observe(this, Observer {
+            when (it) {
+                is ViewState.Loading ->
+                    { binding.errorMsg.hide()
+                    binding.loadingSpinner.show() }
+                is ViewState.Error -> {
+                    binding.loadingSpinner.hide()
+                    showError(it.errorMessage) }
+                is ViewState.Succes<*> -> {
+                    binding.errorMsg.hide()
+                    binding.loadingSpinner.hide()
+                    binding.txtPlaces.text = resources.getString(R.string.eat_in_city, it.succes as String)
+                }
+            }
         })
 
         binding.toolbar.btn_toolbar_back.setOnClickListener {

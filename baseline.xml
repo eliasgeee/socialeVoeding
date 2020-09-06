@@ -1,0 +1,229 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues></ManuallySuppressedIssues>
+  <CurrentIssues>
+    <ID>ComplexCondition:PlaceBuilder.kt$PlaceBuilder$name.trim().isEmpty() || cityName.trim().isEmpty() || latitude.isNaN() || longitude.isNaN()</ID>
+    <ID>ConstructorParameterNaming:GeolocationObject.kt$Address$val city_district: String</ID>
+    <ID>ConstructorParameterNaming:GeolocationObject.kt$Address$val country_code: String</ID>
+    <ID>ConstructorParameterNaming:GeolocationObject.kt$GeolocationObject$val display_name: String</ID>
+    <ID>ConstructorParameterNaming:GeolocationObject.kt$GeolocationObject$val osm_id: Int</ID>
+    <ID>ConstructorParameterNaming:GeolocationObject.kt$GeolocationObject$val osm_type: String</ID>
+    <ID>ConstructorParameterNaming:GeolocationObject.kt$GeolocationObject$val place_id: Int</ID>
+    <ID>FunctionOnlyReturningConstant:PlacesScreenFragment.kt$PlacesScreenFragment$private fun getTextToRead(): String</ID>
+    <ID>LongParameterList:RoomPlaceEntity.kt$RoomPlaceEntity$( val name: String = "", val telephoneNumber: String = "", val address: String = "", val webUrl: String = "", val img: String, val latitude: Double, val longitude: Double, val city: String, @ForeignKey(entity = RoomCategoryEntity::class, onDelete = ForeignKey.CASCADE, childColumns = ["categoryId"], parentColumns = ["id"]) val categoryId: Int = 0 )</ID>
+    <ID>LongParameterList:ViewItem.kt$ViewItem.PlaceViewItem$( val name: String? = "", val telephoneNumber: String? = "", val webUrl: String? = "", val img: String? = "", val address: String? = "", var cityName: String? = "", val latitude: Double? = Double.NaN, val longitude: Double? = Double.NaN, var openingHours: @RawValue Array&lt;OpeningDay&gt;? = emptyArray(), val distance: Int? = 0, val isOpen: Boolean? = null )</ID>
+    <ID>MagicNumber:Application.kt$Application$7</ID>
+    <ID>MagicNumber:CategoryBindingAdapters.kt$3</ID>
+    <ID>MagicNumber:CategoryBindingAdapters.kt$4</ID>
+    <ID>MagicNumber:CategoryBindingAdapters.kt$5</ID>
+    <ID>MagicNumber:CategoryBindingAdapters.kt$6</ID>
+    <ID>MagicNumber:DataFactory.kt$DataFactory$0.5</ID>
+    <ID>MagicNumber:DataFactory.kt$DataFactory$0xFF</ID>
+    <ID>MagicNumber:DataFactory.kt$DataFactory$12</ID>
+    <ID>MagicNumber:DataFactory.kt$DataFactory$1990</ID>
+    <ID>MagicNumber:DataFactory.kt$DataFactory$2018</ID>
+    <ID>MagicNumber:DataFactory.kt$DataFactory$23</ID>
+    <ID>MagicNumber:DataFactory.kt$DataFactory$29</ID>
+    <ID>MagicNumber:DataFactory.kt$DataFactory$59</ID>
+    <ID>MagicNumber:DistanceUtils.kt$1000</ID>
+    <ID>MagicNumber:FrameworkAndroidModule.kt$100</ID>
+    <ID>MagicNumber:FrameworkAndroidModule.kt$20</ID>
+    <ID>MagicNumber:FrameworkAndroidModule.kt$30</ID>
+    <ID>MagicNumber:PlaceFactory.kt$PlaceFactory$50.0</ID>
+    <ID>MagicNumber:SoupPlaceDataSource.kt$SoupPlaceDataSource$1000</ID>
+    <ID>MagicNumber:SoupPlaceDataSource.kt$SoupPlaceDataSource$120</ID>
+    <ID>MagicNumber:SoupPlaceDataSource.kt$SoupPlaceDataSource$16</ID>
+    <ID>MagicNumber:SoupPlaceDataSource.kt$SoupPlaceDataSource$3</ID>
+    <ID>MagicNumber:SoupPlaceDataSource.kt$SoupPlaceDataSource$60</ID>
+    <ID>MaxLineLength:CategoryAdapter.kt$CategoryAdapter$CategoryViewHolder : ViewHolder</ID>
+    <ID>MaxLineLength:CategoryAdapter.kt$CategoryDiffCallback$override</ID>
+    <ID>MaxLineLength:CategoryLocalDataSourceMock.kt$CategoryLocalDataSourceMock : CategoryLocalDataSource</ID>
+    <ID>MaxLineLength:CategoryViewModel.kt$CategoryViewModel$_viewState.postValue(ViewState.Succes(it.data.map { cat -&gt; CategoryViewItemMapper.mapToViewItem(cat) }))</ID>
+    <ID>MaxLineLength:GetCurrentGeoLocationUseCase.kt$GetCurrentGeoLocationUseCase$override suspend fun executeOnBackground(): UserLocation</ID>
+    <ID>MaxLineLength:GetLastKnownUserLocationUseCase.kt$GetLastKnownUserLocationUseCase$override suspend fun executeOnBackground(): Either&lt;Unit, UserLocation&gt;</ID>
+    <ID>MaxLineLength:PlaceLocalDataSourceMock.kt$.PlaceLocalDataSourceMock.kt</ID>
+    <ID>MaxLineLength:PlaceRemoteDataSourceImpl.kt$PlaceRemoteDataSourceImpl${ return serviceProviderImpl.getPlacesService() .getRedirectUrlAsync("https://www.google.com/search?q=" + "voedselbank+gent") .flatMapMerge { serviceProviderImpl.getPlacesService() .getPlacesAsync("https://www.google.com$it") } // var redirectUrl = responseRedirect.string() // val string = serviceProviderImpl.getPlacesService().getPlacesAsync("https://www.google.com" + responseRedirect).string() }</ID>
+    <ID>MaxLineLength:PlaceRemoteDataSourceMock.kt$com.socialevoeding.data.mockSources.PlaceRemoteDataSourceMock.kt</ID>
+    <ID>MaxLineLength:PlaceRepositoryImpl.kt$PlaceRepositoryImpl$override suspend fun insertPlacesIntoDatabase(places: List&lt;Place&gt;)</ID>
+    <ID>MaxLineLength:PlaceRepositoryImpl.kt$PlaceRepositoryImpl$private suspend</ID>
+    <ID>MaxLineLength:PlacesAdapter.kt$PlacesAdapter$PlacesViewHolder : ViewHolder</ID>
+    <ID>MaxLineLength:RoomCategoryDataSource.kt$RoomCategoryDataSource$override suspend fun insert(categories: List&lt;CategoryEntity&gt;)</ID>
+    <ID>MaxLineLength:RoomPlaceDataSource.kt$RoomPlaceDataSource$override suspend fun insertAll(places: List&lt;PlaceEntity&gt;)</ID>
+    <ID>MaxLineLength:RoomPlaceDataSource.kt$RoomPlaceDataSource$override suspend fun insertPlaces(places: List&lt;PlaceEntity&gt;)</ID>
+    <ID>MaxLineLength:RoomPlaceEntity.kt$RoomPlaceEntity$@ForeignKey(entity = RoomCategoryEntity::class, onDelete = ForeignKey.CASCADE, childColumns = ["categoryId"], parentColumns = ["id"])</ID>
+    <ID>MaxLineLength:SoupPlaceDataSource.kt$SoupPlaceDataSource$val document: Document = Jsoup.connect(SoupConfig.SOUP_BASE_URL_SEARCH + "voedselbank gent").timeout(60 * 1000).get()</ID>
+    <ID>MaxLineLength:SoupPlaceDataSource.kt$SoupPlaceDataSource$val documentPlace: Document = Jsoup.connect(SoupConfig.SOUP_BASE_URL_SEARCH + this.name).timeout(120 * 1000).get()</ID>
+    <ID>MaxLineLength:UserLocationRemoteDataSourceImpl.kt$UserLocationRemoteDataSourceImpl : UserLocationRemoteDataSource</ID>
+    <ID>MaxLineLength:UserLocationRemoteDataSourceImpl.kt$UserLocationRemoteDataSourceImpl$return serviceProviderImpl.getGeolocationService().getCurrentGeoLocationAsync(latitude, longitude, format).await().address.city</ID>
+    <ID>MaxLineLength:UserLocationRepositoryTest.kt$.UserLocationRepositoryTest.kt</ID>
+    <ID>MaxLineLength:ViewItem.kt$com.socialevoeding.presentation_android.ViewItem.kt</ID>
+    <ID>MemberNameEqualsClassName:Either.kt$Either$fun either(fnL: (L) -&gt; Any, fnR: (R) -&gt; Any): Any</ID>
+    <ID>NestedBlockDepth:LocationGPSDataSource.kt$LocationGPSDataSource$@SuppressLint("MissingPermission") private fun startGPSTracker()</ID>
+    <ID>NewLineAtEndOfFile:AnnotatedConverterFactory.kt$com.socialevoeding.framework_androidsdk.remote.retrofit.converters.AnnotatedConverterFactory.kt</ID>
+    <ID>NewLineAtEndOfFile:Application.kt$com.socialevoeding.bap.Application.kt</ID>
+    <ID>NewLineAtEndOfFile:BaseFragment.kt$com.socialevoeding.bap.ui.BaseFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:BaseViewModel.kt$com.socialevoeding.presentation_android.viewModels.BaseViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:CacheLocationItemMapper.kt$com.socialevoeding.data.mappers.CacheLocationItemMapper.kt</ID>
+    <ID>NewLineAtEndOfFile:CacheMapper.kt$com.socialevoeding.data.mappers.base.CacheMapper.kt</ID>
+    <ID>NewLineAtEndOfFile:CategoryAdapter.kt$com.socialevoeding.bap.ui.categories.CategoryAdapter.kt</ID>
+    <ID>NewLineAtEndOfFile:CategoryBindingAdapters.kt$com.socialevoeding.bap.ui.categories.CategoryBindingAdapters.kt</ID>
+    <ID>NewLineAtEndOfFile:CategoryDao.kt$com.socialevoeding.framework_androidsdk.local.room.dao.CategoryDao.kt</ID>
+    <ID>NewLineAtEndOfFile:CategoryDataProvider.kt$com.socialevoeding.data.CategoryDataProvider.kt</ID>
+    <ID>NewLineAtEndOfFile:CategoryEntityFactory.kt$com.socialevoeding.util_factories.CategoryEntityFactory.kt</ID>
+    <ID>NewLineAtEndOfFile:CategoryFactory.kt$com.socialevoeding.util_factories.CategoryFactory.kt</ID>
+    <ID>NewLineAtEndOfFile:CategoryLocalDataSource.kt$com.socialevoeding.data.datasources.local.database.CategoryLocalDataSource.kt</ID>
+    <ID>NewLineAtEndOfFile:CategoryLocalDataSourceMock.kt$com.socialevoeding.data.mockSources.CategoryLocalDataSourceMock.kt</ID>
+    <ID>NewLineAtEndOfFile:CategoryMapperFacade.kt$com.socialevoeding.data.mappers.base.CategoryMapperFacade.kt</ID>
+    <ID>NewLineAtEndOfFile:CategoryRepository.kt$com.socialevoeding.domain.repositories.CategoryRepository.kt</ID>
+    <ID>NewLineAtEndOfFile:CategoryRepositoryImpl.kt$com.socialevoeding.data.repositories.CategoryRepositoryImpl.kt</ID>
+    <ID>NewLineAtEndOfFile:CategoryRepositoryImplTest.kt$com.socialevoeding.data.repositories.CategoryRepositoryImplTest.kt</ID>
+    <ID>NewLineAtEndOfFile:CategoryViewItemMapper.kt$com.socialevoeding.presentation_android.mappers.CategoryViewItemMapper.kt</ID>
+    <ID>NewLineAtEndOfFile:CategoryViewModel.kt$com.socialevoeding.presentation_android.viewModels.CategoryViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:Coordinates.kt$com.socialevoeding.domain.model.Coordinates.kt</ID>
+    <ID>NewLineAtEndOfFile:CoordinatesDTO.kt$com.socialevoeding.data.dtos.local.device.CoordinatesDTO.kt</ID>
+    <ID>NewLineAtEndOfFile:CurrentLocationDataSource.kt$com.socialevoeding.data.datasources.device.CurrentLocationDataSource.kt</ID>
+    <ID>NewLineAtEndOfFile:DataFactory.kt$com.socialevoeding.util_datafactory.DataFactory.kt</ID>
+    <ID>NewLineAtEndOfFile:DataModule.kt$com.socialevoeding.data.di.DataModule.kt</ID>
+    <ID>NewLineAtEndOfFile:DatabaseCategoryMapperFacade.kt$com.socialevoeding.data.mappers.DatabaseCategoryMapperFacade.kt</ID>
+    <ID>NewLineAtEndOfFile:DatabaseObjectsUtils.kt$com.socialevoeding.data.utils.DatabaseObjectsUtils.kt</ID>
+    <ID>NewLineAtEndOfFile:DeviceCoordinatesMapper.kt$com.socialevoeding.data.mappers.DeviceCoordinatesMapper.kt</ID>
+    <ID>NewLineAtEndOfFile:DispatcherProvider.kt$com.socialevoeding.usecases.base.DispatcherProvider.kt</ID>
+    <ID>NewLineAtEndOfFile:DistanceUtils.kt$com.socialevoeding.util_android.DistanceUtils.kt</ID>
+    <ID>NewLineAtEndOfFile:Either.kt$com.socialevoeding.util_models.Either.kt</ID>
+    <ID>NewLineAtEndOfFile:Environment.kt$com.socialevoeding.data.datasources.remote.Environment.kt</ID>
+    <ID>NewLineAtEndOfFile:ExampleInstrumentedTest.kt$com.socialevoeding.framework_androidsdk.ExampleInstrumentedTest.kt</ID>
+    <ID>NewLineAtEndOfFile:ExampleInstrumentedTest.kt$com.socialevoeding.presentation_android.ExampleInstrumentedTest.kt</ID>
+    <ID>NewLineAtEndOfFile:ExampleInstrumentedTest.kt$com.socialevoeding.util_android.ExampleInstrumentedTest.kt</ID>
+    <ID>NewLineAtEndOfFile:ExampleUnitTest.kt$com.socialevoeding.framework_androidsdk.ExampleUnitTest.kt</ID>
+    <ID>NewLineAtEndOfFile:ExampleUnitTest.kt$com.socialevoeding.presentation_android.ExampleUnitTest.kt</ID>
+    <ID>NewLineAtEndOfFile:ExampleUnitTest.kt$com.socialevoeding.util_android.ExampleUnitTest.kt</ID>
+    <ID>NewLineAtEndOfFile:FrameworkSharedModule.kt$com.socialevoeding.framework_shared.di.FrameworkSharedModule.kt</ID>
+    <ID>NewLineAtEndOfFile:GeoLocationApiService.kt$com.socialevoeding.framework_androidsdk.remote.retrofit.apiServices.GeoLocationApiService.kt</ID>
+    <ID>NewLineAtEndOfFile:GetCategoriesUseCase.kt$com.socialevoeding.usecases.categorieUseCases.GetCategoriesUseCase.kt</ID>
+    <ID>NewLineAtEndOfFile:GetCurrentCoordinatesUseCase.kt$com.socialevoeding.usecases.locationUseCases.GetCurrentCoordinatesUseCase.kt</ID>
+    <ID>NewLineAtEndOfFile:GetCurrentGeoLocationUseCase.kt$com.socialevoeding.usecases.locationUseCases.GetCurrentGeoLocationUseCase.kt</ID>
+    <ID>NewLineAtEndOfFile:InitCategoriesUseCase.kt$com.socialevoeding.usecases.categorieUseCases.InitCategoriesUseCase.kt</ID>
+    <ID>NewLineAtEndOfFile:LocalDb.kt$com.socialevoeding.framework_androidsdk.local.room.database.LocalDb.kt</ID>
+    <ID>NewLineAtEndOfFile:LocationGPSDataSource.kt$com.socialevoeding.framework_androidsdk.device.gps.LocationGPSDataSource.kt</ID>
+    <ID>NewLineAtEndOfFile:LocationViewModel.kt$com.socialevoeding.presentation_android.viewModels.LocationViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:NetworkCoordinates.kt$com.socialevoeding.data.dtos.remote.NetworkCoordinates.kt</ID>
+    <ID>NewLineAtEndOfFile:NetworkMapper.kt$com.socialevoeding.data.mappers.base.NetworkMapper.kt</ID>
+    <ID>NewLineAtEndOfFile:NetworkOpeningDay.kt$com.socialevoeding.data.dtos.remote.NetworkOpeningDay.kt</ID>
+    <ID>NewLineAtEndOfFile:OpeningDay.kt$com.socialevoeding.domain.model.OpeningDay.kt</ID>
+    <ID>NewLineAtEndOfFile:OpeningDayViewItemMapper.kt$com.socialevoeding.presentation_android.mappers.OpeningDayViewItemMapper.kt</ID>
+    <ID>NewLineAtEndOfFile:Place.kt$com.socialevoeding.domain.model.place.Place.kt</ID>
+    <ID>NewLineAtEndOfFile:PlaceBuilder.kt$com.socialevoeding.domain.model.place.PlaceBuilder.kt</ID>
+    <ID>NewLineAtEndOfFile:PlaceDao.kt$com.socialevoeding.framework_androidsdk.local.room.dao.PlaceDao.kt</ID>
+    <ID>NewLineAtEndOfFile:PlaceDetailsFragment.kt$com.socialevoeding.bap.ui.placedetails.PlaceDetailsFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:PlaceDetailsViewModel.kt$com.socialevoeding.presentation_android.viewModels.PlaceDetailsViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:PlaceDomainRules.kt$com.socialevoeding.domain.model.place.PlaceDomainRules.kt</ID>
+    <ID>NewLineAtEndOfFile:PlaceEntityFactory.kt$com.socialevoeding.util_factories.PlaceEntityFactory.kt</ID>
+    <ID>NewLineAtEndOfFile:PlaceFactory.kt$com.socialevoeding.util_factories.PlaceFactory.kt</ID>
+    <ID>NewLineAtEndOfFile:PlaceLocalDataSource.kt$com.socialevoeding.data.datasources.local.database.PlaceLocalDataSource.kt</ID>
+    <ID>NewLineAtEndOfFile:PlaceMapperFacade.kt$com.socialevoeding.data.mappers.base.PlaceMapperFacade.kt</ID>
+    <ID>NewLineAtEndOfFile:PlacePlaceMapper.kt$com.socialevoeding.data.mappers.PlacePlaceMapper.kt</ID>
+    <ID>NewLineAtEndOfFile:PlaceRemoteDataSource.kt$com.socialevoeding.data.datasources.remote.PlaceRemoteDataSource.kt</ID>
+    <ID>NewLineAtEndOfFile:PlaceRemoteDataSourceImpl.kt$com.socialevoeding.framework_androidsdk.remote.datasources.PlaceRemoteDataSourceImpl.kt</ID>
+    <ID>NewLineAtEndOfFile:PlaceRepository.kt$com.socialevoeding.domain.repositories.PlaceRepository.kt</ID>
+    <ID>NewLineAtEndOfFile:PlaceTest.kt$com.socialevoeding.domain.PlaceTest.kt</ID>
+    <ID>NewLineAtEndOfFile:PlaceViewItemMapper.kt$com.socialevoeding.presentation_android.mappers.PlaceViewItemMapper.kt</ID>
+    <ID>NewLineAtEndOfFile:PlacesAdapter.kt$com.socialevoeding.bap.ui.places.PlacesAdapter.kt</ID>
+    <ID>NewLineAtEndOfFile:PlacesApiService.kt$com.socialevoeding.framework_androidsdk.remote.retrofit.apiServices.PlacesApiService.kt</ID>
+    <ID>NewLineAtEndOfFile:PlacesBindingAdapters.kt$com.socialevoeding.bap.ui.places.PlacesBindingAdapters.kt</ID>
+    <ID>NewLineAtEndOfFile:PlacesConverter.kt$com.socialevoeding.framework_androidsdk.remote.retrofit.converters.PlacesConverter.kt</ID>
+    <ID>NewLineAtEndOfFile:PlacesRedirectConverter.kt$com.socialevoeding.framework_androidsdk.remote.retrofit.converters.PlacesRedirectConverter.kt</ID>
+    <ID>NewLineAtEndOfFile:PlacesViewModel.kt$com.socialevoeding.presentation_android.viewModels.PlacesViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:PresentationModule.kt$com.socialevoeding.presentation_android.di.PresentationModule.kt</ID>
+    <ID>NewLineAtEndOfFile:RefreshDataWorker.kt$com.socialevoeding.bap.work.RefreshDataWorker.kt</ID>
+    <ID>NewLineAtEndOfFile:RefreshPlacesUseCaseTest.kt$com.socialevoeding.usecases.placeUseCases.RefreshPlacesUseCaseTest.kt</ID>
+    <ID>NewLineAtEndOfFile:Result.kt$com.socialevoeding.util_models.Result.kt</ID>
+    <ID>NewLineAtEndOfFile:RoomCategoryDataSource.kt$com.socialevoeding.framework_androidsdk.local.room.datasources.RoomCategoryDataSource.kt</ID>
+    <ID>NewLineAtEndOfFile:RoomCategoryMapper.kt$com.socialevoeding.framework_androidsdk.local.room.mappers.RoomCategoryMapper.kt</ID>
+    <ID>NewLineAtEndOfFile:RoomMapperFacade.kt$com.socialevoeding.framework_androidsdk.local.room.mappers.base.RoomMapperFacade.kt</ID>
+    <ID>NewLineAtEndOfFile:RoomPlaceDataSource.kt$com.socialevoeding.framework_androidsdk.local.room.datasources.RoomPlaceDataSource.kt</ID>
+    <ID>NewLineAtEndOfFile:RoomPlaceEntity.kt$com.socialevoeding.framework_androidsdk.local.room.entities.RoomPlaceEntity.kt</ID>
+    <ID>NewLineAtEndOfFile:RoomPlaceMapper.kt$com.socialevoeding.framework_androidsdk.local.room.mappers.RoomPlaceMapper.kt</ID>
+    <ID>NewLineAtEndOfFile:SavePlacesUseCase.kt$com.socialevoeding.usecases.placeUseCases.SavePlacesUseCase.kt</ID>
+    <ID>NewLineAtEndOfFile:SavePlacesUseCaseTest.kt$com.socialevoeding.usecases.placeUseCases.SavePlacesUseCaseTest.kt</ID>
+    <ID>NewLineAtEndOfFile:SearchRedirectConverter.kt$com.socialevoeding.framework_androidsdk.remote.retrofit.converters.SearchRedirectConverter.kt</ID>
+    <ID>NewLineAtEndOfFile:ServiceFactory.kt$com.socialevoeding.framework_androidsdk.remote.retrofit.creation.ServiceFactory.kt</ID>
+    <ID>NewLineAtEndOfFile:ServiceProvider.kt$com.socialevoeding.framework_androidsdk.remote.retrofit.creation.ServiceProvider.kt</ID>
+    <ID>NewLineAtEndOfFile:SharedPrefUserLocationDataSource.kt$com.socialevoeding.framework_androidsdk.local.sharedPreferences.SharedPrefUserLocationDataSource.kt</ID>
+    <ID>NewLineAtEndOfFile:SoupConfig.kt$com.socialevoeding.framework_shared.remote.jsoup.SoupConfig.kt</ID>
+    <ID>NewLineAtEndOfFile:SoupPlaceDataSource.kt$com.socialevoeding.framework_shared.remote.jsoup.SoupPlaceDataSource.kt</ID>
+    <ID>NewLineAtEndOfFile:StringExtensions.kt$com.socialevoeding.li.extensions.StringExtensions.kt</ID>
+    <ID>NewLineAtEndOfFile:UseCase.kt$com.socialevoeding.usecases.base.UseCase.kt</ID>
+    <ID>NewLineAtEndOfFile:UseCaseModule.kt$com.socialevoeding.usecases.di.UseCaseModule.kt</ID>
+    <ID>NewLineAtEndOfFile:UserLocation.kt$com.socialevoeding.domain.model.UserLocation.kt</ID>
+    <ID>NewLineAtEndOfFile:UserLocationCacheDataSource.kt$com.socialevoeding.data.datasources.local.cache.UserLocationCacheDataSource.kt</ID>
+    <ID>NewLineAtEndOfFile:UserLocationCacheDataSourceMock.kt$com.socialevoeding.data.mockSources.UserLocationCacheDataSourceMock.kt</ID>
+    <ID>NewLineAtEndOfFile:UserLocationCurrentLocationDeviceDataSourceMock.kt$com.socialevoeding.data.mockSources.UserLocationCurrentLocationDeviceDataSourceMock.kt</ID>
+    <ID>NewLineAtEndOfFile:UserLocationDTO.kt$com.socialevoeding.data.dtos.local.device.UserLocationDTO.kt</ID>
+    <ID>NewLineAtEndOfFile:UserLocationRemoteDataSource.kt$com.socialevoeding.data.datasources.remote.UserLocationRemoteDataSource.kt</ID>
+    <ID>NewLineAtEndOfFile:UserLocationRemoteDataSourceImpl.kt$com.socialevoeding.framework_androidsdk.remote.datasources.UserLocationRemoteDataSourceImpl.kt</ID>
+    <ID>NewLineAtEndOfFile:UserLocationRepository.kt$com.socialevoeding.domain.repositories.UserLocationRepository.kt</ID>
+    <ID>NewLineAtEndOfFile:UserLocationUtils.kt$com.socialevoeding.data.utils.UserLocationUtils.kt</ID>
+    <ID>NewLineAtEndOfFile:ViewExtensions.kt$com.socialevoeding.bap.util.ViewExtensions.kt</ID>
+    <ID>NewLineAtEndOfFile:ViewItem.kt$com.socialevoeding.presentation_android.ViewItem.kt</ID>
+    <ID>NewLineAtEndOfFile:ViewItemMapper.kt$com.socialevoeding.presentation_android.mappers.base.ViewItemMapper.kt</ID>
+    <ID>NewLineAtEndOfFile:ViewState.kt$com.socialevoeding.presentation_android.ViewState.kt</ID>
+    <ID>PackageNaming:AnnotatedConverterFactory.kt$package com.socialevoeding.framework_androidsdk.remote.retrofit.converters</ID>
+    <ID>PackageNaming:BaseViewModel.kt$package com.socialevoeding.presentation_android.viewModels</ID>
+    <ID>PackageNaming:CategoryDao.kt$package com.socialevoeding.framework_androidsdk.local.room.dao</ID>
+    <ID>PackageNaming:CategoryEntityFactory.kt$package com.socialevoeding.util_factories</ID>
+    <ID>PackageNaming:CategoryFactory.kt$package com.socialevoeding.util_factories</ID>
+    <ID>PackageNaming:CategoryViewItemMapper.kt$package com.socialevoeding.presentation_android.mappers</ID>
+    <ID>PackageNaming:CategoryViewModel.kt$package com.socialevoeding.presentation_android.viewModels</ID>
+    <ID>PackageNaming:ConverterTypes.kt$package com.socialevoeding.framework_androidsdk.remote.retrofit.converters</ID>
+    <ID>PackageNaming:DataFactory.kt$package com.socialevoeding.util_datafactory</ID>
+    <ID>PackageNaming:DistanceUtils.kt$package com.socialevoeding.util_android</ID>
+    <ID>PackageNaming:Either.kt$package com.socialevoeding.util_models</ID>
+    <ID>PackageNaming:FrameworkAndroidModule.kt$package com.socialevoeding.framework_androidsdk.di</ID>
+    <ID>PackageNaming:FrameworkSharedModule.kt$package com.socialevoeding.framework_shared.di</ID>
+    <ID>PackageNaming:GeoLocationApiService.kt$package com.socialevoeding.framework_androidsdk.remote.retrofit.apiServices</ID>
+    <ID>PackageNaming:LocalDb.kt$package com.socialevoeding.framework_androidsdk.local.room.database</ID>
+    <ID>PackageNaming:LocationGPSDataSource.kt$package com.socialevoeding.framework_androidsdk.device.gps</ID>
+    <ID>PackageNaming:LocationViewModel.kt$package com.socialevoeding.presentation_android.viewModels</ID>
+    <ID>PackageNaming:OpeningDayViewItemMapper.kt$package com.socialevoeding.presentation_android.mappers</ID>
+    <ID>PackageNaming:PlaceDao.kt$package com.socialevoeding.framework_androidsdk.local.room.dao</ID>
+    <ID>PackageNaming:PlaceDetailsViewModel.kt$package com.socialevoeding.presentation_android.viewModels</ID>
+    <ID>PackageNaming:PlaceEntityFactory.kt$package com.socialevoeding.util_factories</ID>
+    <ID>PackageNaming:PlaceFactory.kt$package com.socialevoeding.util_factories</ID>
+    <ID>PackageNaming:PlaceRemoteDataSourceImpl.kt$package com.socialevoeding.framework_androidsdk.remote.datasources</ID>
+    <ID>PackageNaming:PlaceViewItemMapper.kt$package com.socialevoeding.presentation_android.mappers</ID>
+    <ID>PackageNaming:PlacesApiService.kt$package com.socialevoeding.framework_androidsdk.remote.retrofit.apiServices</ID>
+    <ID>PackageNaming:PlacesConverter.kt$package com.socialevoeding.framework_androidsdk.remote.retrofit.converters</ID>
+    <ID>PackageNaming:PlacesRedirectConverter.kt$package com.socialevoeding.framework_androidsdk.remote.retrofit.converters</ID>
+    <ID>PackageNaming:PlacesViewModel.kt$package com.socialevoeding.presentation_android.viewModels</ID>
+    <ID>PackageNaming:PresentationModule.kt$package com.socialevoeding.presentation_android.di</ID>
+    <ID>PackageNaming:Result.kt$package com.socialevoeding.util_models</ID>
+    <ID>PackageNaming:RoomCategoryDataSource.kt$package com.socialevoeding.framework_androidsdk.local.room.datasources</ID>
+    <ID>PackageNaming:RoomCategoryEntity.kt$package com.socialevoeding.framework_androidsdk.local.room.entities</ID>
+    <ID>PackageNaming:RoomCategoryMapper.kt$package com.socialevoeding.framework_androidsdk.local.room.mappers</ID>
+    <ID>PackageNaming:RoomMapperFacade.kt$package com.socialevoeding.framework_androidsdk.local.room.mappers.base</ID>
+    <ID>PackageNaming:RoomPlaceDataSource.kt$package com.socialevoeding.framework_androidsdk.local.room.datasources</ID>
+    <ID>PackageNaming:RoomPlaceEntity.kt$package com.socialevoeding.framework_androidsdk.local.room.entities</ID>
+    <ID>PackageNaming:RoomPlaceMapper.kt$package com.socialevoeding.framework_androidsdk.local.room.mappers</ID>
+    <ID>PackageNaming:SearchRedirectConverter.kt$package com.socialevoeding.framework_androidsdk.remote.retrofit.converters</ID>
+    <ID>PackageNaming:ServiceFactory.kt$package com.socialevoeding.framework_androidsdk.remote.retrofit.creation</ID>
+    <ID>PackageNaming:ServiceProvider.kt$package com.socialevoeding.framework_androidsdk.remote.retrofit.creation</ID>
+    <ID>PackageNaming:ServiceProviderImpl.kt$package com.socialevoeding.framework_androidsdk.remote.retrofit.creation</ID>
+    <ID>PackageNaming:SharedPrefUserLocationDataSource.kt$package com.socialevoeding.framework_androidsdk.local.sharedPreferences</ID>
+    <ID>PackageNaming:SoupConfig.kt$package com.socialevoeding.framework_shared.remote.jsoup</ID>
+    <ID>PackageNaming:SoupPlaceDataSource.kt$package com.socialevoeding.framework_shared.remote.jsoup</ID>
+    <ID>PackageNaming:UserLocationRemoteDataSourceImpl.kt$package com.socialevoeding.framework_androidsdk.remote.datasources</ID>
+    <ID>PackageNaming:ViewItem.kt$package com.socialevoeding.presentation_android</ID>
+    <ID>PackageNaming:ViewItemMapper.kt$package com.socialevoeding.presentation_android.mappers.base</ID>
+    <ID>PackageNaming:ViewState.kt$package com.socialevoeding.presentation_android</ID>
+    <ID>SpreadOperator:RoomPlaceDataSource.kt$RoomPlaceDataSource$(*RoomPlaceMapper.mapToRoomEntities(places).toTypedArray())</ID>
+    <ID>TooGenericExceptionCaught:UseCase.kt$UseCase$e: Exception</ID>
+    <ID>VariableNaming:NetworkPlace.kt$NetworkPlace$var img_url: String = ""</ID>
+    <ID>WildcardImport:Application.kt$import androidx.work.*</ID>
+    <ID>WildcardImport:DataModule.kt$import com.socialevoeding.data.mappers.*</ID>
+    <ID>WildcardImport:FlowableUseCase.kt$import kotlinx.coroutines.*</ID>
+    <ID>WildcardImport:FrameworkAndroidModule.kt$import okhttp3.*</ID>
+    <ID>WildcardImport:PlacesApiService.kt$import retrofit2.http.*</ID>
+    <ID>WildcardImport:SoupPlaceDataSource.kt$import kotlinx.coroutines.flow.*</ID>
+    <ID>WildcardImport:UseCase.kt$import kotlinx.coroutines.*</ID>
+  </CurrentIssues>
+</SmellBaseline>

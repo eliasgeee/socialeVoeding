@@ -11,7 +11,7 @@ class UserLocationCurrentLocationDeviceDataSourceMock(
     }
 }
 
-class UserLocationCurrentLocationDeviceDataSourceMockImpl() {
+class UserLocationCurrentLocationDeviceDataSourceMockImpl {
     fun getCurrentLocation(): CoordinatesDTO {
         return CoordinatesDTO(420.0, 420.0)
     }

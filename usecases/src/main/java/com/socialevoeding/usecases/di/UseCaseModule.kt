@@ -22,6 +22,7 @@ val useCaseModule = module {
             get()
         )
     }
+
     factory { SavePlacesUseCase(get()) }
     factory { RefreshPlacesUseCase(get()) }
     factory {

@@ -1,3 +1,4 @@
+apply plugin: 'java-library'
 apply plugin: 'kotlin'
 
 dependencies {
@@ -17,10 +18,10 @@ dependencies {
     implementation commonDependencies.kotlin
     implementation commonDependencies.koin
     implementation commonDependencies.coroutines
-  /*  implementation testDependencies.junit
-    testImplementation testDependencies.junit
-    testImplementation testDependencies.mockk
-    implementation testDependencies.mockk
-    implementation testDependencies.coroutines
-    testImplementation(testDependencies.threeTenBP)*/
+    /*  implementation testDependencies.junit
+      testImplementation testDependencies.junit
+      testImplementation testDependencies.mockk
+      implementation testDependencies.mockk
+      implementation testDependencies.coroutines
+      testImplementation(testDependencies.threeTenBP)*/
 }

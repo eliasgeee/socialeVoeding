@@ -9,7 +9,6 @@ class GetCurrentGeoLocationUseCase(
     private val userLocationRepository: UserLocationRepository
 ) : UseCase<UserLocation>() {
     var currentCoordinates: Coordinates? = null
-    override suspend fun executeOnBackground(): UserLocation {
-        return userLocationRepository.getCurrentGeoLocation(currentCoordinates!!)
-    }
+
+    override suspend fun executeOnBackground(): UserLocation = currentCoordinates?.let { userLocationRepository.getCurrentGeoLocation(it) }!!
 }

@@ -81,3 +81,8 @@ jobs:
           command: ./gradlew ktlintFormat
       - store_artifacts:
           path: ktlint/build/reports
+      - run:
+          name: Run Detekt Test
+          command: ./gradlew detekt
+      - store_artifacts:
+          path: detekt/build/reports

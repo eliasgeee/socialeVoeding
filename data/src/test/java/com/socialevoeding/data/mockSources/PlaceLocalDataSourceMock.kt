@@ -1,3 +1,4 @@
+/*
 package com.socialevoeding.data.mockSources
 
 import com.socialevoeding.data.datasources.local.database.PlaceLocalDataSource
@@ -21,7 +22,7 @@ class PlaceLocalDataSourceMock(private val placeLocalDataSourceImplementation: P
     }
 }
 
-class PlaceLocalDataSourceImplementation() {
+class PlaceLocalDataSourceImplementation {
 
     var cachedPlaces = emptyList<PlaceEntity>()
 
@@ -44,4 +45,4 @@ class PlaceLocalDataSourceImplementation() {
     suspend fun clear() {
         cachedPlaces = emptyList()
     }
-}
+}*/

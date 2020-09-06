@@ -8,41 +8,37 @@ import com.socialevoeding.data.mappers.NetworkPlaceMapper
 import com.socialevoeding.domain.model.place.Place
 import com.socialevoeding.domain.model.UserLocation
 import com.socialevoeding.domain.repositories.PlaceRepository
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.map
 
 class PlaceRepositoryImpl(
     private val placeRemoteDataSource: PlaceRemoteDataSource,
     private val placeLocalDataSource: PlaceLocalDataSource,
     private val databasePlaceMapper: PlacePlaceMapper,
     private val networkPlaceMapper: NetworkPlaceMapper
-) :
-    PlaceRepository {
+) : PlaceRepository {
 
-    override suspend fun refreshPlaces(
-        userLocation: UserLocation,
-        currentCategoryName: String
-    ) {
-        val places = getPlacesFromRemoteDataSource(currentCategoryName, userLocation.cityName)
+    override suspend fun refreshPlaces(userLocation: UserLocation, currentCategoryName: String) {
         clearLocalDataSource()
-        insertRemotePlacesIntoDatabase(places)
+        getPlacesFromRemoteDataSource(currentCategoryName, userLocation.cityName).collect { places ->
+            insertRemotePlacesIntoDatabase(places)
+        }
     }
 
-    suspend fun getPlacesFromRemoteDataSource(currentCategoryName: String, cityName: String): List<NetworkPlace> {
-        return placeRemoteDataSource.getPlaces(currentCategoryName, cityName)
+    private suspend fun getPlacesFromRemoteDataSource(currentCategoryName: String, cityName: String): Flow<List<NetworkPlace>> {
+            return placeRemoteDataSource.getPlaces(currentCategoryName, cityName)
     }
 
-    override suspend fun getPlacesFromLocalDatabase(): MutableList<Place> {
-        return PlacePlaceMapper.mapFromEntities(placeLocalDataSource.getPlaces()).toMutableList()
-    }
+    override suspend fun getPlacesFromLocalDatabase(): Flow<List<Place>> =
+        // flow { PlacePlaceMapper.mapFromEntities(placeLocalDataSource.getPlaces()).ma }
+        placeLocalDataSource.getPlaces().map { PlacePlaceMapper.mapFromEntities(it) }
 
-    override suspend fun insertPlacesIntoDatabase(places: List<Place>) {
-        return placeLocalDataSource.insertAll(databasePlaceMapper.mapToEntities(places))
-    }
+    override suspend fun insertPlacesIntoDatabase(places: List<Place>) = placeLocalDataSource.insertAll(databasePlaceMapper.mapToEntities(places))
 
-    suspend fun clearLocalDataSource() {
-        placeLocalDataSource.clear()
-    }
+    private suspend fun clearLocalDataSource() = placeLocalDataSource.clear()
 
-    suspend fun insertRemotePlacesIntoDatabase(networkPlaces: List<NetworkPlace>) {
+    private suspend fun insertRemotePlacesIntoDatabase(networkPlaces: List<NetworkPlace>) {
         placeLocalDataSource.insertAll(
             databasePlaceMapper.mapToEntities(networkPlaceMapper.mapToListOfDomainObjects(networkPlaces))
         )

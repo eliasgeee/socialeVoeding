@@ -13,4 +13,5 @@ data class NetworkPlace(
     var address: String = ""
     var telephoneNumber: String = ""
     var openingHours = ArrayList<NetworkOpeningDay>(emptyList())
+    var cityName: String = ""
 }

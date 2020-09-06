@@ -12,8 +12,8 @@ class CategoryRepositoryImpl(
     private val databaseCategoryMapperFacade: DatabaseCategoryMapperFacade
 ) : CategoryRepository {
 
-    override suspend fun getCategories(): MutableList<Category> =
-            databaseCategoryMapperFacade.mapFromEntities(categoryLocalDataSource.getCategories()).toMutableList()
+    override suspend fun getCategories(): List<Category> =
+        databaseCategoryMapperFacade.mapFromEntities(categoryLocalDataSource.getCategories()).toMutableList()
 
     override suspend fun insertCategoriesIntoDatabase(category: List<Category>) =
             categoryLocalDataSource.insert(categoryProvider.getCategories())

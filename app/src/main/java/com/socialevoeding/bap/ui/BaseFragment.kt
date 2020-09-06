@@ -6,7 +6,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import java.util.*
 
-abstract class BaseFragment() : Fragment(), TextToSpeech.OnInitListener {
+abstract class BaseFragment : Fragment(), TextToSpeech.OnInitListener {
 
     private var textToSpeech: TextToSpeech? = null
     private var result: Int? = null

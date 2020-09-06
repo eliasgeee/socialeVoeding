@@ -13,7 +13,7 @@ class CategoryLocalDataSourceMock(private val categoryDatabaseSourceMock: Catego
     }
 }
 
-class CategoryDatabaseSourceMock() {
+class CategoryDatabaseSourceMock {
     suspend fun insert(categories: List<CategoryEntity>) {
         // do something
     }

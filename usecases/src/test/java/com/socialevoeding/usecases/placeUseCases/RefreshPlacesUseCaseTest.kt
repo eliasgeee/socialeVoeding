@@ -35,7 +35,7 @@ class RefreshPlacesUseCaseTest {
 
     @Test
     fun `refresh places use case calls place repository`() = runBlockingTest {
-        refreshPlacesUseCase.currentCategorieName = name
+        refreshPlacesUseCase.currentCategoryName = name
         refreshPlacesUseCase.userLocation = userLocation
 
         coEvery { placeRepository.refreshPlaces(userLocation, name) } returns Unit
@@ -48,7 +48,7 @@ class RefreshPlacesUseCaseTest {
 
     @Test
     fun `refresh places use case returns succes from place repository`() = runBlocking {
-        refreshPlacesUseCase.currentCategorieName = name
+        refreshPlacesUseCase.currentCategoryName = name
         refreshPlacesUseCase.userLocation = userLocation
 
         coEvery { placeRepository.refreshPlaces(userLocation, name) } returns Unit

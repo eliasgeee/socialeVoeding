@@ -1,9 +1,10 @@
+/*
 package com.socialevoeding.data.repositories
 
 import com.socialevoeding.data.dtos.local.device.CoordinatesDTO
 import com.socialevoeding.data.dtos.local.device.UserLocationDTO
 import com.socialevoeding.data.dtos.remote.GeolocationObject
-import com.socialevoeding.data.dtos.remote.NetworkGeolocationAddress
+import com.socialevoeding.data.dtos.remote.Address
 import com.socialevoeding.data.mappers.CacheLocationItemMapper
 import com.socialevoeding.data.mappers.DeviceCoordinatesMapper
 import com.socialevoeding.data.mockSources.*
@@ -22,6 +23,7 @@ import org.junit.Test
 
 @ExperimentalCoroutinesApi
 class UserLocationRepositoryTest {
+
     private val userLocationRemoteDataSourceMockImpl = mockk<UserLocationRemoteDataSourceMockImpl>()
     private val userLocationRemoteDataSourceMock = UserLocationRemoteDataSourceMock(userLocationRemoteDataSourceMockImpl)
     private val userLocationCacheDataSourceMockImpl = mockk<UserLocationCacheDataSourceMockImpl>()
@@ -33,7 +35,7 @@ class UserLocationRepositoryTest {
     private val deviceCoordinatesMapper = mockk<DeviceCoordinatesMapper>()
     private val currentCoordinates = Coordinates(420.0, 420.0)
     private val geolocationObject = mockk<GeolocationObject>()
-    private val networkGeolocationAddress = mockk<NetworkGeolocationAddress>()
+    private val networkGeolocationAddress = mockk<Address>()
     private val userLocationDTO = mockk<UserLocationDTO>()
     private val userLocation = mockk<UserLocation>()
     private val coordinatesDTO = mockk<CoordinatesDTO>()
@@ -58,7 +60,7 @@ class UserLocationRepositoryTest {
             format = "json"
         ) } returns deferred
 
-        coEvery { geolocationObject.networkGeolocationAddress } returns networkGeolocationAddress
+        coEvery { geolocationObject.address } returns networkGeolocationAddress
         coEvery { networkGeolocationAddress.city } returns "Gent"
 
         deferred.complete(geolocationObject)
@@ -85,7 +87,7 @@ class UserLocationRepositoryTest {
     fun `user location gets created`() = runBlockingTest {
         val deferred = CompletableDeferred<GeolocationObject>()
 
-        coEvery { geolocationObject.networkGeolocationAddress } returns networkGeolocationAddress
+        coEvery { geolocationObject.address } returns networkGeolocationAddress
         coEvery { networkGeolocationAddress.city } returns "Gent"
 
         coEvery {
@@ -171,4 +173,4 @@ class UserLocationRepositoryTest {
         coVerify { userLocationCurrentLocationDeviceDataSourceMock.getCurrentLocation() }
         coVerify { userLocationCurrentLocationDeviceDataSourceMockImpl.getCurrentLocation() }
     }
-}
+}*/

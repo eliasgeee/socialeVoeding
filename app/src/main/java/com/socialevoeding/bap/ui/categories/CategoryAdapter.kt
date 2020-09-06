@@ -9,11 +9,11 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
 import com.socialevoeding.bap.R
 import com.socialevoeding.bap.databinding.RvCatItemBinding
-import com.socialevoeding.presentation_android.viewItems.CategoryViewItem
+import com.socialevoeding.presentation_android.ViewItem
 import java.util.*
 
 class CategoryAdapter(private val context: Context, private val clickListener: CategoryClickListener) :
-    ListAdapter<CategoryViewItem, CategoryAdapter.CategoryViewHolder>(
+    ListAdapter<ViewItem.CategoryViewItem, CategoryAdapter.CategoryViewHolder>(
         CategoryDiffCallback()
     ) {
 
@@ -36,7 +36,7 @@ class CategoryAdapter(private val context: Context, private val clickListener: C
     class CategoryViewHolder private constructor(val binding: RvCatItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun fillViewItems(
-            category: CategoryViewItem,
+            category: ViewItem.CategoryViewItem,
             clickListener: CategoryClickListener,
             context: Context
         ) {
@@ -70,16 +70,16 @@ class CategoryAdapter(private val context: Context, private val clickListener: C
     }
 }
 
-class CategoryDiffCallback : DiffUtil.ItemCallback<CategoryViewItem>() {
-    override fun areItemsTheSame(oldCategory: CategoryViewItem, newCategory: CategoryViewItem): Boolean {
+class CategoryDiffCallback : DiffUtil.ItemCallback<ViewItem.CategoryViewItem>() {
+    override fun areItemsTheSame(oldCategory: ViewItem.CategoryViewItem, newCategory: ViewItem.CategoryViewItem): Boolean {
         return newCategory.id == oldCategory.id
     }
 
-    override fun areContentsTheSame(oldCategory: CategoryViewItem, newCategory: CategoryViewItem): Boolean {
+    override fun areContentsTheSame(oldCategory: ViewItem.CategoryViewItem, newCategory: ViewItem.CategoryViewItem): Boolean {
         return newCategory.id == oldCategory.id
     }
 }
 
 interface CategoryClickListener {
-    fun onCategoryClick(category: CategoryViewItem)
+    fun onCategoryClick(category: ViewItem.CategoryViewItem)
 }

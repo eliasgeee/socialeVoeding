@@ -8,7 +8,6 @@ class SavePlacesUseCase(
     private val placesRepository: PlaceRepository
 ) : UseCase<Unit>() {
     var places: List<Place> = emptyList()
-    override suspend fun executeOnBackground() {
-        return placesRepository.insertPlacesIntoDatabase(places)
-    }
+
+    override suspend fun executeOnBackground() = placesRepository.insertPlacesIntoDatabase(places)
 }

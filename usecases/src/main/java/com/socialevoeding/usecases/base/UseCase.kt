@@ -6,7 +6,11 @@ import com.socialevoeding.util_models.Result
 
 typealias CompletionBlock<T> = UseCase.Request<T>.() -> Unit
 
-abstract class UseCase<T>() {
+interface IUseCase<T> {
+    fun execute(block: CompletionBlock<T>)
+}
+
+abstract class UseCase<T> {
 
     private var parentJob: Job = Job()
     var backgroundContext: CoroutineContext = Dispatchers.IO
