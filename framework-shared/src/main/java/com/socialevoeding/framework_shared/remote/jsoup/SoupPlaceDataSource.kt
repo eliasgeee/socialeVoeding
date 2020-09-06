@@ -8,7 +8,6 @@ import kotlinx.coroutines.flow.*
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
-import java.lang.Exception
 
 class SoupPlaceDataSource : PlaceRemoteDataSource {
 
@@ -49,25 +48,14 @@ class SoupPlaceDataSource : PlaceRemoteDataSource {
 
     private fun getNetWorkPlace(link: Element): NetworkPlace {
         var name = ""
-        try {
             name = link.select("div[class=dbg0pd] > div").text()
-        } catch (e: Exception) {}
-        var networkCoordinates = NetworkCoordinates()
-        try {
-            networkCoordinates = NetworkCoordinates(
+        val networkCoordinates = NetworkCoordinates(
                 latitude = link.select("div[class=rllt__mi]").attr("data-lat").toDouble(),
                 longitude = link.select("div[class=rllt__mi]").attr("data-lng").toDouble()
-            )
-        } catch (e: Exception) {}
-        var rating = 0F
-        try {
-            rating = link.select("span[class=sBhnyP5sXkG__rtng]").text().replace(',', '.')
+        )
+        val rating = link.select("span[class=sBhnyP5sXkG__rtng]").text().replace(',', '.')
                 .toFloat()
-        } catch (e: Exception) {}
-        var weburl = ""
-        try {
-            weburl = link.select("a[class=yYlJEf L48Cpd]").attr("href")
-        } catch (e: Exception) {}
+        val weburl = link.select("a[class=yYlJEf L48Cpd]").attr("href")
         return NetworkPlace(
                 name = name,
                 networkCoordinates = networkCoordinates,
@@ -77,7 +65,6 @@ class SoupPlaceDataSource : PlaceRemoteDataSource {
     }
 
     private fun NetworkPlace.getPlaceDetails(): NetworkPlace {
-                try {
                     /*val urlPlace = SoupConfig.SOUP_BASE_URL_SEARCH + this.name.replace(
                         ' ',
                         '+'
@@ -97,14 +84,10 @@ class SoupPlaceDataSource : PlaceRemoteDataSource {
                             )
                         )
                     }
-                } catch (e: Exception) {
-                    e.message
-                }
         return this
     }
 
     private fun NetworkPlace.getImage(): NetworkPlace {
-                try {
                     val imgUrl = "http://google.com/search?tbm=isch&q=${this.name}"
                     val documentImg: Document = Jsoup.connect(imgUrl).timeout(120 * 1000).get()
 
@@ -119,9 +102,6 @@ class SoupPlaceDataSource : PlaceRemoteDataSource {
                     imgsrchtml = imgsrchtml.substring(charIndex + 1)
                     // imgsrchtml = imgsrchtml.replace(Base64Regex.baseRegex, "")
                     this.img_url = imgsrchtml
-                } catch (e: Exception) {
-                    e.message
-                }
         return this
     }
 

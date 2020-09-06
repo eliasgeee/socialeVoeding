@@ -45,7 +45,8 @@ class PlacesViewModel(
             onComplete {
                 when (it.data) {
                     is Either.Right -> {
-                        _currentLocationState.postValue(ViewState.Succes((it.data as Either.Right<UserLocation>).b.cityName))
+                        _currentLocationState.postValue(
+                            ViewState.Succes((it.data as Either.Right<UserLocation>).b.cityName))
                     }
                 }
                 loadPlaces()
@@ -59,7 +60,9 @@ class PlacesViewModel(
                 _viewState.value = ViewState.Loading()
                 onComplete { places ->
                     viewModelScope.launch {
-                        places.data.map { flow -> flow.map { place -> PlaceViewItemMapper.mapToViewItem(place) } }.collect {
+                        places.data.map { flow -> flow.map {
+                                place -> PlaceViewItemMapper.mapToViewItem(place) } }
+                            .collect {
                             _viewState.value = ViewState.Succes(it)
                         } }
                     }

@@ -24,10 +24,8 @@ object PlacesRedirectConverter : Converter<ResponseBody, Flow<String>> {
         return flow {
             val resp = value.string()
             var url = ""
-            try {
                 url = Jsoup.parse(resp).select(".cMjHbjVt9AZ__button").first().attr("href")
                 emit(url)
-            } catch (e: Exception) {}
         }
     }
 }

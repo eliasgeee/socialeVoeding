@@ -12,8 +12,10 @@ class PlaceRemoteDataSourceImpl(private val serviceProviderImpl: ServiceProvider
         queryString: String,
         currenPlaceName: String
     ): Flow<List<NetworkPlace>> {
-        return serviceProviderImpl.getPlacesService().getRedirectUrlAsync("https://www.google.com/search?q=" + "voedselbank+gent")
-            .flatMapMerge { serviceProviderImpl.getPlacesService().getPlacesAsync("https://www.google.com$it")
+        return serviceProviderImpl.getPlacesService()
+            .getRedirectUrlAsync("https://www.google.com/search?q=" + "voedselbank+gent")
+            .flatMapMerge { serviceProviderImpl.getPlacesService()
+                .getPlacesAsync("https://www.google.com$it")
             }
         //   var redirectUrl = responseRedirect.string()
         //     val string = serviceProviderImpl.getPlacesService().getPlacesAsync("https://www.google.com" + responseRedirect).string()

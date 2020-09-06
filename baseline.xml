@@ -27,9 +27,15 @@
     <ID>MagicNumber:DataFactory.kt$DataFactory$29</ID>
     <ID>MagicNumber:DataFactory.kt$DataFactory$59</ID>
     <ID>MagicNumber:DistanceUtils.kt$1000</ID>
+    <ID>MagicNumber:FrameworkAndroidModule.kt$100</ID>
+    <ID>MagicNumber:FrameworkAndroidModule.kt$20</ID>
+    <ID>MagicNumber:FrameworkAndroidModule.kt$30</ID>
     <ID>MagicNumber:PlaceFactory.kt$PlaceFactory$50.0</ID>
+    <ID>MagicNumber:SoupPlaceDataSource.kt$SoupPlaceDataSource$1000</ID>
+    <ID>MagicNumber:SoupPlaceDataSource.kt$SoupPlaceDataSource$120</ID>
     <ID>MagicNumber:SoupPlaceDataSource.kt$SoupPlaceDataSource$16</ID>
     <ID>MagicNumber:SoupPlaceDataSource.kt$SoupPlaceDataSource$3</ID>
+    <ID>MagicNumber:SoupPlaceDataSource.kt$SoupPlaceDataSource$60</ID>
     <ID>MaxLineLength:CategoryAdapter.kt$CategoryAdapter$CategoryViewHolder : ViewHolder</ID>
     <ID>MaxLineLength:CategoryAdapter.kt$CategoryDiffCallback$override</ID>
     <ID>MaxLineLength:CategoryLocalDataSourceMock.kt$CategoryLocalDataSourceMock : CategoryLocalDataSource</ID>
@@ -37,16 +43,18 @@
     <ID>MaxLineLength:GetCurrentGeoLocationUseCase.kt$GetCurrentGeoLocationUseCase$override suspend fun executeOnBackground(): UserLocation</ID>
     <ID>MaxLineLength:GetLastKnownUserLocationUseCase.kt$GetLastKnownUserLocationUseCase$override suspend fun executeOnBackground(): Either&lt;Unit, UserLocation&gt;</ID>
     <ID>MaxLineLength:PlaceLocalDataSourceMock.kt$PlaceLocalDataSourceMock : PlaceLocalDataSource</ID>
+    <ID>MaxLineLength:PlaceRemoteDataSourceImpl.kt$PlaceRemoteDataSourceImpl${ return serviceProviderImpl.getPlacesService() .getRedirectUrlAsync("https://www.google.com/search?q=" + "voedselbank+gent") .flatMapMerge { serviceProviderImpl.getPlacesService() .getPlacesAsync("https://www.google.com$it") } // var redirectUrl = responseRedirect.string() // val string = serviceProviderImpl.getPlacesService().getPlacesAsync("https://www.google.com" + responseRedirect).string() }</ID>
     <ID>MaxLineLength:PlaceRemoteDataSourceMock.kt$PlaceRemoteDataSourceMock : PlaceRemoteDataSource</ID>
     <ID>MaxLineLength:PlaceRemoteDataSourceMock.kt$PlaceRemoteDataSourceMock$return placeRemoteDataSourceMockImplementation.getPlaces(queryString = queryString, currenPlaceName = currenPlaceName)</ID>
     <ID>MaxLineLength:PlaceRepositoryImpl.kt$PlaceRepositoryImpl$override suspend fun insertPlacesIntoDatabase(places: List&lt;Place&gt;)</ID>
     <ID>MaxLineLength:PlaceRepositoryImpl.kt$PlaceRepositoryImpl$private suspend</ID>
     <ID>MaxLineLength:PlacesAdapter.kt$PlacesAdapter$PlacesViewHolder : ViewHolder</ID>
-    <ID>MaxLineLength:PlacesViewModel.kt$PlacesViewModel$is Either.Right -&gt; _currentLocationState.postValue(ViewState.Succes((it.data as Either.Right&lt;UserLocation&gt;).b.cityName))</ID>
     <ID>MaxLineLength:RoomCategoryDataSource.kt$RoomCategoryDataSource$override suspend fun insert(categories: List&lt;CategoryEntity&gt;)</ID>
     <ID>MaxLineLength:RoomPlaceDataSource.kt$RoomPlaceDataSource$override suspend fun insertAll(places: List&lt;PlaceEntity&gt;)</ID>
     <ID>MaxLineLength:RoomPlaceDataSource.kt$RoomPlaceDataSource$override suspend fun insertPlaces(places: List&lt;PlaceEntity&gt;)</ID>
     <ID>MaxLineLength:RoomPlaceEntity.kt$RoomPlaceEntity$@ForeignKey(entity = RoomCategoryEntity::class, onDelete = ForeignKey.CASCADE, childColumns = ["categoryId"], parentColumns = ["id"])</ID>
+    <ID>MaxLineLength:SoupPlaceDataSource.kt$SoupPlaceDataSource$val document: Document = Jsoup.connect(SoupConfig.SOUP_BASE_URL_SEARCH + "voedselbank gent").timeout(60 * 1000).get()</ID>
+    <ID>MaxLineLength:SoupPlaceDataSource.kt$SoupPlaceDataSource$val documentPlace: Document = Jsoup.connect(SoupConfig.SOUP_BASE_URL_SEARCH + this.name).timeout(120 * 1000).get()</ID>
     <ID>MaxLineLength:UserLocationRemoteDataSourceImpl.kt$UserLocationRemoteDataSourceImpl : UserLocationRemoteDataSource</ID>
     <ID>MaxLineLength:UserLocationRemoteDataSourceImpl.kt$UserLocationRemoteDataSourceImpl$return serviceProviderImpl.getGeolocationService().getCurrentGeoLocationAsync(latitude, longitude, format).await().address.city</ID>
     <ID>MaxLineLength:UserLocationRepositoryTest.kt$UserLocationRepositoryTest$private val userLocationCurrentLocationDeviceDataSourceMockImpl = mockk&lt;UserLocationCurrentLocationDeviceDataSourceMockImpl&gt;()</ID>
@@ -98,9 +106,9 @@
     <ID>NewLineAtEndOfFile:GetCurrentCoordinatesUseCase.kt$com.socialevoeding.usecases.locationUseCases.GetCurrentCoordinatesUseCase.kt</ID>
     <ID>NewLineAtEndOfFile:GetCurrentGeoLocationUseCase.kt$com.socialevoeding.usecases.locationUseCases.GetCurrentGeoLocationUseCase.kt</ID>
     <ID>NewLineAtEndOfFile:InitCategoriesUseCase.kt$com.socialevoeding.usecases.categorieUseCases.InitCategoriesUseCase.kt</ID>
-    <ID>NewLineAtEndOfFile:InitViewModel.kt$com.socialevoeding.presentation_android.viewModels.InitViewModel.kt</ID>
     <ID>NewLineAtEndOfFile:LocalDb.kt$com.socialevoeding.framework_androidsdk.local.room.database.LocalDb.kt</ID>
     <ID>NewLineAtEndOfFile:LocationGPSDataSource.kt$com.socialevoeding.framework_androidsdk.device.gps.LocationGPSDataSource.kt</ID>
+    <ID>NewLineAtEndOfFile:LocationViewModel.kt$com.socialevoeding.presentation_android.viewModels.LocationViewModel.kt</ID>
     <ID>NewLineAtEndOfFile:NetworkCoordinates.kt$com.socialevoeding.data.dtos.remote.NetworkCoordinates.kt</ID>
     <ID>NewLineAtEndOfFile:NetworkMapper.kt$com.socialevoeding.data.mappers.base.NetworkMapper.kt</ID>
     <ID>NewLineAtEndOfFile:NetworkOpeningDay.kt$com.socialevoeding.data.dtos.remote.NetworkOpeningDay.kt</ID>
@@ -181,9 +189,9 @@
     <ID>PackageNaming:FrameworkAndroidModule.kt$package com.socialevoeding.framework_androidsdk.di</ID>
     <ID>PackageNaming:FrameworkSharedModule.kt$package com.socialevoeding.framework_shared.di</ID>
     <ID>PackageNaming:GeoLocationApiService.kt$package com.socialevoeding.framework_androidsdk.remote.retrofit.apiServices</ID>
-    <ID>PackageNaming:InitViewModel.kt$package com.socialevoeding.presentation_android.viewModels</ID>
     <ID>PackageNaming:LocalDb.kt$package com.socialevoeding.framework_androidsdk.local.room.database</ID>
     <ID>PackageNaming:LocationGPSDataSource.kt$package com.socialevoeding.framework_androidsdk.device.gps</ID>
+    <ID>PackageNaming:LocationViewModel.kt$package com.socialevoeding.presentation_android.viewModels</ID>
     <ID>PackageNaming:OpeningDayViewItemMapper.kt$package com.socialevoeding.presentation_android.mappers</ID>
     <ID>PackageNaming:PlaceDao.kt$package com.socialevoeding.framework_androidsdk.local.room.dao</ID>
     <ID>PackageNaming:PlaceDetailsViewModel.kt$package com.socialevoeding.presentation_android.viewModels</ID>
@@ -221,7 +229,9 @@
     <ID>WildcardImport:Application.kt$import androidx.work.*</ID>
     <ID>WildcardImport:DataModule.kt$import com.socialevoeding.data.mappers.*</ID>
     <ID>WildcardImport:FlowableUseCase.kt$import kotlinx.coroutines.*</ID>
+    <ID>WildcardImport:FrameworkAndroidModule.kt$import okhttp3.*</ID>
     <ID>WildcardImport:PlacesApiService.kt$import retrofit2.http.*</ID>
+    <ID>WildcardImport:SoupPlaceDataSource.kt$import kotlinx.coroutines.flow.*</ID>
     <ID>WildcardImport:UseCase.kt$import kotlinx.coroutines.*</ID>
   </CurrentIssues>
 </SmellBaseline>
