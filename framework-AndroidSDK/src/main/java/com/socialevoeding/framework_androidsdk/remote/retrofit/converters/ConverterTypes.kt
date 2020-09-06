@@ -3,7 +3,6 @@ package com.socialevoeding.framework_androidsdk.remote.retrofit.converters
 import com.socialevoeding.framework_androidsdk.di.provideMoshi
 import retrofit2.Converter
 import retrofit2.converter.moshi.MoshiConverterFactory
-import retrofit2.converter.scalars.ScalarsConverterFactory
 
 @Retention(AnnotationRetention.RUNTIME)
 annotation class SearchRedirect

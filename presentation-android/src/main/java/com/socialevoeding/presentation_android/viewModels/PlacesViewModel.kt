@@ -59,13 +59,13 @@ class PlacesViewModel(
                 _viewState.value = ViewState.Loading()
                 onComplete { places ->
                     viewModelScope.launch {
-                        places.data.map { flow -> flow.map { place -> PlaceViewItemMapper.mapToViewItem(place)  } }.collect {
+                        places.data.map { flow -> flow.map { place -> PlaceViewItemMapper.mapToViewItem(place) } }.collect {
                             _viewState.value = ViewState.Succes(it)
-                        }}
+                        } }
                     }
-                    //_viewState = ViewState.Succes(places.data)
-                    //ViewState.Succes(
-                    //places.data.map { place -> PlaceViewItemMapper.mapToViewItem(place) })
+                    // _viewState = ViewState.Succes(places.data)
+                    // ViewState.Succes(
+                    // places.data.map { place -> PlaceViewItemMapper.mapToViewItem(place) })
                 onError {
                     _viewState.value = ViewState.Error(it.throwable.message!!)
                 }

@@ -21,13 +21,13 @@ object PlacesRedirectConverter : Converter<ResponseBody, Flow<String>> {
     }
 
     override fun convert(value: ResponseBody): Flow<String> {
-        return flow{
+        return flow {
             val resp = value.string()
             var url = ""
-            try{
+            try {
                 url = Jsoup.parse(resp).select(".cMjHbjVt9AZ__button").first().attr("href")
                 emit(url)
-            }catch(e : Exception){}
+            } catch (e: Exception) {}
         }
     }
 }

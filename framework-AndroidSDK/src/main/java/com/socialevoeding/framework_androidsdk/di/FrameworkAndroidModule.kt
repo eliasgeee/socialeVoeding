@@ -10,7 +10,6 @@ import com.socialevoeding.data.datasources.local.database.CategoryLocalDataSourc
 import com.socialevoeding.data.datasources.local.database.PlaceLocalDataSource
 import com.socialevoeding.data.datasources.remote.Environment
 import com.socialevoeding.data.datasources.remote.NetworkConfig
-import com.socialevoeding.data.datasources.remote.PlaceRemoteDataSource
 import com.socialevoeding.data.datasources.remote.UserLocationRemoteDataSource
 import com.socialevoeding.framework_androidsdk.device.gps.LocationGPSDataSource
 import com.socialevoeding.framework_androidsdk.local.room.dao.CategoryDao
@@ -20,7 +19,6 @@ import com.socialevoeding.framework_androidsdk.local.room.database.getDatabase
 import com.socialevoeding.framework_androidsdk.local.room.datasources.RoomCategoryDataSource
 import com.socialevoeding.framework_androidsdk.local.room.datasources.RoomPlaceDataSource
 import com.socialevoeding.framework_androidsdk.local.sharedPreferences.SharedPrefUserLocationDataSource
-import com.socialevoeding.framework_androidsdk.remote.datasources.PlaceRemoteDataSourceImpl
 import com.socialevoeding.framework_androidsdk.remote.datasources.UserLocationRemoteDataSourceImpl
 import com.socialevoeding.framework_androidsdk.remote.retrofit.converters.ConverterTypes
 import com.socialevoeding.framework_androidsdk.remote.retrofit.creation.ServiceFactory

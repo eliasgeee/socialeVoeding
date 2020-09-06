@@ -8,9 +8,6 @@ import com.socialevoeding.data.mappers.NetworkPlaceMapper
 import com.socialevoeding.domain.model.place.Place
 import com.socialevoeding.domain.model.UserLocation
 import com.socialevoeding.domain.repositories.PlaceRepository
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.*
 
 class PlaceRepositoryImpl(
@@ -32,7 +29,7 @@ class PlaceRepositoryImpl(
     }
 
     override suspend fun getPlacesFromLocalDatabase(): Flow<List<Place>> =
-        //flow { PlacePlaceMapper.mapFromEntities(placeLocalDataSource.getPlaces()).ma }
+        // flow { PlacePlaceMapper.mapFromEntities(placeLocalDataSource.getPlaces()).ma }
         placeLocalDataSource.getPlaces().map { PlacePlaceMapper.mapFromEntities(it) }
 
     override suspend fun insertPlacesIntoDatabase(places: List<Place>) = placeLocalDataSource.insertAll(databasePlaceMapper.mapToEntities(places))

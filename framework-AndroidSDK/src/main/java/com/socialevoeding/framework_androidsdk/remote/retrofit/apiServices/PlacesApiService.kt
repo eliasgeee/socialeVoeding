@@ -3,10 +3,8 @@ package com.socialevoeding.framework_androidsdk.remote.retrofit.apiServices
 import com.socialevoeding.data.dtos.remote.NetworkPlace
 import com.socialevoeding.framework_androidsdk.remote.retrofit.converters.Places
 import com.socialevoeding.framework_androidsdk.remote.retrofit.converters.PlacesRedirect
-import com.socialevoeding.framework_androidsdk.remote.retrofit.converters.SearchRedirect
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.flow.Flow
-import okhttp3.ResponseBody
 import retrofit2.http.*
 
 interface PlacesApiService {
@@ -14,7 +12,7 @@ interface PlacesApiService {
     @Streaming
     @PlacesRedirect @GET
     suspend fun getRedirectUrlAsync(
-        @Url url : String?
+        @Url url: String?
     ): Flow<String>
 
     @Streaming

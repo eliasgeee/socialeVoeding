@@ -4,7 +4,6 @@ import com.socialevoeding.data.mappers.base.PlaceMapperFacade
 import com.socialevoeding.data_entities.PlaceEntity
 import com.socialevoeding.domain.model.place.Place
 import com.socialevoeding.domain.model.place.buildPlace
-import com.socialevoeding.util_factories.PlaceEntityFactory
 import com.socialevoeding.util_models.Either
 
 object PlacePlaceMapper : PlaceMapperFacade<PlaceEntity, Place> {
@@ -37,7 +36,7 @@ object PlacePlaceMapper : PlaceMapperFacade<PlaceEntity, Place> {
     }
 
     override fun mapFromEntities(entities: List<PlaceEntity>): List<Place> {
-        val models =  ArrayList<Place>()
+        val models = ArrayList<Place>()
         entities.forEach {
             when (val place = mapFromEntity(it)) {
                 is Either.Right -> models.add(place.b)

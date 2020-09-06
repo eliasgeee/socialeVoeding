@@ -7,7 +7,6 @@ import com.socialevoeding.framework_androidsdk.local.room.mappers.RoomPlaceMappe
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.distinctUntilChanged
-import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 
 class RoomPlaceDataSource(private val placeDao: PlaceDao) : PlaceLocalDataSource {

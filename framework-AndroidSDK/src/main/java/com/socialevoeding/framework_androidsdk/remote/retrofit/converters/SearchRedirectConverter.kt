@@ -1,6 +1,5 @@
 package com.socialevoeding.framework_androidsdk.remote.retrofit.converters
 
-import kotlinx.coroutines.flow.Flow
 import okhttp3.ResponseBody
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Element
