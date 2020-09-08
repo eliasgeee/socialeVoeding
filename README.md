@@ -1,7 +1,6 @@
 "# socialeVoeding" 
 
 Todo:
-- app & presentation layer refactoring : implement ViewStates and ViewItems
 - split in coroutine scopes and add parameters to use cases
 - rewrite mappers in a more functional programming style
 - prob implement PlaceBuilder diff
